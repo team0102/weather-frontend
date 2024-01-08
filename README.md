@@ -158,3 +158,5 @@ hotfix/[브랜치명]
 ```
 깃모지를 활용합니다.
 ```
+
+<a href="https://gitmoji.dev/" target="깃모지">깃모지 URL</a>
