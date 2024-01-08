@@ -1,5 +1,7 @@
 # React + Vite
 
+<h1>날씨에 따른 옷뭐입지? 프로젝트입니다.</h1>
+
 <img width="365" alt="날씨프로젝트사진" src="https://github.com/leechengwon/weet/assets/141094801/f94932e0-9c81-43c3-a781-5617aee3fcc0">
 
 - Period
