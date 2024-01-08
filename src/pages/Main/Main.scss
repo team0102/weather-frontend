@@ -1,0 +1,19 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin', '../../styles/partials/variables'; //변수스타일 , 믹스인 스타일을  꼭 import 해야 사용가능합니다.
+
+.main {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  //mixin 파일에 정해놓은 변수 스타일링을 사용하는방법입니다. 위에 세줄을 한줄로 스타일링 할수있습니다.
+  @include FlexCenter;
+  width: 100%;
+  height: 100vh;
+
+  h1 {
+    //variables파일에 우리프로젝트 색상을 관리합니다. 유지보수를 위해서 입니다.
+    color: $grayscaleH;
+    font-size: 30px;
+  }
+}

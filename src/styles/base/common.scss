@@ -1,0 +1,74 @@
+@charset "utf-8";
+@import './reset', '../partials/mixin', '../partials/variables';
+
+//폰트 스타일을 정의합니다.
+@font-face {
+  font-family: 'RubikRegular';
+  src: url('../../../public/fonts/RubikRegular.ttf');
+}
+
+//전체 박스 sizing을 정의합니다.
+* {
+  box-sizing: border-box;
+}
+
+// 1.기본 글씨 크기는 14px 입니다.
+// 2.폰트 스타일은 RubikRegular를 사용합니다.
+#root,
+html,
+body {
+  font-size: 14px;
+  font-family: RubikRegular;
+}
+
+/** Footer를 최하단에 고정시키기 위한 속성 */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/**
+  1.Footer를 최하단에 고정시키기 위한 속성 최대 최소 가로 사이즈를 정의합니다.
+  2.최대 최소 width 를 정의합니다.
+  3.width 100%를 적용합니다.
+  */
+main {
+  flex: 1;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-width: 320px;
+  width: 100%;
+}
+
+/** li 기호 또는 점을 없애기 위한 속성 */
+li {
+  list-style: none;
+}
+
+/** a태그 사용 시 디폴트로 보라색 글씨색 + 밑줄이 생기는데 해당 속성을 제거하기 위해 정의 */
+a {
+  display: block;
+  color: initial;
+  text-decoration: none;
+}
+
+/**
+1. 모든 버튼은 커서를 포인트를 줍니다.
+2. 폰트패밀리와 폰트굵기를 정의합니다.
+*/
+button {
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: RubikRegular;
+  font-weight: 900;
+}
+
+/** 모든 인풋에 폰트패밀리와 폰트굵기를 정의합니다.*/
+input,
+textarea {
+  font-family: RubikRegular;
+  font-weight: 900;
+  border-radius: 4px;
+}
