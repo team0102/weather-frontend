@@ -1,8 +1,22 @@
 @charset "utf-8";
 //스타일링 mixin 입니다. 가장 기본적인 FlexCenter 입니다.
 //스타일 변수 구분을 위해 첫글자 대문자에 카멜케이스로 변수명을 정의합니다.
+
+// flex 가로세로 정렬 변수입니다.
 @mixin FlexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+// flex X 축 정렬 변수입니다.
+@mixin FlexXCenter {
+  display: flex;
+  align-items: center;
+}
+
+// flex Y 축 정렬 변수입니다.
+@mixin FlexYCenter {
+  display: flex;
+  justify-content: center;
 }
