@@ -1,3 +1,4 @@
+import Checkbox from '../../components/Checkbox/Checkbox';
 import './Main.scss';
 
 // 1.최상위 메인태그는 항상 파일명을 따라가 네스팅 해줍니다. scss 파일에서
@@ -6,6 +7,7 @@ const Main = () => {
   return (
     <main className="main">
       <h1>Weather-Project 시작</h1>
+      <Checkbox context="남자" />
     </main>
   );
 };
