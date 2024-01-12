@@ -1,0 +1,36 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables'; //변수스타일 , 믹스인 스타일을  꼭 import 해야 사용가능합니다.
+
+.radioLabel {
+  display: flex;
+  position: relative;
+
+  .radioInput {
+    position: absolute;
+    z-index: -1;
+    width: 1px;
+    height: 1px;
+
+    & + span::before {
+      content: '';
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border: 1px solid black;
+      margin-right: 2px;
+      border-radius: 50%;
+      vertical-align: sub;
+    }
+
+    &:checked + span::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: red;
+    }
+  }
+}
