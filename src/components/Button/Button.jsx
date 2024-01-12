@@ -16,7 +16,7 @@ const Button = props => {
   return (
     <button 
       className={`button ${isDisabled ? 'disabled' : ''}`} 
-      onClick={onClick}
+      onClick={isDisabled ? null : onClick}
     >
       {text}
     </button>
