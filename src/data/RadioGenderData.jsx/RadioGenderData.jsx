@@ -1,4 +1,4 @@
-export const RADIO_GROUP_DATA = [
+export const RADIO_GROUP_GENDER_DATA = [
   {
     id: 1,
     name: 'gender',

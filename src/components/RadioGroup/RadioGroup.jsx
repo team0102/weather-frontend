@@ -15,8 +15,6 @@ const RadioGroup = ({ RadioData, onChange, className }) => {
    *@property {string} className                         - 라디오인풋의 스타일 변경을 위한 클래스 네이밍을 정의합니다.
    *@property {function} defaultChecked                  - 라디오인풋의 기본선택을 정의합니다.
    *@property {function} onChange                        - 라디오인풋의 상태 변경을 위한 함수를 정의합니다.
-   
-
    */
 
   return (
