@@ -4,6 +4,7 @@ import Main from './pages/Main/Main';
 const Router = () => {
   return (
     <BrowserRouter basename="/weather">
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Main />} />
       </Routes>
