@@ -16,7 +16,7 @@
       display: inline-block;
       width: 15px;
       height: 15px;
-      border: 1px solid black;
+      border: 1px solid $grayscaleH;
       margin-right: 2px;
       border-radius: 50%;
       vertical-align: sub;
@@ -30,7 +30,7 @@
       width: 9px;
       height: 9px;
       border-radius: 50%;
-      background-color: red;
+      background-color: $Red;
     }
   }
 }
