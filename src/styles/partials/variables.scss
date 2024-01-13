@@ -22,7 +22,6 @@ $mobile-max-width: 425px;
 $tablet-min-width: 426px;
 $tablet-max-width: 1024px;
 $web-min-width: 1025px;
-$web-max-width: 1200px;
 
 //모바일,테블릿,웹 세가지로 반응형을 변수로 지정합니다.
 // 사용예시
@@ -33,4 +32,4 @@ $web-max-width: 1200px;
 // }
 $media-mobile: 'only screen and (min-width: #{$mobile-min-width}) and (max-width: #{$mobile-max-width})';
 $media-tablet: 'only screen and (min-width: #{$tablet-min-width}) and (max-width: #{$tablet-max-width})';
-$media-web: 'only screen and (min-width: #{$web-min-width}) and (max-width: #{$web-max-width})';
+$media-web: 'only screen and (min-width: #{$web-min-width})';

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import './Nav.scss';
-import { useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-const Nav = ({ setNavToggle }) => {
+const Nav = ({ navToggle, setNavToggle }) => {
   // esc 누르면 모달 닫기
   useEffect(() => {
     const esc = e => {
@@ -40,8 +40,16 @@ const Nav = ({ setNavToggle }) => {
   };
 
   return (
-    <div className="navWrapContainer" onClick={closeNavOnBackgroundClick}>
-      <nav className="nav" onClick={event => event.stopPropagation()}>
+    <div
+      className={`navWrapContainer ${navToggle ? 'navTransitionShow' : ''}`}
+      onClick={closeNavOnBackgroundClick}
+    >
+      <nav
+        className={`nav ${
+          navToggle ? 'navTransitionShow' : 'navTransitionHidden'
+        }`}
+        onClick={event => event.stopPropagation()}
+      >
         <div className="closeBtnWrap">
           <button onClick={closeNav}>닫기 버튼</button>
         </div>

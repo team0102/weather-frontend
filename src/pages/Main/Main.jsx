@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Nav from '../../components/Nav/Nav';
-import Portal from '../../components/Portal/Portal';
 import './Main.scss';
 
 // 1.최상위 메인태그는 항상 파일명을 따라가 네스팅 해줍니다. scss 파일에서
@@ -17,11 +16,7 @@ const Main = () => {
       <button onClick={toggleClick}>네브바 나와</button>
       {/* <h1>Weather-Project 시작</h1> */}
 
-      {navToggle && (
-        <Portal>
-          <Nav setNavToggle={setNavToggle} />
-        </Portal>
-      )}
+      <Nav navToggle={navToggle} setNavToggle={setNavToggle} />
     </main>
   );
 };
