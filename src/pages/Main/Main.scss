@@ -16,4 +16,11 @@
     color: $grayscaleH;
     font-size: 30px;
   }
+
+  .btn {
+    width: 300px;
+    height: 30px;
+    :disabled {
+    }
+  }
 }
