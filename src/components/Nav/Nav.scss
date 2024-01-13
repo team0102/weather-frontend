@@ -16,14 +16,14 @@
   right: 0;
   width: 426px;
   height: 100vh;
-
-  border: 1px solid $grayscaleH;
+  border: 2px solid $grayscaleA;
   background-color: $grayscaleH;
   padding: 10px 10px;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 20;
 
   @media #{$media-mobile} {
     width: 100%;
@@ -53,7 +53,7 @@
       }
     }
 
-    button {
+    a {
       position: relative;
       font-size: 20px;
       border: none;
