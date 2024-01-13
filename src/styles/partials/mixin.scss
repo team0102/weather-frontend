@@ -27,11 +27,6 @@
   cursor: pointer;
 }
 
-// 비활성화 상태일 때 애니메이션을 비활성화하는 믹스인
-@mixin DisableAnimation {
-  animation: none !important;
-}
-
 // 바운스 위아래로 움직이는 애미메이션 설정옵션 입니다.
 @keyframes bounce-up-down {
   0%,
