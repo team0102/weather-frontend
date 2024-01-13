@@ -104,11 +104,11 @@
       &:hover {
         @include BounceUpDownAnimation(0.8s); // 애니메이션 mixin 입니다.
       }
-    }
 
-    a {
-      font-size: 20px;
-      color: $grayscaleA;
+      a {
+        font-size: 20px;
+        color: $grayscaleA;
+      }
     }
   }
 }
