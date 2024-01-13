@@ -1,0 +1,180 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables';
+
+.navWrapContainer {
+  //네브 트렌지션을 주기위한 부모레벨
+  &.navTransitionShow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+}
+
+//네브 트렌지션을 주기위한 저삭래벨
+.nav {
+  position: fixed;
+  border: 2px solid $grayscaleA;
+  background-color: $grayscaleH;
+  border-radius: 4px;
+  transition: all 1s ease-in-out;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 100;
+  right: 0;
+  top: 0;
+
+  &.navTransitionHidden {
+    //트렌지션 변화전 옵션값
+    width: 0px;
+    height: 100%;
+  }
+  &.navTransitionShow {
+    //트렌지션 변화후 옵션값
+    height: 100%;
+    width: 425px;
+  }
+
+  //모바일 반응형에 대한 트렌지션 입니다.
+  @media #{$media-mobile} {
+    right: 0;
+    top: 0;
+    &.navTransitionHidden {
+      height: 100%;
+      width: 0;
+    }
+    &.navTransitionShow {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .closeBtnWrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0px 40px 0px;
+    padding-right: 20px;
+  }
+
+  .loginSingUpWrap {
+    @include FlexCenter;
+
+    .navLoginBtn {
+      &::after {
+        position: absolute;
+        content: '';
+        width: 1px;
+        height: 15px;
+        background-color: $grayscaleA;
+        top: 50%;
+        right: 0;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    a {
+      position: relative;
+      font-size: 20px;
+      border: none;
+      background-color: transparent;
+      color: $grayscaleA;
+      padding: 0px 20px;
+      cursor: pointer;
+    }
+  }
+
+  .linkWrap {
+    @include FlexXCenter;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    padding-left: 80px;
+    margin-top: 50px;
+
+    li {
+      font-size: 20px;
+      color: $grayscaleA;
+      list-style: initial;
+      cursor: pointer;
+
+      &:hover {
+        @include BounceUpDownAnimation(0.8s); // 애니메이션 mixin 입니다.
+      }
+    }
+
+    a {
+      font-size: 20px;
+      color: $grayscaleA;
+    }
+  }
+}
+
+// TODO Bug
+// 4번라인부터 53라인 코드대체
+//버그 위에서 아래로 나오는 트렌지션 , 옆에서 나오는 트렌지션을 효과를 넣었다 모바일때만
+//위에서 네브가 슬라이드로 나오는데 노오픈상태에서 반응형이 바뀌면 네브위치가 위에서 좌로 이동하는게 보이는 버그
+//추후생각 해보자
+
+// .navWrapContainer {
+//   &.navTransitionShow {
+//     height: 100%;
+//     width: 100%;
+//     top: 0;
+//     left: 0;
+//     position: fixed;
+//     background-color: rgba(0, 0, 0, 0.5);
+//     z-index: 10;
+//   }
+// }
+
+// .nav {
+//   position: fixed;
+//   border: 2px solid $grayscaleA;
+//   background-color: $grayscaleH;
+//   border-radius: 4px;
+//   transition: all 1s ease-in-out;
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//   z-index: 100;
+
+//   @media #{$media-web} {
+//     right: 0;
+//     top: 0;
+//     &.navTransitionHidden {
+//       width: 0px;
+//       height: 100%;
+//     }
+//     &.navTransitionShow {
+//       height: 100%;
+//       width: 425px;
+//     }
+//   }
+//   @media #{$media-tablet} {
+//     right: 0;
+//     top: 0;
+//     &.navTransitionHidden {
+//       width: 0px;
+//       height: 100%;
+//     }
+//     &.navTransitionShow {
+//       height: 100%;
+//       width: 425px;
+//     }
+//   }
+
+//   @media #{$media-mobile} {
+//     top: 0;
+//     left: 0;
+//     &.navTransitionHidden {
+//       height: 0px;
+//       width: 100%;
+//     }
+//     &.navTransitionShow {
+//       height: 100%;
+//       width: 100%;
+//     }
+//   }
