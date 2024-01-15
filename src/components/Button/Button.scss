@@ -1,12 +1,43 @@
 @charset 'utf-8';
-@import '../../styles/partials/mixin.scss', '../../styles/partials/variables'; //변수스타일 , 믹스인 스타일을  꼭 import 해야 사용가능합니다.
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables';
 
 .button {
   @include FlexCenter;
   background-color: $primaryColor;
+  color: $grayscaleB;
+  width: 100%;
+  padding: 7px 0;
+  border: 1px solid $primaryColor;
+  font-weight: 900;
 
-  .disabled {
-    background-color: $grayscaleD;
+  &:disabled {
+    background-color: $grayscaleC;
+    border: 1px solid $grayscaleC;
+    transform: none;
+    cursor: not-allowed;
+  }
+
+  @media #{$media-mobile} {
+    font-size: 16px;
+    border-radius: 3px;
+    &:active {
+      transform: scale(0.99);
+    }
+  }
+  
+  @media #{$media-tablet} {
+    font-size: 18px;
+    border-radius: 5px;
+    &:active {
+      transform: scale(0.995);
+    }
+  }
+  
+  @media #{$media-web} {
+    font-size: 18px;
+    border-radius: 5px;
+    &:active {
+      transform: scale(0.998);
+    }
   }
 }
-

@@ -1,6 +1,6 @@
 @charset "utf-8";
 //메인 색상 4가지 입니다.
-$primaryColor: #3498db;
+$primaryColor: #5e3dea;
 $secondaryColor: #e74c3c;
 $tertiaryColor: #27ae60;
 //회색조 색상 입니다.
@@ -12,5 +12,25 @@ $grayscaleE: #535353;
 $grayscaleF: #212121;
 $grayscaleG: #1b1b1b;
 $grayscaleH: #000;
+$Red: #ff0000;
 //폰트 패밀리 글씨체를 정의합니다.
 $RubikRegular: RubikRegular;
+$Tenada: Tenada;
+
+//반응형 미디어 쿼리를 사이즈를 정의합니다. // 모바일 테블릿 웹 세가지로만 구분합니다.
+$mobile-min-width: 320px;
+$mobile-max-width: 425px;
+$tablet-min-width: 426px;
+$tablet-max-width: 1024px;
+$web-min-width: 1025px;
+
+//모바일,테블릿,웹 세가지로 반응형을 변수로 지정합니다.
+// 사용예시
+// 적용한 해당 스타일 파일! 예시는 모바일입니다.
+// -----------------------------------------------
+// @media #{$media-mobile} {
+//   적용한 스타일 내용
+// }
+$media-mobile: 'only screen and (min-width: #{$mobile-min-width}) and (max-width: #{$mobile-max-width})';
+$media-tablet: 'only screen and (min-width: #{$tablet-min-width}) and (max-width: #{$tablet-max-width})';
+$media-web: 'only screen and (min-width: #{$web-min-width})';
