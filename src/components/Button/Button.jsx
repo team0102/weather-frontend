@@ -11,18 +11,16 @@ import './Button.scss';
  * @property {string} textWeight                                - 버튼 텍스트의 두께를 지정
  */
 
-const Button = props => {
-  const {
-    type,
-    text,
-    onClick,
-    isDisabled = false,
-    backgroundColor,
-    borderColor,
-    textColor,
-    textWeight,
-  } = props;
-
+const Button = ({
+  type,
+  text,
+  onClick,
+  isDisabled = false,
+  backgroundColor,
+  borderColor,
+  textColor,
+  textWeight,
+}) => {
   const buttonStyle = {
     backgroundColor: backgroundColor,
     border: `1px solid ${borderColor}`,
