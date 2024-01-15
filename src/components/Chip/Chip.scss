@@ -1,0 +1,31 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables'; //변수스타일 , 믹스인 스타일을  꼭 import 해야 사용가능합니다.
+
+.chipWrap {
+  padding: 0 4px;
+
+  .chipInput {
+    display: none;
+
+    &:checked + label {
+      background-color: $primaryColor;
+      color: $grayscaleA;
+    }
+
+    & + label {
+      padding: 6px 10px;
+      background-color: $grayscaleA;
+      border: 1px solid $primaryColor;
+      border-radius: 20px;
+      font-weight: 700;
+      color: $primaryColor;
+      cursor: pointer;
+
+      &:hover,
+      &:checked + label {
+        background-color: $primaryColor;
+        color: $grayscaleA;
+      }
+    }
+  }
+}
