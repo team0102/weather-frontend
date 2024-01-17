@@ -9,13 +9,6 @@
   padding: 7px 0;
   border: 1px solid $primaryColor;
 
-  &:disabled {
-    background-color: $grayscaleC;
-    border: 1px solid $grayscaleC;
-    transform: none;
-    cursor: not-allowed;
-  }
-
   &.primary {
     background-color: $primaryColor;
     border: 1px solid $primaryColor;
