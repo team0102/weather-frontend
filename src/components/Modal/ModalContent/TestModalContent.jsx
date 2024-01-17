@@ -2,9 +2,10 @@
  * 1.모달에 보여주고 싶은 마크업 스타일을 완성한후
  * 2.UseModal import한후 content 위치에 컴포넌트로 전달해줍니다.
  * content={<TestModalComponent/>} << 이러한 방식이 되겠습니다.
+ * 3.지금은 테스트용이라 인라인스타일을 적용했지만 사용할때는 scss 파일이 별도로있어야합니다.
  */
 
-const TestModalComponent = () => {
+const TestModalContent = () => {
   return (
     <div
       style={{
@@ -25,4 +26,4 @@ const TestModalComponent = () => {
   );
 };
 
-export default TestModalComponent;
+export default TestModalContent;
