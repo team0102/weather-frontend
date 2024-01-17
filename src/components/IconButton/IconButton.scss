@@ -1,6 +1,59 @@
 @charset 'utf-8';
-@import '../../styles/partials/mixin.scss', '../../styles/partials/variables'; //변수스타일 , 믹스인 스타일을  꼭 import 해야 사용가능합니다.
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables'; 
 
-.iconButton {
+button.iconButton {
   @include FlexCenter;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  fill: $grayscaleF;
+  color: $grayscaleF;
+  padding: 5 10;
+
+  svg {
+    width: 28px;
+  }
+  
+  span {
+    padding: 0 3px;
+    display: none;
+  }
+
+  &.inactive {
+    fill: $grayscaleC;
+    color: $grayscaleC;
+  }
+
+  @media #{$media-mobile} {
+    font-size: 16px;
+    svg {
+      width: 28px;
+    }
+    span {
+      display: none;
+    }
+  }
+
+  @media #{$media-tablet} {
+    font-size: 18px;
+    svg {
+      width: 30px;
+    }
+    span {
+      display: none;
+    }
+  }
+
+  @media #{$media-web} {
+    font-size: 18px;
+    svg {
+      width: 30px;
+    }
+    span {
+      display: flex;
+    }
+  }
+
+
 }
