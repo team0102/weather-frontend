@@ -1,0 +1,11 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables';
+
+.basicInput {
+  width: 100%;
+  padding: 7px 10px;
+
+  &:focus::placeholder {
+    opacity: 0;
+  }
+}
