@@ -2,7 +2,6 @@ import './Button.scss';
 /**
  * Button props list
  * @property {string} type: 'submit', 'button', 'reset'                                    - 버튼의 타입을 지정
- * @property {string} text                                                                 - 버튼에 표시 할 텍스트
  * @property {function} onClick                                                            - 버튼 클릭 시 실행 할 함수
  * @property {string} isDisabled                                                           - 버튼의 비활성화 상태를 전달
  * @property {string} size: 'sm', 'md', 'lg'                                               - 버튼의 크기를 지정하는 className
@@ -12,12 +11,12 @@ import './Button.scss';
 
 const Button = ({
   type,
-  text,
   onClick,
   isDisabled = false,
   size,
   color,
   style,
+  children,
 }) => {
   return (
     <button 
@@ -26,7 +25,7 @@ const Button = ({
       onClick={onClick}
       disabled={isDisabled}
     >
-      {text}
+      {children}
     </button>
   );
 };
