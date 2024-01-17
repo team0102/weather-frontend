@@ -6,7 +6,10 @@ import './ModalBox.scss';
  *@property {Component} content              - 모달의 마크업 컴포넌트를 content 전달 받습니다.
  *@property {Hook} isModalOpen               - 부모의 정의되어있는 isModalOpen // useState 값을 전달받습니다. (모든파일 name이 동일해야합니다.)
  *@property {function} setIsModalOpen        - 부모의 정의되어있는 setIsModalOpen //useState(set함수)를 전달받습니다.(모든파일 name이 동일해야합니다.)
+ *@property {function} handleModalToggle     - 부모의 정의되어있는 handleModalToggle 토글함수를 전달받습니다. (모든파일 name이 동일해야합니다.)
  */
+
+//모달에 대한 스타일은 아직 기획단계라 완성되지 않았습니다.
 
 const ModalBox = ({
   content,
@@ -41,21 +44,16 @@ const ModalBox = ({
     };
   }, []);
 
-  // /** Modal을 Open/Close 합니다. */
-  // const handleModalToggle = () => {
-  //   setIsModalOpen(!isModalOpen);
-  // };
-
   return (
     <>
       {isModalOpen && (
-        <div onClick={() => handleModalToggle()} className="modalWrap">
+        <div onClick={handleModalToggle} className="modalWrap">
           <section
             className="modalInner"
             onClick={event => event.stopPropagation()}
           >
             <div className="modalCloseBtnInner">
-              <button onClick={() => handleModalToggle()}>닫기</button>
+              <button onClick={handleModalToggle}>닫기</button>
             </div>
 
             <div className="modalContentWrap">{content}</div>

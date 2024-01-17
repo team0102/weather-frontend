@@ -3,14 +3,21 @@ import Portal from '../Portal/Portal';
 import ModalBox from './ModalComponents/ModalBox';
 import TestModalContent from './ModalContent/TestModalContent'; //1. 모달에 내용을 결정할 content를 import합니다.
 
-const TestModal = (isModalOpen, setIsModalOpen, handleModalToggle) => {
+/**
+ * TestModal props list
+ *@property {Hook} isModalOpen               - 부모의 정의되어있는 isModalOpen // useState 값을 전달받습니다. (모든파일 name이 동일해야합니다.)
+ *@property {function} setIsModalOpen        - 부모의 정의되어있는 setIsModalOpen //useState(set함수)를 전달받습니다.(모든파일 name이 동일해야합니다.)
+ *@property {function} handleModalToggle     - 부모의 정의되어있는 handleModalToggle 토글함수를 전달받습니다. (모든파일 name이 동일해야합니다.)
+ */
+
+const TestModal = ({ isModalOpen, setIsModalOpen, handleModalToggle }) => {
   return (
     <Portal>
       <ModalBox
         content={<TestModalContent />} //2. 모달안에 들어갈 마크업된 컴포넌트 자체를 props로 전달합니다.
-        isModalOpen={isModalOpen} // 모달을 호출한 부모에서 전달받아야합니다.
-        setIsModalOpen={setIsModalOpen} // 모달을 호출한 부모에서 전달받아야합니다.
-        handleModalToggle={handleModalToggle}
+        isModalOpen={isModalOpen} // 모달을 호출한 부모에서 전달 받아야 합니다.
+        setIsModalOpen={setIsModalOpen} // 모달을 호출한 부모에서 전달 받아야 합니다.
+        handleModalToggle={handleModalToggle} //토글할 함수는 부모에서 전달 받아야 합니다.
       />
     </Portal>
   );

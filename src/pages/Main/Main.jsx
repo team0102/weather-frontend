@@ -7,14 +7,16 @@ import TestModal from '../../components/Modal/TestModal';
 // 이파일은 Main.jsx 이기때문에 최상위 부모태그 네이밍을 main으로 해주는걸 컨벤션으로합니다.
 
 const Main = () => {
+  //부모라고 가정한 모달에 필요한 함수,useState 입니다.
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  //부모라고 가정한 모달에 필요한 함수,useState 입니다.
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  //부모라고 가정한 네브에 필요한 함수,useState 입니다.
   const [navToggle, setNavToggle] = useState(false);
-
+  //부모라고 가정한 네브에 필요한 함수,useState 입니다.
   const toggleClick = () => {
     setNavToggle(!navToggle);
   };
@@ -24,7 +26,13 @@ const Main = () => {
       <button onClick={toggleClick}>네브바 나와</button>
       <button onClick={handleModalToggle}>모달 나와</button>
 
-      {isModalOpen && <TestModal handleModalToggle={handleModalToggle} />}
+      {isModalOpen && (
+        <TestModal
+          handleModalToggle={handleModalToggle} // 토글함수
+          setIsModalOpen={setIsModalOpen} // useState 세터함수
+          isModalOpen={isModalOpen} // useState 값
+        />
+      )}
 
       <Nav
         navToggle={navToggle}
