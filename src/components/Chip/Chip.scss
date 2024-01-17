@@ -8,24 +8,23 @@
     display: none;
 
     &:checked + label {
-      background-color: $primaryColor;
+      background-color: $grayscaleH;
       color: $grayscaleA;
     }
+  }
 
-    & + label {
-      padding: 6px 10px;
-      background-color: $grayscaleA;
-      border: 1px solid $primaryColor;
-      border-radius: 20px;
-      font-weight: 700;
-      color: $primaryColor;
-      cursor: pointer;
+  & label {
+    padding: 6px 10px;
+    background-color: $grayscaleA;
+    border: 1px solid $grayscaleH;
+    border-radius: 20px;
+    font-weight: 700;
+    color: $grayscaleH;
+    cursor: pointer;
 
-      &:hover,
-      &:checked + label {
-        background-color: $primaryColor;
-        color: $grayscaleA;
-      }
+    &:hover {
+      background-color: $grayscaleH;
+      color: $grayscaleA;
     }
   }
 }
