@@ -7,6 +7,11 @@
   src: url('../../../public/fonts/RubikRegular.ttf');
 }
 
+@font-face {
+  font-family: 'Tenada';
+  src: url('../../../public/fonts/Tenada.ttf');
+}
+
 //전체 박스 sizing을 정의합니다.
 * {
   box-sizing: border-box;
@@ -18,7 +23,7 @@
 html,
 body {
   font-size: 14px;
-  font-family: RubikRegular;
+  font-family: Tenada;
 }
 
 /** Footer를 최하단에 고정시키기 위한 속성 */
@@ -54,6 +59,12 @@ a {
   text-decoration: none;
 }
 
+/** 라벨은 정렬때문에 폰트패밀리를 RubikRegular 사용합니다.*/
+label {
+  font-family: RubikRegular;
+  font-weight: 900;
+}
+
 /**
 1. 모든 버튼은 커서를 포인트를 줍니다.
 2. 폰트패밀리와 폰트굵기를 정의합니다.
@@ -61,14 +72,14 @@ a {
 button {
   cursor: pointer;
   border-radius: 4px;
-  font-family: RubikRegular;
+  font-family: Tenada;
   font-weight: 900;
 }
 
 /** 모든 인풋에 폰트패밀리와 폰트굵기를 정의합니다.*/
 input,
 textarea {
-  font-family: RubikRegular;
+  font-family: Tenada;
   font-weight: 900;
   border-radius: 4px;
 }
