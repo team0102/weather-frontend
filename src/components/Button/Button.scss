@@ -8,7 +8,6 @@
   width: 100%;
   padding: 7px 0;
   border: 1px solid $primaryColor;
-  font-weight: 900;
 
   &:disabled {
     background-color: $grayscaleC;
@@ -17,27 +16,132 @@
     cursor: not-allowed;
   }
 
+  &.primary {
+    background-color: $primaryColor;
+    border: 1px solid $primaryColor;
+    color: $grayscaleB;
+    &.outline {
+      background-color: transparent;
+      color: $primaryColor;
+    }
+    &.text-only {
+      background-color: transparent;
+      border: none;
+      color: $primaryColor;
+    }
+  }
+
+  &.secondary {
+    background-color: $secondaryColor;
+    border: 1px solid $secondaryColor;
+    color: $grayscaleF;
+    &.outline {
+      background-color: transparent;
+      color: $secondaryColor;
+    }
+    &.text-only {
+      background-color: transparent;
+      border: none;
+      color: $secondaryColor;
+    }
+  }
+
+  &.tertiary {
+    background-color: $tertiaryColor;
+    border: 1px solid $tertiaryColor;
+    color: $grayscaleF;
+    &.outline {
+      background-color: transparent;
+      color: $tertiaryColor;
+    }
+    &.text-only {
+      background-color: transparent;
+      border: none;
+      color: $tertiaryColor;
+    }
+  }
+
+  &.light {
+    background-color: $grayscaleB;
+    border: 1px solid $grayscaleF;
+    color: $grayscaleF;
+    &.outline {
+      background-color: transparent;
+      color: $grayscaleB;
+    }
+    &.text-only {
+      background-color: transparent;
+      border: none;
+      color: $grayscaleB;
+    }
+  }
+
+  &.dark {
+    background-color: $grayscaleF;
+    border: 1px solid $grayscaleB;
+    color: $grayscaleB;
+    &.outline {
+      background-color: transparent;
+      color: $grayscaleF;
+    }
+    &.text-only {
+      background-color: transparent;
+      border: none;
+      color: $grayscaleF;
+    }
+  }
+
+  &.gray {
+    background-color: $grayscaleD;
+    border: 1px solid $grayscaleD;
+    color: $grayscaleB;
+    &.outline {
+      background-color: transparent;
+      color: $grayscaleD;
+    }
+    &.text-only {
+      background-color: transparent;
+      border: none;
+      color: $grayscaleD;
+    }
+  }
+
   @media #{$media-mobile} {
     font-size: 16px;
-    border-radius: 3px;
-    &:active {
-      transform: scale(0.99);
+    &.sm {
+      font-size: 12px;
+    }
+    &.md {
+      font-size: 16px;
+    }
+    &.lg {
+      font-size: 20px;
     }
   }
   
   @media #{$media-tablet} {
     font-size: 18px;
-    border-radius: 5px;
-    &:active {
-      transform: scale(0.995);
+    &.sm {
+      font-size: 14px;
+    }
+    &.md {
+      font-size: 18px;
+    }
+    &.lg {
+      font-size: 22px;
     }
   }
   
   @media #{$media-web} {
-    font-size: 18px;
-    border-radius: 5px;
-    &:active {
-      transform: scale(0.998);
+    font-size: 20px;
+    &.sm {
+      font-size: 16px;
+    }
+    &.md {
+      font-size: 20px;
+    }
+    &.lg {
+      font-size: 24px;
     }
   }
 }

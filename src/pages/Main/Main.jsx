@@ -1,3 +1,4 @@
+import Button from '../../components/Button/Button';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import './Main.scss';
 
@@ -7,7 +8,7 @@ const Main = () => {
   return (
     <main className="main">
       <h1>Weather-Project 시작</h1>
-      <Checkbox context="남자" />
+      <Button text={'test'} size='md' color='tertiary' style='outline'></Button>
     </main>
   );
 };
