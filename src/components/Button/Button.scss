@@ -9,7 +9,7 @@
   padding: 7px 0;
   border: 1px solid $primaryColor;
 
-  &.primary {
+  &.primary:not(:disabled) {
     background-color: $primaryColor;
     border: 1px solid $primaryColor;
     color: $grayscaleB;
@@ -24,7 +24,7 @@
     }
   }
 
-  &.secondary {
+  &.secondary:not(:disabled) {
     background-color: $secondaryColor;
     border: 1px solid $secondaryColor;
     color: $grayscaleF;
@@ -39,7 +39,7 @@
     }
   }
 
-  &.tertiary {
+  &.tertiary:not(:disabled) {
     background-color: $tertiaryColor;
     border: 1px solid $tertiaryColor;
     color: $grayscaleF;
@@ -54,7 +54,7 @@
     }
   }
 
-  &.light {
+  &.light:not(:disabled) {
     background-color: $grayscaleB;
     border: 1px solid $grayscaleF;
     color: $grayscaleF;
@@ -69,7 +69,7 @@
     }
   }
 
-  &.dark {
+  &.dark:not(:disabled) {
     background-color: $grayscaleF;
     border: 1px solid $grayscaleB;
     color: $grayscaleB;
@@ -84,7 +84,7 @@
     }
   }
 
-  &.gray {
+  &.gray:not(:disabled) {
     background-color: $grayscaleD;
     border: 1px solid $grayscaleD;
     color: $grayscaleB;
@@ -138,10 +138,11 @@
     }
   }
 
-  // TODO: disabled 스타일 적용 안되는 상황
-  // &:disabled {
-  //   background-color: $grayscaleC;
-  //   border: 1px solid $grayscaleC;
-  //   color: $grayscaleA;
-  // }
+  &:disabled {
+    background-color: $grayscaleC;
+    border: 1px solid $grayscaleC;
+    color: $grayscaleA;
+  }
+
+
 }
