@@ -1,58 +1,77 @@
 @charset 'utf-8';
 @import '../../styles/partials/mixin.scss', '../../styles/partials/variables'; 
 
-button.iconButton {
+.iconButtonWrapper {
+  @include FlexCenter;
+  width: 40px;
+  
+  &.sm {
+    width: 35px;
+  }
+
+  &.md {
+    width: 40px;
+  }
+
+  &.lg {
+    width: 45px;
+  }
+
+  &.xlg {
+    width: 50px
+  }
+}
+
+.iconButton {
   @include FlexCenter;
   background-color: transparent;
   border: none;
-  fill: $grayscaleF;
-
-  .icon {
-    width: 28px;
+  width: 100%;
+  
+  path {
+    stroke: $grayscaleF;
   }
 
-
   &.primary {
-    fill: $primaryColor;
+    path {
+      stroke: $primaryColor;
+    }
   }
 
   &.secondary {
-    fill: $secondaryColor;
+    path {
+      stroke: $secondaryColor;
+    }
   }
 
   &.tertiary {
-    fill: $tertiaryColor;
+    path {
+      stroke: $tertiaryColor;
+    }
   }
 
+  // TODO: variables에 추가되면 주석 해제
+  // &.quaternary {
+  //   path {
+  //     stroke: $quaternaryColor;
+  //   }
+  // }
+
   &.light {
-    fill: $grayscaleB;
+    path {
+      stroke: $grayscaleB;
+    }
   }
 
   &.dark {
-    fill: $grayscaleF;
+    path {
+      stroke: $grayscaleF;
+    }
   }
 
   &.gray {
-    fill: $grayscaleC;
-  }
-
-  @media #{$media-mobile} {
-    .icon {
-      width: 28px;
+    path {
+      stroke: $grayscaleC;
     }
   }
-
-  @media #{$media-tablet} {
-    .icon {
-      width: 35px;
-    }
-  }
-
-  @media #{$media-web} {
-    .icon {
-      width: 42px;
-    }
-  }
-
-
 }
