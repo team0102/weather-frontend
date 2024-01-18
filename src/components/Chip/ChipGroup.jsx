@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { customAxios } from '../../API/API.jsx';
-import { API } from '../../../conpig.js';
+import { API } from '../../../config.js';
 import Chip from './Component/Chip.jsx';
 import './ChipGroup.scss';
 
