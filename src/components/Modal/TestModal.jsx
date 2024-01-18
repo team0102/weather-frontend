@@ -1,7 +1,7 @@
 import React from 'react';
 import Portal from '../Portal/Portal';
 import ModalBox from './ModalComponents/ModalBox';
-import TestModalContent from './ModalContent/TestModalContent'; //예시 1.모달의 마크업 컴포넌트를 import해서 content에 전달해줍니다.
+import TestModalContent from './ModalContent/TestModalContent'; //예시 1.모달의 마크업 컴포넌트를 import해서 children에 전달해줍니다.
 
 /**
  * TestModal props list
@@ -14,7 +14,7 @@ const TestModal = ({ isModalOpen, setIsModalOpen, handleModalToggle }) => {
   return (
     <Portal>
       <ModalBox
-        content={<TestModalContent />} //2. 모달안에 들어갈 마크업된 컴포넌트 자체를 props로 전달합니다.
+        children={<TestModalContent />} //2. 모달안에 들어갈 마크업된 컴포넌트 자체를 props로 전달합니다.
         isModalOpen={isModalOpen} // 모달을 호출한 부모에서 전달 받아야 합니다.
         setIsModalOpen={setIsModalOpen} // 모달을 호출한 부모에서 전달 받아야 합니다.
         handleModalToggle={handleModalToggle} //토글할 함수는 부모에서 전달 받아야 합니다.
