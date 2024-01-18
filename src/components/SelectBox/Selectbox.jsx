@@ -11,7 +11,7 @@ import './SelectBox.scss';
 const SelectBox = ({
   name,
   selected,
-  content: options,
+  options,
   onChange,
 }) => {
   // 첫 렌더 시 아래의 상황인 경우 content의 첫번때 항목의 키값을 선택된 값으로 지정
