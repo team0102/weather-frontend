@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <main className="main">
       {/* <h1>Weather-Project 시작</h1> */}
-      <Button size='md' color='primary' style='outline' isDisabled={false} onClick={() => console.log("clicked")}>children</Button>
+      <Button size='md' color='primary' style='outline' isDisabled={false} onClick={() => console.log("clicked")}>Children</Button>
 
     </main>
   );
