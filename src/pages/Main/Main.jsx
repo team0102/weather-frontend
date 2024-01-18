@@ -7,12 +7,12 @@ import SelectBox from '../../components/SelectBox/SelectBox';
 // 이파일은 Main.jsx 이기때문에 최상위 부모태그 네이밍을 main으로 해주는걸 컨벤션으로합니다.
 
 const Main = () => {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(2);
   return (
     <main className="main">
       {/* <h1>Weather-Project 시작</h1> */}
       {selected}
-      <SelectBox content={{1: "aaaa", 2: "bbbb "}} onChange={setSelected} />
+      <SelectBox content={{1: "aaaa", 2: "bbbb "}} onChange={setSelected} selected={selected} />
     </main>
   );
 };

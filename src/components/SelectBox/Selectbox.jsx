@@ -14,11 +14,13 @@ const SelectBox = ({
   content: options,
   onChange,
 }) => {
-  // 첫 렌더 시 선택된 값이 없으면 content의 첫번때 항목의 키값을 선택된 값으로 지정
+  // 첫 렌더 시 아래의 상황인 경우 content의 첫번때 항목의 키값을 선택된 값으로 지정
+  // 1. selected 값이 주어지지 않은 경우
+  // 2. selected 값이 options의 키에 존재하지 않는 경우
   useEffect(() => {
-    if (!selected) {
+    if (!Object.keys(options).includes(String(selected))) {
       onChange(Object.entries(options)[0][0]);
-    }
+    } 
   }, []);
 
   return (
