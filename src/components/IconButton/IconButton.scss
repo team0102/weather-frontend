@@ -3,55 +3,54 @@
 
 button.iconButton {
   @include FlexCenter;
-  height: 30px;
   background-color: transparent;
   border: none;
-  font-size: 16px;
   fill: $grayscaleF;
-  color: $grayscaleF;
-  padding: 5 10;
 
-  svg {
+  .icon {
     width: 28px;
   }
-  
-  span {
-    padding: 0 3px;
-    display: none;
+
+
+  &.primary {
+    fill: $primaryColor;
   }
 
-  &.inactive {
+  &.secondary {
+    fill: $secondaryColor;
+  }
+
+  &.tertiary {
+    fill: $tertiaryColor;
+  }
+
+  &.light {
+    fill: $grayscaleB;
+  }
+
+  &.dark {
+    fill: $grayscaleF;
+  }
+
+  &.gray {
     fill: $grayscaleC;
-    color: $grayscaleC;
   }
 
   @media #{$media-mobile} {
-    font-size: 16px;
-    svg {
+    .icon {
       width: 28px;
-    }
-    span {
-      display: none;
     }
   }
 
   @media #{$media-tablet} {
-    font-size: 18px;
-    svg {
-      width: 30px;
-    }
-    span {
-      display: none;
+    .icon {
+      width: 35px;
     }
   }
 
   @media #{$media-web} {
-    font-size: 18px;
-    svg {
-      width: 30px;
-    }
-    span {
-      display: flex;
+    .icon {
+      width: 42px;
     }
   }
 

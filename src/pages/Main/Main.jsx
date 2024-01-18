@@ -10,7 +10,7 @@ const Main = () => {
   console.log(Icon)
   return (
     <main className="main">
-      <IconButton Icon={Icon} text='Menu' isInactive={true} onClick={() => console.log(111)} contentColor={'blue'} iconWidth={'90px'} />
+      <IconButton Icon={Icon} onClick={() => console.log(111)} color='primary' />
     </main>
   );
 };
