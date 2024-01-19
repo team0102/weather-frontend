@@ -1,5 +1,8 @@
 import { useState } from 'react';
+
+import Button from '../../components/Button/Button';
 import Nav from '../../components/Nav/Nav';
+
 import './Main.scss';
 import TestModal from '../../components/Modal/TestModal';
 
@@ -23,6 +26,7 @@ const Main = () => {
 
   return (
     <main className="main">
+      <Button size='md' color='primary' style='outline' isDisabled={false} onClick={() => console.log("clicked")}>Children</Button>
       <button onClick={toggleClick}>네브바 나와</button>
       <button onClick={handleModalToggle}>모달 나와</button>
 
