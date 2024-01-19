@@ -1,0 +1,57 @@
+@charset "utf-8";
+@import '../../../styles/partials/mixin.scss',
+  '../../../styles/partials/variables';
+
+.modalWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+
+  .modalInner {
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: white;
+    z-index: 20;
+
+    @media #{$media-mobile} {
+      width: 320px;
+    }
+
+    @media #{$media-tablet} {
+      width: 450px;
+    }
+
+    @media #{$media-web} {
+      width: 500px;
+    }
+  }
+
+  .modalCloseBtnInner {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 30px;
+  }
+
+  .modalContentWrap {
+    @include FlexXCenter;
+    flex-direction: column;
+
+    .modalTitle {
+      font-size: 20px;
+    }
+
+    .modalContentInner {
+      width: 100%;
+    }
+  }
+}
