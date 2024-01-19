@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './IconButton.scss';
-import useDynamicSvgImport from './useDynamicSvgImport';
+
+const loadSvg = (content) => {
+  return import(`../../svg/Global/${content}.svg`);
+};
 
 /**
  * IconButton props list
@@ -12,7 +15,16 @@ import useDynamicSvgImport from './useDynamicSvgImport';
  */
 
 const IconButton = ({ type = 'button', onClick, size, color, content }) => {
-  const { SvgIcon } = useDynamicSvgImport(content);
+  const [SvgComponent, setSvgComponent] = useState(null);
+
+  useEffect(() => {
+    const loadSvgComponent = async () => {
+      const svg = await loadSvg(content);
+      setSvgComponent(() => svg.ReactComponent);
+    };
+
+    loadSvgComponent();
+  }, [content]);
 
   return (
     <div className={`iconButtonWrapper ${size ? size : ''}`}>
@@ -21,7 +33,7 @@ const IconButton = ({ type = 'button', onClick, size, color, content }) => {
         className={`iconButton ${color ? color : ''}`}
         onClick={onClick}
       >
-        {SvgIcon && <SvgIcon content={content} />}
+        {SvgComponent && <SvgComponent className='icon' />}
       </button>
     </div>
   );
