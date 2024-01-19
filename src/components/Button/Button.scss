@@ -1,0 +1,69 @@
+@charset 'utf-8';
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables';
+
+.button {
+  @include FlexCenter;
+  background-color: $primaryColor;
+  color: $grayscaleB;
+  width: 100%;
+  border: 1px solid $primaryColor;
+  font-size: 14px;
+  padding: 8px 0;
+
+  &.primary:not(:disabled) {
+    background-color: $primaryColor;
+    border: 1px solid $primaryColor;
+    color: $grayscaleB;
+  }
+
+  &.secondary:not(:disabled) {
+    background-color: $secondaryColor;
+    border: 1px solid $secondaryColor;
+    color: $grayscaleF;
+  }
+
+  &.tertiary:not(:disabled) {
+    background-color: $tertiaryColor;
+    border: 1px solid $tertiaryColor;
+    color: $grayscaleF;
+  }
+
+  &.light:not(:disabled) {
+    background-color: $grayscaleB;
+    border: 1px solid $grayscaleF;
+    color: $grayscaleF;
+  }
+
+  &.dark:not(:disabled) {
+    background-color: $grayscaleF;
+    border: 1px solid $grayscaleB;
+    color: $grayscaleB;
+  }
+
+  &.gray:not(:disabled) {
+    background-color: $grayscaleD;
+    border: 1px solid $grayscaleD;
+    color: $grayscaleB;
+  }
+
+  @media #{$media-mobile} {
+    font-size: 14px;
+    padding: 6px 0;
+  }
+  
+  @media #{$media-tablet} {
+    font-size: 16px;
+    padding: 8px 0;
+  }
+  
+  @media #{$media-web} {
+    font-size: 18px;
+    padding: 10px 0;
+  }
+
+  &:disabled {
+    background-color: $grayscaleC;
+    border: 1px solid $grayscaleC;
+    color: $grayscaleA;
+  }
+}

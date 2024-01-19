@@ -1,6 +1,5 @@
 # React + Vite
 
-
 <img width="365" alt="날씨프로젝트사진" src="https://github.com/leechengwon/weet/assets/141094801/f94932e0-9c81-43c3-a781-5617aee3fcc0">
 
 - Period
@@ -77,23 +76,23 @@
 │  │     └─ TEST_API.js
 │  ├─ pages
 │  │  └─ Main
-│  │     ├─ Main.js
+│  │     ├─ Main.jsx
 │  │     └─ Main.scss
 │  ├─ styles
 │  │  └─ Base
-│  │     ├─ common.js
+│  │     ├─ common.scss
 │  │     └─ reset.scss
 │  │  └─ partials
-│  │     ├─ mixin.js
+│  │     ├─ mixin.scss
 │  │     └─ variables.scss
 │  ├─ svg
-│  ├─ App.js
-│  ├─ index.js
-│  └─ Router.js
+│  ├─ App.jsx
+│  ├─ index.jsx
+│  └─ Router.jsx
 ├─ .eslintrc.cjs
 ├─ .gitignore
 ├─ .prettierrc
-├─ conpig.js
+├─ config.js
 ├─ index.html
 ├─ package-lock.json
 ├─ package.json
@@ -137,9 +136,9 @@ const message = 'hello' + name + "!";      // bad
 ## Files
 
 ```
-// 파일명은 camelCase를 따릅니다.
-PostList.js                                // good
-postlist.js                                // bad
+// 파일명은 PascalCase를 따릅니다.
+PostList.jsx                               // good
+postlist.jsx                               // bad
 ```
 
 ## Branch
