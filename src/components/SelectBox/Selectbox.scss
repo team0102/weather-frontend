@@ -4,21 +4,21 @@
 .selectBox {
   @include FlexCenter;
   font-size: 14px;
-  padding: 9px 5px;
+  padding: 8px 5px;
 
   @media #{$media-mobile} {
     font-size: 14px;
-    padding: 9px 5px;
+    padding: 6px 5px;
   }
   
   @media #{$media-tablet} {
     font-size: 16px;
-    padding: 11px 5px;
+    padding: 8px 6px;
   }
   
   @media #{$media-web} {
     font-size: 18px;
-    padding: 13px 5px;
+    padding: 10px 7px;
   }
 
   &:disabled {

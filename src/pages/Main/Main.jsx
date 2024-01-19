@@ -12,7 +12,7 @@ const Main = () => {
     <main className="main">
       {/* <h1>Weather-Project 시작</h1> */}
       {selected}
-      <SelectBox content={{1: "aaaa", 2: "bbbb "}} onChange={setSelected} selected={selected} />
+      <SelectBox options={{1: "aaaa", 2: "bbbb "}} onChange={setSelected} selected={selected} />
     </main>
   );
 };
