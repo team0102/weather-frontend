@@ -4,8 +4,13 @@
 .basicInput {
   width: 100%;
   padding: 7px 10px;
+  border: 1px solid $grayscaleH;
 
-  &:focus::placeholder {
-    opacity: 0;
+  &:focus {
+    outline: none;
+
+    &::placeholder {
+      opacity: 0;
+    }
   }
 }
