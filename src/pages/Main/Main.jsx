@@ -47,7 +47,7 @@ const Main = () => {
         />
       )}
 
-      <Input placeholder="입력해주세요" />
+      <Input type="number" placeholder="입력해주세요" />
 
       <Nav
         navToggle={navToggle}

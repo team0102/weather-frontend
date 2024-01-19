@@ -4,13 +4,34 @@
 .basicInput {
   width: 100%;
   padding: 7px 10px;
-  border: 1px solid $grayscaleH;
+  border: 1px solid $grayscaleC;
+
+  @media #{$media-mobile} {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  @media #{$media-tablet} {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  @media #{$media-web} {
+    font-size: 18px;
+    padding: 10px 12px;
+  }
 
   &:focus {
     outline: none;
+    border: 1px solid $grayscaleH;
 
     &::placeholder {
       opacity: 0;
     }
+  }
+
+  // input 내부에 발생하는 spin button 제거
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
   }
 }
