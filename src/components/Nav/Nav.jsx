@@ -1,6 +1,6 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
-import { useEffect, useMemo, useState } from 'react';
 
 const Nav = ({ navToggle, setNavToggle }) => {
   // esc 누르면 모달 닫기
