@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Button from '../../components/Button/Button';
+import Nav from '../../components/Nav/Nav';
 
 import './Main.scss';
 import TestModal from '../../components/Modal/TestModal';
