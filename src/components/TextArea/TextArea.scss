@@ -1,8 +1,9 @@
 @charset "utf-8";
 @import '../../styles/partials/mixin.scss', '../../styles/partials/variables';
 
-.basicTextArea {
+.textAreaBox {
   width: 100%;
+  padding: 6px;
   border: 1px solid $grayscaleC;
   resize: none;
   overflow-y: hidden;
@@ -25,5 +26,9 @@
   &:focus {
     outline: none;
     border: 1px solid $grayscaleH;
+
+    &::placeholder {
+      opacity: 0;
+    }
   }
 }
