@@ -6,10 +6,23 @@
   font-family: RubikRegular;
 
   .webFooter {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 100px;
-    padding: 20px 0;
+    @include FlexCenter;
+    padding: 50px 0;
+    flex-direction: column;
+
+    .footerList {
+      display: flex;
+      margin-bottom: 20px;
+      gap: 40px;
+
+      & li:last-child {
+        font-weight: bold;
+      }
+    }
+
+    .footerCopyright {
+      color: $primaryColor;
+    }
   }
 
   .deviceFooter {
@@ -44,6 +57,7 @@
   }
 
   @media #{$media-web} {
+    margin-top: 80px;
     background-color: $tertiaryColor;
 
     .deviceFooter {
