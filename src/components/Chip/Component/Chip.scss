@@ -4,6 +4,7 @@
 
 .chipWrap {
   padding: 0 4px;
+  white-space: nowrap;
 
   .chipInput {
     display: none;
@@ -15,7 +16,8 @@
   }
 
   & label {
-    padding: 6px 10px;
+    display: inline-block;
+    padding: 6px 12px;
     background-color: $grayscaleA;
     border: 1px solid $grayscaleH;
     border-radius: 20px;
