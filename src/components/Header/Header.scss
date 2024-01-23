@@ -1,0 +1,74 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables';
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid $grayscaleB;
+
+  .webHeader {
+    margin: 0 auto;
+  }
+
+  .deviceHeader {
+    width: 100%;
+
+    .deviceMainHeader {
+      @include FlexXCenter;
+      justify-content: space-between;
+
+      .headerLogo {
+        padding: 0 10px;
+        font-size: 25px;
+      }
+
+      .headerButtonWrap {
+        @include FlexXCenter;
+      }
+    }
+
+    .devicePageHeader {
+      @include FlexXCenter;
+      justify-content: space-between;
+
+      .searchInputWrap {
+        display: flex;
+        flex: 1;
+        height: 40px;
+
+        .searchInput {
+          width: 100%;
+          padding: 8px 10px;
+          background-color: $grayscaleB;
+          border: none;
+        }
+      }
+
+      .cancelSearch {
+        padding: 0 5px 0 15px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  @media #{$media-mobile} {
+    padding: 8px 10px;
+
+    .webHeader {
+      display: none;
+    }
+  }
+
+  @media #{$media-tablet} {
+    padding: 10px 15px;
+
+    .webHeader {
+      display: none;
+    }
+  }
+
+  @media #{$media-web} {
+    .deviceHeader {
+      display: none;
+    }
+  }
+}
