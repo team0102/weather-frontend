@@ -1,33 +1,48 @@
+import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import { FOOTER_ICON_DATA } from '../../data/FooterData/FooterIconData';
+import { FOOTER_ITEM_DATA } from '../../data/FooterData/FooterItemData';
 import IconButton from '../IconButton/IconButton';
 import './Footer.scss';
 
 const Footer = () => {
+  const [clickedIcon, setClickedIcon] = useState(null);
+  // const navigate = useNavigate();
+
+  const handleIconClick = (content, path) => {
+    setClickedIcon(content);
+    console.log(path);
+    // navigate(path);
+  };
   return (
     <footer className="footer">
       <div className="webFooter">
         <ul className="footerList">
-          <li>회사소개</li>
-          <li>이용약관</li>
-          <li>공지사항</li>
-          <li>찾아오시는길</li>
-          <li>개인정보처리방침</li>
+          {FOOTER_ITEM_DATA.map(({ id, content }) => (
+            <li key={id}>{content}</li>
+          ))}
         </ul>
         <span className="footerCopyright">© 2024 WEATHER Project</span>
       </div>
-      <div className="deviceFooter">
-        {FOOTER_ICON_DATA.map(({ color, size, content, label }) => (
-          <div className="footerIconWrap" key={content}>
+      <ul className="deviceFooter">
+        {FOOTER_ICON_DATA.map(({ id, color, size, content, label, path }) => (
+          <li className="footerIconWrap" key={id}>
             <IconButton
-              onClick={() => console.log({ content })}
-              color={color}
+              onClick={() => handleIconClick(content, path)}
+              color={clickedIcon === content ? 'primary' : color}
               size={size}
               content={content}
             />
-            <span className="iconText">{label}</span>
-          </div>
+            <span
+              className={`iconText ${
+                clickedIcon === content ? 'selected' : ''
+              }`}
+            >
+              {label}
+            </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </footer>
   );
 };

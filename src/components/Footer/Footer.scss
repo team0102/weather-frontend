@@ -15,13 +15,17 @@
       margin-bottom: 20px;
       gap: 40px;
 
-      & li:last-child {
-        font-weight: bold;
+      & li {
+        color: $grayscaleA;
+
+        & :last-child {
+          font-weight: bold;
+        }
       }
     }
 
     .footerCopyright {
-      color: $primaryColor;
+      color: $grayscaleA;
     }
   }
 
@@ -30,12 +34,17 @@
     justify-content: space-around;
 
     .footerIconWrap {
-      display: flex;
+      @include FlexCenter;
       flex-direction: column;
-      align-items: center;
+      text-align: center;
+      cursor: pointer;
 
       .iconText {
         font-size: 10px;
+
+        &.selected {
+          color: $primaryColor;
+        }
       }
     }
   }
@@ -58,7 +67,7 @@
 
   @media #{$media-web} {
     margin-top: 80px;
-    background-color: $tertiaryColor;
+    background-color: $grayscaleF;
 
     .deviceFooter {
       display: none;

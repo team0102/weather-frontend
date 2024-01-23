@@ -1,32 +1,42 @@
 export const FOOTER_ICON_DATA = [
   {
+    id: 1,
     color: 'dark',
     size: 'lg',
     content: 'Home',
     label: 'HOME',
+    path: '/',
   },
   {
+    id: 2,
     color: 'dark',
     size: 'lg',
     content: 'ChatRound',
     label: 'CHAT',
+    path: '/chat',
   },
   {
+    id: 3,
     color: 'dark',
     size: 'lg',
     content: 'Feed',
     label: 'FEED',
+    path: '/feed',
   },
   {
+    id: 4,
     color: 'dark',
     size: 'lg',
     content: 'Bookmark',
     label: 'BOOKMARK',
+    path: '/bookmark',
   },
   {
+    id: 5,
     color: 'dark',
     size: 'lg',
     content: 'User',
     label: 'USER',
+    path: '/mypage',
   },
 ];
