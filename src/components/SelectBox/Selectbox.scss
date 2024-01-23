@@ -1,0 +1,29 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables'; //변수스타일 , 믹스인 스타일을  꼭 import 해야 사용가능합니다.
+
+.selectBox {
+  @include FlexCenter;
+  font-size: 14px;
+  padding: 8px 5px;
+
+  @media #{$media-mobile} {
+    font-size: 14px;
+    padding: 6px 5px;
+  }
+  
+  @media #{$media-tablet} {
+    font-size: 16px;
+    padding: 8px 6px;
+  }
+  
+  @media #{$media-web} {
+    font-size: 18px;
+    padding: 10px 7px;
+  }
+
+  &:disabled {
+    background-color: $grayscaleC;
+    border: 1px solid $grayscaleC;
+    color: $grayscaleA;
+  }
+}
