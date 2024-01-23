@@ -1,6 +1,6 @@
-import './GlobalTopBtn.scss';
+import './GlobalTopButton.scss';
 
-const GlobalTopBtn = () => {
+const GlobalTopButton = () => {
   /**스크롤을 최상단으로 이동시키는 함수입니다. */
   const scrollToTop = () => {
     window.scrollTo({
@@ -11,4 +11,4 @@ const GlobalTopBtn = () => {
   return <button className="globalTopBtn" onClick={scrollToTop}></button>;
 };
 
-export default GlobalTopBtn;
+export default GlobalTopButton;

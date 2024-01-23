@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import ScrollToTop from './components/ScrollTop/ScrollTop';
-import GlobalTopBtn from './components/GlobalTopBtn/GlobalTopBtn';
+import GlobalTopButton from './components/GlobalTopButton/GlobalTopButton';
 
 const Router = () => {
   return (
     <BrowserRouter basename="/weather">
       <ScrollToTop />
-      <GlobalTopBtn />
+      <GlobalTopButton />
       <Routes>
         <Route path="/" element={<Main />} />
       </Routes>
