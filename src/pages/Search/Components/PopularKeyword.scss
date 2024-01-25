@@ -2,14 +2,22 @@
 @import '../../../styles/partials/mixin.scss',
   '../../../styles/partials/variables';
 
-.keywordTitle {
-  padding: 10px 0;
-  font-size: 18px;
-}
+.keywordBox {
+  margin-bottom: 40px;
 
-.popularKeyword {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template: repeat(5, auto) / repeat(5, 50%);
-  padding: 5px;
+  .keywordTitle {
+    margin: 15px 0;
+    font-size: 18px;
+  }
+
+  .popularKeyword {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template: repeat(5, auto) / repeat(5, 50%);
+    padding: 0 5px;
+
+    & li {
+      padding: 5px 0;
+    }
+  }
 }

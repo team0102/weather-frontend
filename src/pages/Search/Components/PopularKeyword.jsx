@@ -22,7 +22,7 @@ const PopularKeyword = () => {
   };
 
   return (
-    <article>
+    <article className="keywordBox">
       <h2 className="keywordTitle">{keywordCategory}</h2>
       <ol className="popularKeyword">
         {keywordList.map(({ id, content }) => (

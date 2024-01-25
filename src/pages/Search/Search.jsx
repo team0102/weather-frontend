@@ -5,7 +5,7 @@ import './Search.scss';
 const Search = () => {
   return (
     <div className="searchWrap">
-      <article className="recommended">
+      <article className="keywordBox">
         <h2 className="keywordTitle">추천 검색어</h2>
         <ChipGroup />
       </article>
