@@ -12,7 +12,9 @@ import TextArea from '../../components/TextArea/TextArea';
 // 1.최상위 메인태그는 항상 파일명을 따라가 네스팅 해줍니다. scss 파일에서
 // 이파일은 Main.jsx 이기때문에 최상위 부모태그 네이밍을 main으로 해주는걸 컨벤션으로합니다.
 import { ReactComponent as Icon } from '../../svg/Global/Image.svg';
-import ChipGroup from '../../components/Chip/ChipGroup';
+
+import WeatherSection from './Components/WeatherSection/WeatherSection';
+
 
 const Main = () => {
   //부모라고 가정한 모달에 필요한 함수,useState 입니다.
@@ -31,45 +33,9 @@ const Main = () => {
 
   return (
     <main className="main">
-      {selected}
-      <SelectBox
-        options={{ 1: 'aaaa', 2: 'bbbb ' }}
-        onChange={setSelected}
-        selected={selected}
-      />
-
-      <IconButton
-        onClick={() => console.log(111)}
-        color="secondary"
-        size="xlg"
-        content="Home"
-      />
-
-      <Button
-        size="md"
-        color="primary"
-        style="outline"
-        isDisabled={false}
-        onClick={() => console.log('clicked')}
-      >
-        Children
-      </Button>
-      <button onClick={handleModalToggle}>모달 나와</button>
-      <button onClick={handleClick}>test</button>
-
-      {isModalOpen && (
-        <TestModal
-          handleModalToggle={handleModalToggle} // 토글함수
-          setIsModalOpen={setIsModalOpen} // useState 세터함수
-          isModalOpen={isModalOpen} // useState 값
-        />
-      )}
-
-      <TextArea
-        placeholder="입력하세요"
-        rows={3}
-        onChange={e => console.log(e.target.value)}
-      />
+      <WeatherSection >
+        
+      </WeatherSection>
     </main>
   );
 };

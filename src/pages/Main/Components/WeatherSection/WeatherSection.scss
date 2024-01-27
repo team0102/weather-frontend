@@ -1,0 +1,12 @@
+@charset 'utf-8';
+@import '../../styles/partials/mixin.scss', '../../styles/partials/variables';
+
+.weatherSection {
+  @include FlexXCenter;
+  background-color: $primaryColor;
+
+  .location {
+    @include FlexYCenter;
+  }
+}
+
