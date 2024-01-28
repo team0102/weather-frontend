@@ -6,6 +6,7 @@ import Nav from '../../components/Nav/Nav';
 import './Main.scss';
 import SelectBox from '../../components/SelectBox/SelectBox';
 import TestModal from '../../components/Modal/TestModal';
+import TextArea from '../../components/TextArea/TextArea';
 
 // 1.최상위 메인태그는 항상 파일명을 따라가 네스팅 해줍니다. scss 파일에서
 // 이파일은 Main.jsx 이기때문에 최상위 부모태그 네이밍을 main으로 해주는걸 컨벤션으로합니다.
@@ -64,7 +65,11 @@ const Main = () => {
         />
       )}
 
-      <ChipGroup />
+      <TextArea
+        placeholder="입력하세요"
+        rows={3}
+        onChange={e => console.log(e.target.value)}
+      />
 
       <Nav
         navToggle={navToggle}
