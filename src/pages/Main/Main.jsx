@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import IconButton from '../../components/IconButton/IconButton';
 import Button from '../../components/Button/Button';
 import Nav from '../../components/Nav/Nav';
-
 import './Main.scss';
 import SelectBox from '../../components/SelectBox/SelectBox';
 import TestModal from '../../components/Modal/TestModal';
