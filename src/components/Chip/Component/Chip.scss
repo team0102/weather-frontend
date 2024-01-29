@@ -3,7 +3,7 @@
   '../../../styles/partials/variables';
 
 .chipWrap {
-  padding: 0 4px;
+  margin-bottom: 5px;
 
   .chipInput {
     display: none;
@@ -15,11 +15,11 @@
   }
 
   & label {
+    display: inline-block;
     padding: 6px 10px;
     background-color: $grayscaleA;
     border: 1px solid $grayscaleH;
     border-radius: 20px;
-    font-weight: 700;
     color: $grayscaleH;
     cursor: pointer;
 
