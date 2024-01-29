@@ -1,8 +1,16 @@
 import { useLocation } from 'react-router-dom';
 import IconButton from '../../IconButton/IconButton';
+import { useState } from 'react';
+import Nav from '../../Nav/Nav';
 
 const DeviceHeader = ({ handleSearchButton, handlePrevButton }) => {
   const { pathname } = useLocation();
+
+  const [navToggle, setNavToggle] = useState(false);
+
+  const navOpen = () => {
+    setNavToggle(true);
+  };
 
   return (
     <div className="deviceHeader">
@@ -17,7 +25,12 @@ const DeviceHeader = ({ handleSearchButton, handlePrevButton }) => {
               color="black"
               onClick={handleSearchButton}
             />
-            <IconButton content="Hamburger" size="lg" color="black" />
+            <IconButton
+              content="Hamburger"
+              size="lg"
+              color="black"
+              onClick={navOpen}
+            />
           </div>
         </div>
       ) : pathname === '/search' ? (
@@ -54,6 +67,7 @@ const DeviceHeader = ({ handleSearchButton, handlePrevButton }) => {
           />
         </div>
       )}
+      <Nav navToggle={navToggle} setNavToggle={setNavToggle} />
     </div>
   );
 };

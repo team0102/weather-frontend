@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
+import IconButton from '../IconButton/IconButton';
 
 const Nav = ({ navToggle, setNavToggle }) => {
   // esc 누르면 모달 닫기
@@ -51,7 +52,7 @@ const Nav = ({ navToggle, setNavToggle }) => {
         onClick={event => event.stopPropagation()}
       >
         <div className="closeBtnWrap">
-          <button onClick={closeNav}>닫기 버튼</button>
+          <IconButton onClick={closeNav} content="X" size="xlg" />
         </div>
 
         <section className="loginSingUpWrap">
