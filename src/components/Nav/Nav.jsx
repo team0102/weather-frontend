@@ -63,23 +63,19 @@ const Nav = ({ navToggle, setNavToggle }) => {
         <section>
           <ul className="linkWrap">
             <li>
-              <Link>Weather</Link>
+              <Link>FORECAST</Link>
             </li>
 
             <li>
-              <Link>Community</Link>
+              <Link>STYLE</Link>
             </li>
 
             <li>
-              <Link>RealTime Chat</Link>
+              <Link>CHAT</Link>
             </li>
 
             <li>
-              <Link>Hot Fashion</Link>
-            </li>
-
-            <li>
-              <Link>Preferences</Link>
+              <Link>BOOKMARK</Link>
             </li>
           </ul>
         </section>
