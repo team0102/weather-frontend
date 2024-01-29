@@ -1,0 +1,60 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin', '../../styles/partials/variables';
+
+.MyInfo {
+  @include FlexColumnCenter;
+  font-size: 30px;
+  margin-top: 20px;
+
+  .EditWrap {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+  }
+
+  .myInfoEditWrap {
+    @include FlexColumnCenter;
+    width: 100%;
+    margin-top: 40px;
+
+    .myInfoEditInner {
+      @include FlexColumnCenter;
+      margin-top: 20px;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .myInfoWrap {
+      @include FlexColumnCenter;
+      gap: 5px;
+      max-width: 320px;
+      width: 100%;
+
+      label {
+        font-size: 18px;
+      }
+      span {
+        font-size: 24px;
+      }
+    }
+
+    .profileImgInner {
+      @include FlexColumnCenter;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      border: 1px solid $grayscaleC;
+
+      img {
+        border-radius: 100%;
+      }
+    }
+  }
+
+  .myActivityWrap {
+    @include FlexColumnCenter;
+    margin-top: 20px;
+    border: 1px solid $grayscaleH;
+    width: 100%;
+  }
+}

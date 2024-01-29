@@ -21,6 +21,12 @@
   justify-content: center;
 }
 
+@mixin FlexColumnCenter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 // 바운스 애니메이션 스타일 변수입니다.
 @mixin BounceUpDownAnimation($duration: 0.5s) {
   animation: bounce-up-down $duration infinite;
