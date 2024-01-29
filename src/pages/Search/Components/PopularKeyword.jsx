@@ -24,6 +24,7 @@ const PopularKeyword = () => {
   return (
     <article className="keywordBox">
       <h2 className="keywordTitle">{keywordCategory}</h2>
+
       <ol className="popularKeyword">
         {keywordList.map(({ id, content }) => (
           <li key={id}>{content}</li>

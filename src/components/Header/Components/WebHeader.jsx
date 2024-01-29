@@ -26,6 +26,7 @@ const WebHeader = ({ handlePrevButton, handleSearchButton }) => {
               placeholder="입력하세요"
             />
           </div>
+
           <span className="cancelSearch" onClick={handlePrevButton}>
             취소
           </span>
@@ -49,6 +50,7 @@ const WebHeader = ({ handlePrevButton, handleSearchButton }) => {
             <Link to="/">
               <h1 className="webLogo">WEATHER</h1>
             </Link>
+
             <div className="headerCategory">
               <ul className="headerCategoryList">
                 <li>FORECAST</li>
@@ -57,6 +59,7 @@ const WebHeader = ({ handlePrevButton, handleSearchButton }) => {
                 <li>BOOKMARK</li>
               </ul>
             </div>
+
             <div className="headerButtonWrap">
               <IconButton
                 content="User"
@@ -64,12 +67,14 @@ const WebHeader = ({ handlePrevButton, handleSearchButton }) => {
                 color="black"
                 // onClick={handleMyPageButton}
               />
+
               <IconButton
                 content="Search"
                 size="xlg"
                 color="black"
                 onClick={handleSearchButton}
               />
+
               <IconButton
                 content="Hamburger"
                 size="xlg"

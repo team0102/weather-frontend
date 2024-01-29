@@ -22,13 +22,6 @@ const Main = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  //부모라고 가정한 네브에 필요한 함수,useState 입니다.
-  const [navToggle, setNavToggle] = useState(false);
-  //부모라고 가정한 네브에 필요한 함수,useState 입니다.
-  const toggleClick = () => {
-    setNavToggle(!navToggle);
-  };
-
   const [selected, setSelected] = useState(2);
 
   const navigate = useNavigate();
@@ -61,7 +54,6 @@ const Main = () => {
       >
         Children
       </Button>
-      <button onClick={toggleClick}>네브바 나와</button>
       <button onClick={handleModalToggle}>모달 나와</button>
       <button onClick={handleClick}>test</button>
 
@@ -77,13 +69,6 @@ const Main = () => {
         placeholder="입력하세요"
         rows={3}
         onChange={e => console.log(e.target.value)}
-      />
-
-      <Nav
-        navToggle={navToggle}
-        setNavToggle={setNavToggle}
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
       />
     </main>
   );

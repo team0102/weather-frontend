@@ -18,7 +18,7 @@
 .nav {
   position: fixed;
   border: 2px solid $grayscaleA;
-  background-color: $grayscaleH;
+  background-color: $grayscaleA;
   border-radius: 4px;
   transition: all 1s ease-in-out;
   overflow-y: auto;
@@ -81,7 +81,7 @@
       font-size: 20px;
       border: none;
       background-color: transparent;
-      color: $grayscaleA;
+      color: $grayscaleH;
       padding: 0px 20px;
       cursor: pointer;
     }
@@ -97,7 +97,7 @@
 
     li {
       font-size: 20px;
-      color: $grayscaleA;
+      color: $grayscaleH;
       list-style: initial;
       cursor: pointer;
 
@@ -107,7 +107,7 @@
 
       a {
         font-size: 20px;
-        color: $grayscaleA;
+        color: $grayscaleH;
       }
     }
   }

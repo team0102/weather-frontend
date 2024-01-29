@@ -9,6 +9,7 @@ const Search = () => {
         <h2 className="keywordTitle">추천 검색어</h2>
         <ChipGroup />
       </article>
+
       <PopularKeyword />
     </div>
   );
