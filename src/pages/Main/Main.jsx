@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import IconButton from '../../components/IconButton/IconButton';
 import Button from '../../components/Button/Button';
 import Nav from '../../components/Nav/Nav';
@@ -29,6 +31,12 @@ const Main = () => {
   };
 
   const [selected, setSelected] = useState(2);
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/test');
+  };
+
   return (
     <main className="main">
       {selected}
@@ -56,6 +64,7 @@ const Main = () => {
       </Button>
       <button onClick={toggleClick}>네브바 나와</button>
       <button onClick={handleModalToggle}>모달 나와</button>
+      <button onClick={handleClick}>test</button>
 
       {isModalOpen && (
         <TestModal

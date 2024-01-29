@@ -3,4 +3,5 @@ const BASE_URL = 'http://10.58.52.159:8000';
 export const API = {
   SIGNUP: `${BASE_URL}/[앤드포인트]`,
   POPULAR_SEARCHES: `/PopularSearchesData.json`,
+  KEYWORDS: `/SearchPageData.json`,
 };
