@@ -4,5 +4,5 @@ export const API = {
   SIGNUP: `${BASE_URL}/[앤드포인트]`,
   POPULAR_SEARCHES: `/PopularSearchesData.json`,
   KEYWORDS: `/SearchPageData.json`,
-  USER_LOCATIONS:
+  USER_LOCATIONS: `UserLocationData.json`,
 };
