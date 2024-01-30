@@ -14,11 +14,16 @@ const Header = () => {
     navigate(-1);
   };
 
+  const handleMyPageButton = () => {
+    navigate('/myinfo');
+  };
+
   return (
     <header className="header">
       <WebHeader
         handlePrevButton={handlePrevButton}
         handleSearchButton={handleSearchButton}
+        handleMyPageButton={handleMyPageButton}
       />
       <DeviceHeader
         handlePrevButton={handlePrevButton}
