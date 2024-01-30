@@ -8,8 +8,7 @@
   padding: 20px;
 
   .EditWrap {
-    display: flex;
-    align-items: flex-end;
+    @include FlexEnd;
     gap: 5px;
   }
 
@@ -27,7 +26,7 @@
 
     .myInfoWrap {
       @include FlexColumnCenter;
-      gap: 5px;
+      gap: 10px;
       max-width: 320px;
       width: 100%;
 
@@ -58,8 +57,7 @@
     width: 100%;
 
     .activityWrap {
-      display: flex;
-      justify-content: end;
+      @include FlexEnd;
       flex-direction: column;
       gap: 5px;
       width: 100%;
@@ -68,13 +66,12 @@
     }
 
     .activityItemInner {
-      display: flex;
+      @include FlexAlignItemCenter;
       justify-content: space-between;
-      align-items: center;
 
       .activityItem {
-        display: flex;
-        align-items: center;
+        @include FlexAlignItemCenter;
+        gap: 10px;
       }
       label,
       span {
