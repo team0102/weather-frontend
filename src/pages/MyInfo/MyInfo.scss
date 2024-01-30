@@ -1,0 +1,83 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin', '../../styles/partials/variables';
+
+.MyInfo {
+  @include FlexColumnCenter;
+  font-size: 30px;
+  margin-top: 20px;
+  padding: 20px;
+
+  .EditWrap {
+    @include FlexEnd;
+    align-items: flex-end;
+    gap: 5px;
+  }
+
+  .myInfoEditWrap {
+    @include FlexColumnCenter;
+    width: 100%;
+    margin-top: 40px;
+
+    .myInfoEditInner {
+      @include FlexColumnCenter;
+      margin-top: 20px;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .myInfoWrap {
+      @include FlexColumnCenter;
+      gap: 10px;
+      max-width: 320px;
+      width: 100%;
+
+      label {
+        font-size: 18px;
+      }
+      span {
+        font-size: 24px;
+      }
+    }
+
+    .profileImgInner {
+      @include FlexColumnCenter;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      border: 1px solid $grayscaleC;
+
+      img {
+        border-radius: 100%;
+      }
+    }
+  }
+
+  .myActivityWrap {
+    @include FlexColumnCenter;
+    margin-top: 40px;
+    width: 100%;
+
+    .activityWrap {
+      @include FlexEnd;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      max-width: 320px;
+      margin-top: 30px;
+    }
+
+    .activityItemInner {
+      @include FlexAlignItemCenter;
+      justify-content: space-between;
+
+      .activityItem {
+        @include FlexAlignItemCenter;
+        gap: 10px;
+      }
+      label,
+      span {
+        font-size: 20px;
+      }
+    }
+  }
+}

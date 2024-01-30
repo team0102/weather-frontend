@@ -10,25 +10,25 @@
       "id": 2,
       "category": "clothesTopId",
       "name": "의상",
-      "content": "상의"
+      "content": "아노락"
     },
     {
       "id": 3,
       "category": "clothesBottomId",
       "name": "의상",
-      "content": "하의"
+      "content": "칼하트 오버롤"
     },
     {
       "id": 4,
       "category": "clothesCoatId",
       "name": "의상",
-      "content": "아우터"
+      "content": "후드집업"
     },
     {
       "id": 5,
       "category": "clothesAccessoryId",
       "name": "의상",
-      "content": "악세사리"
+      "content": "뉴발란스530"
     }
   ]
 }

@@ -1,0 +1,45 @@
+{
+  "category": "인기 검색어",
+  "result": [
+    {
+      "id": 1,
+      "content": "후드티"
+    },
+    {
+      "id": 2,
+      "content": "맨투맨"
+    },
+    {
+      "id": 3,
+      "content": "운동화"
+    },
+    {
+      "id": 4,
+      "content": "롱패딩"
+    },
+    {
+      "id": 5,
+      "content": "악세사리"
+    },
+    {
+      "id": 6,
+      "content": "니트"
+    },
+    {
+      "id": 7,
+      "content": "패딩"
+    },
+    {
+      "id": 8,
+      "content": "코트"
+    },
+    {
+      "id": 9,
+      "content": "양말"
+    },
+    {
+      "id": 10,
+      "content": "가방"
+    }
+  ]
+}
