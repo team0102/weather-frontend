@@ -9,6 +9,7 @@
 
   .EditWrap {
     @include FlexEnd;
+    align-items: flex-end;
     gap: 5px;
   }
 
