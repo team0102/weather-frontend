@@ -7,3 +7,10 @@
   height: 100vh;
   flex-direction: column;
 }
+
+.section {
+  @include FlexXCenter;
+  width: 100%;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
