@@ -1,0 +1,24 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin', '../../styles/partials/variables';
+
+.loginWrap {
+  width: 90%;
+
+  .loginButtonBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .loginButton {
+      width: 90%;
+
+      .naverLoginButton {
+        @include FlexCenter;
+        width: 100%;
+        border-radius: 12px;
+        background-color: #03c75a;
+        font-family: RubikRegular;
+      }
+    }
+  }
+}
