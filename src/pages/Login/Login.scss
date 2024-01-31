@@ -2,22 +2,63 @@
 @import '../../styles/partials/mixin', '../../styles/partials/variables';
 
 .loginWrap {
-  width: 90%;
+  @include FlexColumnCenter;
+  width: 100%;
+  margin: 0 auto;
 
-  .loginButtonBox {
-    display: flex;
-    flex-direction: column;
+  .loginTitleBox {
+    padding-bottom: 50px;
+    font-size: 25px;
+    color: $grayscaleD;
+    line-height: 150%;
+    text-align: center;
+  }
+
+  .loginButtonWrap {
+    @include FlexColumnCenter;
+    width: 100%;
+    margin: 50px 0;
     gap: 10px;
 
-    .loginButton {
-      width: 90%;
+    .loginButtonBox {
+      @include FlexYCenter;
+      width: 100%;
 
-      .naverLoginButton {
+      button {
         @include FlexCenter;
-        width: 100%;
+        border: none;
         border-radius: 12px;
-        background-color: #03c75a;
+        font-size: 16px;
         font-family: RubikRegular;
+        letter-spacing: -1px;
+
+        @media #{$media-mobile}, #{$media-tablet} {
+          padding: 14px 16px;
+
+          span {
+            padding-left: 93px;
+            padding-right: 93px;
+          }
+        }
+
+        @media #{$media-web} {
+          padding: 16px 20px;
+
+          span {
+            padding-left: 93px;
+            padding-right: 93px;
+          }
+        }
+      }
+
+      .kakao {
+        background-color: #fee500;
+        color: #191919;
+      }
+
+      .naver {
+        background-color: #03c75a;
+        color: $grayscaleA;
       }
     }
   }

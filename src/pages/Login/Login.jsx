@@ -1,32 +1,36 @@
 import './Login.scss';
+import { ReactComponent as KakaoLogo } from '../../../public/svg/Login/KakaoLogo.svg';
+import { ReactComponent as NaverLogo } from '../../../public/svg/Login/NaverLogo.svg';
 
 const Login = () => {
   return (
     <main className="main">
       <div className="loginWrap">
-        <div className="loginLogoBox">
-          <h2 className="loginLogo">WEATHER</h2>
-        </div>
-        <div className="loginButtonBox">
-          <div className="loginButton">
-            <img
-              src="./images/Login/login_btn_kakao.png"
-              alt="카카오로그인버튼"
-            />
+        <section className="loginLogoBox">
+          <div className="loginTitleBox">
+            <h2 className="loginTitle">
+              기온에 맞는 옷차림으로
+              <br />
+              편안한 하루를 시작해보세요
+            </h2>
           </div>
-          <div className="loginButton">
-            <div className="naverLoginButton">
-              <img
-                src="./images/Login/login_btn_naver.png"
-                alt="네이버로그인버튼"
-              />
-              {/* <span>네이버 로그인</span> */}
-            </div>
+        </section>
+
+        <section className="loginButtonWrap">
+          <div className="loginButtonBox">
+            <button className="loginButton kakao">
+              <KakaoLogo />
+              <span>카카오로 시작하기</span>
+            </button>
           </div>
-          <div className="loginButton">
-            <button>구글</button>
+
+          <div className="loginButtonBox">
+            <button className="loginButton naver">
+              <NaverLogo />
+              <span>네이버로 시작하기</span>
+            </button>
           </div>
-        </div>
+        </section>
       </div>
     </main>
   );
