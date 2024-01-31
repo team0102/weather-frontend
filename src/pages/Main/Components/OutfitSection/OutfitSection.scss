@@ -1,0 +1,11 @@
+@charset 'utf-8';
+@import '../../../../styles/partials/mixin.scss', '../../../../styles/partials/variables';
+
+.outfitSection {
+  @include FlexCenter;
+  flex-direction: row;
+  background-color: $secondaryColor;
+  flex-grow: 1;
+  
+}
+

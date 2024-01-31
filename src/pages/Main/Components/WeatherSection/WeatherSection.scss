@@ -1,0 +1,52 @@
+@charset 'utf-8';
+@import '../../../../styles/partials/mixin.scss',
+  '../../../../styles/partials/variables';
+
+.location {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  padding: 5px 10px;
+}
+
+.weather {
+  display: flex;
+  flex-direction: row;
+}
+
+.weatherIcon {
+  height: 140px;
+  
+  @media #{$media-mobile} {
+    height: 140px;
+  }
+  
+  @media #{$media-tablet} {
+    height: 160px;
+  }
+  
+  @media #{$media-web} {
+    height: 180px;
+  }
+}
+
+.weatherInfo {
+  @include FlexYCenter;
+  flex-direction: column;
+
+  span {
+    padding: 3px 3px;
+  }
+
+  @media #{$media-mobile} {
+    font-size: 14px;
+  }
+  
+  @media #{$media-tablet} {
+    font-size: 16px;
+  }
+  
+  @media #{$media-web} {
+    font-size: 18px;
+  }
+}

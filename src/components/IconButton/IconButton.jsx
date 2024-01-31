@@ -14,7 +14,13 @@ const loadSvg = (content) => {
  * @property {string} content: ex) 'ArrowLeft', 'Bookmark', 'Chat', 'Comment', 'Home'      - 아이콘 버튼에 표시할 내용을 선택합니다. svg/Global 경로 내에 있는 모든 svg 파일을 확장자 제외한 파일이름으로 불러올 수 있습니다.
  */
 
-const IconButton = ({ type = 'button', onClick, size, color, content }) => {
+const IconButton = ({
+  type = 'button',
+  onClick,
+  size,
+  color,
+  content,
+}) => {
   const [SvgComponent, setSvgComponent] = useState(null);
 
   useEffect(() => {
@@ -33,7 +39,7 @@ const IconButton = ({ type = 'button', onClick, size, color, content }) => {
         className={`iconButton ${color ? color : ''}`}
         onClick={onClick}
       >
-        {SvgComponent && <SvgComponent className='icon' />}
+        {SvgComponent && <SvgComponent className="icon" />}
       </button>
     </div>
   );
