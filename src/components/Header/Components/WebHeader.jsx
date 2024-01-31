@@ -3,7 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import IconButton from '../../IconButton/IconButton';
 import Nav from '../../Nav/Nav';
 
-const WebHeader = ({ handlePrevButton, handleSearchButton }) => {
+const WebHeader = ({
+  handlePrevButton,
+  handleSearchButton,
+  handleMyPageButton,
+}) => {
   const [navToggle, setNavToggle] = useState(false);
 
   const { pathname } = useLocation();
@@ -65,7 +69,7 @@ const WebHeader = ({ handlePrevButton, handleSearchButton }) => {
                 content="User"
                 size="xlg"
                 color="black"
-                // onClick={handleMyPageButton}
+                onClick={handleMyPageButton}
               />
 
               <IconButton

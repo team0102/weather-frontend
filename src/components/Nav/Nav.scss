@@ -17,7 +17,6 @@
 //네브 트렌지션을 주기위한 저삭래벨
 .nav {
   position: fixed;
-  border: 2px solid $grayscaleA;
   background-color: $grayscaleA;
   border-radius: 4px;
   transition: all 1s ease-in-out;
@@ -112,69 +111,3 @@
     }
   }
 }
-
-// TODO Bug
-// 4번라인부터 53라인 코드대체
-//버그 위에서 아래로 나오는 트렌지션 , 옆에서 나오는 트렌지션을 효과를 넣었다 모바일때만
-//위에서 네브가 슬라이드로 나오는데 노오픈상태에서 반응형이 바뀌면 네브위치가 위에서 좌로 이동하는게 보이는 버그
-//추후생각 해보자
-
-// .navWrapContainer {
-//   &.navTransitionShow {
-//     height: 100%;
-//     width: 100%;
-//     top: 0;
-//     left: 0;
-//     position: fixed;
-//     background-color: rgba(0, 0, 0, 0.5);
-//     z-index: 10;
-//   }
-// }
-
-// .nav {
-//   position: fixed;
-//   border: 2px solid $grayscaleA;
-//   background-color: $grayscaleH;
-//   border-radius: 4px;
-//   transition: all 1s ease-in-out;
-//   overflow-y: auto;
-//   overflow-x: hidden;
-//   z-index: 100;
-
-//   @media #{$media-web} {
-//     right: 0;
-//     top: 0;
-//     &.navTransitionHidden {
-//       width: 0px;
-//       height: 100%;
-//     }
-//     &.navTransitionShow {
-//       height: 100%;
-//       width: 425px;
-//     }
-//   }
-//   @media #{$media-tablet} {
-//     right: 0;
-//     top: 0;
-//     &.navTransitionHidden {
-//       width: 0px;
-//       height: 100%;
-//     }
-//     &.navTransitionShow {
-//       height: 100%;
-//       width: 425px;
-//     }
-//   }
-
-//   @media #{$media-mobile} {
-//     top: 0;
-//     left: 0;
-//     &.navTransitionHidden {
-//       height: 0px;
-//       width: 100%;
-//     }
-//     &.navTransitionShow {
-//       height: 100%;
-//       width: 100%;
-//     }
-//   }
