@@ -3,9 +3,8 @@
 
 .feedSection {
   @include FlexCenter;
-  flex-direction: row;
-  background-color: $tertiaryColor;
+  width: 100%;
+  flex-direction: column;
   flex-grow: 3;
-  padding: 2px;
 }
 

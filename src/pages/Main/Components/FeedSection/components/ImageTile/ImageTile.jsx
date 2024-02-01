@@ -1,3 +1,4 @@
+import './ImageTile.scss';
 
 const ImageTile = ({imageUrl}) => {
 
