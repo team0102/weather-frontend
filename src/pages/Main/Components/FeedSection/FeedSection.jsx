@@ -40,13 +40,16 @@ const FeedSection = () => {
     const feedId = parseInt(e.target.id);
     const filtered = feeds.filter(feed => feed.feedId == feedId);
     if (filtered.length === 1) {
+      
       handleFeedModalToggle(filtered[0]);
-    }
+    } 
+    // if (feedIds.includes(feedId)) 
   };
 
   const handleFeedModalToggle = (feed) => {
     setSelectedFeed(feed);
     setIsFeedModalOpen(!isFeedModalOpen);
+
   };
 
   return (
