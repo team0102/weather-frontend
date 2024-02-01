@@ -5,4 +5,5 @@ export const API = {
   POPULAR_SEARCHES: `/PopularSearchesData.json`,
   KEYWORDS: `/SearchPageData.json`,
   USER_LOCATIONS: `UserLocationData.json`,
+  FEED: `FeedData.json`,
 };

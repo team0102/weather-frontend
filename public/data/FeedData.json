@@ -1,0 +1,60 @@
+{
+  "statusCode": 200,
+  "message": "Successed to get feedList",
+  "data": [
+    {
+      "feedId": 1,
+      "authorId": 1,
+      "nickName": "heywoo",
+      "profileImage": null,
+      "updatedAt": "2024-01-25T08:43:33.085Z",
+      "lowTemperature": -5,
+      "highTemperature": 3,
+      "imageUrl": "",
+      "content": "모두 감기 조심하세요ㅠㅠ #춥다 #감기조심",
+      "feedTags": "감기조심,춥다",
+      "weatherCondition": "snow",
+      "weatherConditionImage": "",
+      "likeCount": "0",
+      "commentCount": "0",
+      "isLiked": "0",
+      "isBookmarked": "0"
+    },
+    {
+      "feedId": 2,
+      "authorId": 2,
+      "nickName": "economy",
+      "profileImage": null,
+      "updatedAt": "2024-01-25T08:43:33.085Z",
+      "lowTemperature": -5,
+      "highTemperature": 3,
+      "imageUrl": "",
+      "content": "모두 감기 조심하세요ㅠㅠ #춥다 #감기조심",
+      "feedTags": "감기조심,춥다",
+      "weatherCondition": "snow",
+      "weatherConditionImage": "",
+      "likeCount": "0",
+      "commentCount": "0",
+      "isLiked": "0",
+      "isBookmarked": "0"
+    },
+    {
+      "feedId": 3,
+      "authorId": 3,
+      "nickName": "kingjungjin",
+      "profileImage": null,
+      "updatedAt": "2024-01-25T08:43:33.085Z",
+      "lowTemperature": -5,
+      "highTemperature": 3,
+      "imageUrl": "",
+      "content": "모두 감기 조심하세요ㅠㅠ #춥다 #감기조심",
+      "feedTags": "감기조심,춥다",
+      "weatherCondition": "snow",
+      "weatherConditionImage": "",
+      "likeCount": "0",
+      "commentCount": "0",
+      "isLiked": "0",
+      "isBookmarked": "0"
+    }
+  ]
+}
