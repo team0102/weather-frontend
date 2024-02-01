@@ -4,6 +4,7 @@ import { customAxios } from '../../../../API/API';
 import { API } from '../../../../../config';
 
 import ImageRow from './components/ImageRow/ImageRow';
+import Button from '../../../../components/Button/Button';
 
 import './FeedSection.scss';
 
@@ -29,12 +30,19 @@ const FeedSection = () => {
     requestFeeds();
   }, []);
 
+  const requestMoreFeeds = async () => {
+    console.log("피드 더 보기");
+  }
+
   console.log(feeds);
   return (
     <div className="feedSection">
       {feeds.map(feed => {
         return <ImageRow feeds={feed} />;
       })}
+      <div className="feedSectionFooter">
+        <Button onClick={requestMoreFeeds} color="light" children="피드 더 보기" />
+      </div>
     </div>
   );
 };
