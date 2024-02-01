@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import IconButton from '../../components/IconButton/IconButton';
 import './BookMark.scss';
 import { API } from '../../../config';
-import { getPublicDataAxios } from '../../API/API';
+import { customAxios } from '../../API/API';
 
 const BookMark = () => {
   const [bookmarks, setBookmarks] = useState([]);
@@ -15,7 +15,7 @@ const BookMark = () => {
 
   const requestBookMarks = async () => {
     try {
-      const request = await getPublicDataAxios.get(API.BOOK_MARK_LIST);
+      const request = await customAxios.get(API.BOOK_MARK_LIST);
       setBookmarks(request.data);
     } catch (error) {
       alert('북마크를 불러오던 중 에러가 발생했습니다');
@@ -63,17 +63,22 @@ const BookMark = () => {
           {bookmarks.slice(0, sliceNum).map(bookmark => (
             <li key={bookmark.id} className="bookMarkInner">
               <div className="ImgInner">
-                <img src={bookmark.Img} alt="피드이미지" />
+                <img src={bookmark.imageUrl} alt="피드이미지" />
               </div>
 
               <div className="feedWrap">
-                <h3 className="feedUserId">{bookmark.userId}</h3>
+                <h3 className="feedUserId">{bookmark.nickName}</h3>
                 <p className="feedContent">{bookmark.content}</p>
 
-                <div className="reactionWrap">
-                  <span>좋아요 {bookmark.likes}개</span>
-                  <span>댓글 {bookmark.comments}개</span>
-                </div>
+                <ul className="reactionWrap">
+                  <li>
+                    <span>좋아요 {bookmark.likeCount}개</span>
+                  </li>
+
+                  <li>
+                    <span>댓글 {bookmark.commentCount}개</span>
+                  </li>
+                </ul>
               </div>
 
               <div className="bookMarkBtn">
@@ -89,7 +94,7 @@ const BookMark = () => {
 
         {loading && (
           <div className="LoadingWrap">
-            <p>Loading more bookmarks...</p>
+            <span>Loading more bookmarks...</span>
           </div>
         )}
       </section>
