@@ -9,4 +9,5 @@ export const API = {
   KEYWORDS: `/SearchPageData.json`,
   USER_LOCATIONS: `UserLocationData.json`,
   BOOK_MARK_LIST: `${PUBLIC_DATA_URL}/BookMarkListData.json`,
+  FEEDS: `FeedsData.json`,
 };

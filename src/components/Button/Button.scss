@@ -29,9 +29,9 @@
   }
 
   &.light:not(:disabled) {
-    background-color: $grayscaleB;
-    border: 1px solid $grayscaleF;
-    color: $grayscaleF;
+    background-color: $grayscaleA;
+    border: 1px solid $grayscaleD;
+    color: $grayscaleD;
   }
 
   &.dark:not(:disabled) {
