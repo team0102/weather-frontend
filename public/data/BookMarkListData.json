@@ -1,0 +1,130 @@
+[
+  {
+    "id": 0,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin",
+    "content": "내용입니다.",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 1,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin2",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 2,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin3",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 3,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin4",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 4,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin5",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 5,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin6",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 6,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin7",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 7,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin8",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 8,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin8",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 9,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin9",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 10,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin10",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 11,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin11",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 12,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin12",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 13,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin13",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 14,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin14",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  },
+  {
+    "id": 15,
+    "Img": "../../weather/images/TestImg/profile.png",
+    "userId": "WeatherAdmin15",
+    "content": "내용1",
+    "likes": "20",
+    "comments": "30"
+  }
+]

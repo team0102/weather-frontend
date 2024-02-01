@@ -1,0 +1,97 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin', '../../styles/partials/variables';
+
+.BookMark {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  h2 {
+    font-size: 30px;
+    margin: 40px 0px;
+  }
+
+  .bookMarkWrap {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh; /* 뷰포트 높이의 100%로 설정 */
+    overflow-y: auto; /* 세로 스크롤이 필요할 때만 스크롤바를 표시 */
+
+    @media #{$media-tablet} {
+      justify-content: center;
+    }
+
+    @media #{$media-mobile} {
+      justify-content: center;
+    }
+
+    .bookMarkInner {
+      position: relative;
+      display: flex;
+      flex-direction: column; /* 세로 정렬을 위해 column으로 변경 */
+      width: 330px;
+      height: 300px;
+      padding: 10px;
+      border: 1px solid $grayscaleC; /* 테두리 추가 */
+    }
+
+    .ImgInner {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      img {
+        width: 80%;
+        height: 150px;
+      }
+    }
+
+    .feedWrap {
+      display: grid;
+      grid-template-rows: auto 1fr auto; /* 유저 아이디, 내용, 반응 섹션으로 나눔 */
+      gap: 10px; /* 간격 조절 */
+      height: 150px; /* 전체 높이를 사용 */
+    }
+
+    .feedUserId {
+      font-size: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%; /* 너비를 100%로 변경 */
+    }
+
+    .feedContent {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      max-height: 4.8em;
+      line-height: 1.2em;
+      font-size: 1em;
+    }
+
+    .reactionWrap {
+      display: flex;
+      justify-content: start; /* 좌측 정렬 */
+      gap: 10px;
+    }
+
+    .bookMarkBtn {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+  .LoadingWrap {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 40px;
+  }
+}
