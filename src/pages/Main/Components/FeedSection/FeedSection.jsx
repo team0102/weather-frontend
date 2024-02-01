@@ -7,19 +7,22 @@ import ImageRow from './components/ImageRow/ImageRow';
 import Button from '../../../../components/Button/Button';
 
 import './FeedSection.scss';
+import FeedModal from './components/FeedModal/FeedModal';
 
 const NUM_COLUMNS = 3;
 const chunk = (arr, size) => arr.reduce((carry, _, index, orig) => !(index % size) ? carry.concat([orig.slice(index,index+size)]) : carry, []);
 
 const FeedSection = () => {
-  const [feeds2DArray, setFeeds2DArray] = useState([[]]);
+  const [feeds, setFeeds] = useState([]);
+
+  const [isFeedModalOpen, setIsFeedModalOpen] = useState(false);
+  const [selectedFeed, setSelectedFeed] = useState();
 
   useEffect(() => {
     const requestFeeds = async () => {
       try {
         const response = await customAxios.get(API.FEEDS);
-        const dataAs2DArray = chunk(response.data, NUM_COLUMNS);
-        setFeeds2DArray(dataAs2DArray);
+        setFeeds(response.data);
       } catch (error) {
         alert('에러 발생');
       }
@@ -33,15 +36,23 @@ const FeedSection = () => {
   };
 
   const onTileClick = e => {
-    console.log(e.target.id);
-    // TODO: 모달 여는 기능 구현
+    console.log(e.target.key);
+    const feedId = parseInt(e.target.id);
+    const filtered = feeds.filter(feed => feed.feedId == feedId);
+    if (filtered.length === 1) {
+      handleFeedModalToggle(filtered[0]);
+    }
   };
 
-  console.log(feeds2DArray);
+  const handleFeedModalToggle = (feed) => {
+    setSelectedFeed(feed);
+    setIsFeedModalOpen(!isFeedModalOpen);
+  };
+
   return (
     <div className="feedSection">
-      {feeds2DArray.map((feeds, index) => {
-        return <ImageRow key={index} numColumns={NUM_COLUMNS} feeds={feeds} onTileClick={onTileClick} />;
+      {chunk(feeds, NUM_COLUMNS).map((feedsChunk, index) => {
+        return <ImageRow key={index} numColumns={NUM_COLUMNS} feeds={feedsChunk} onTileClick={onTileClick} />;
       })}
       <div className="feedSectionFooter">
         <Button
@@ -50,6 +61,14 @@ const FeedSection = () => {
           children="피드 더 보기"
         />
       </div>
+      {
+        isFeedModalOpen && <FeedModal 
+          isModalOpen={isFeedModalOpen}
+          setIsModalOpen={setIsFeedModalOpen}
+          handleModalToggle={handleFeedModalToggle}
+          feed={selectedFeed}
+        />
+      }
     </div>
   );
 };

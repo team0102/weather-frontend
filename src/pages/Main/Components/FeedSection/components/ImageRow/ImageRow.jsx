@@ -15,7 +15,7 @@ const ImageRow = ({numColumns, feeds, onTileClick}) => {
   // 항상 같은 사이즈의 이미지 타일이 생성됩니다.
   const feedsCount = feeds.length;
   for (let i = 0; i < numColumns - feedsCount; i ++) {
-    feeds.push({});
+    feeds.push({feedId: `dummy${i}`});
   }
   
   return <div className="imageRow">
