@@ -17,19 +17,19 @@ const Login = () => {
         </section>
 
         <section className="loginButtonWrap">
-          <div className="loginButtonBox">
-            <button className="loginButton kakao">
+          <a className="loginButtonBox" href={''}>
+            <div className="loginButton kakao">
               <KakaoLogo />
               <span>카카오로 시작하기</span>
-            </button>
-          </div>
+            </div>
+          </a>
 
-          <div className="loginButtonBox">
-            <button className="loginButton naver">
+          <a className="loginButtonBox" href={''}>
+            <div className="loginButton naver">
               <NaverLogo />
               <span>네이버로 시작하기</span>
-            </button>
-          </div>
+            </div>
+          </a>
         </section>
       </div>
     </main>
