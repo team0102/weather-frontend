@@ -7,16 +7,12 @@ import ImageRow from './components/ImageRow/ImageRow';
 import Button from '../../../../components/Button/Button';
 
 import './FeedSection.scss';
-import FeedModal from './components/FeedModal/FeedModal';
 
 const NUM_COLUMNS = 3;
 const chunk = (arr, size) => arr.reduce((carry, _, index, orig) => !(index % size) ? carry.concat([orig.slice(index,index+size)]) : carry, []);
 
 const FeedSection = () => {
   const [feeds, setFeeds] = useState([]);
-
-  const [isFeedModalOpen, setIsFeedModalOpen] = useState(false);
-  const [selectedFeed, setSelectedFeed] = useState();
 
   useEffect(() => {
     const requestFeeds = async () => {
@@ -35,27 +31,10 @@ const FeedSection = () => {
     // TODO: 추가 피드 불러오는 기능 구현
   };
 
-  const onTileClick = e => {
-    console.log(e.target.key);
-    const feedId = parseInt(e.target.id);
-    const filtered = feeds.filter(feed => feed.feedId == feedId);
-    if (filtered.length === 1) {
-      
-      handleFeedModalToggle(filtered[0]);
-    } 
-    // if (feedIds.includes(feedId)) 
-  };
-
-  const handleFeedModalToggle = (feed) => {
-    setSelectedFeed(feed);
-    setIsFeedModalOpen(!isFeedModalOpen);
-
-  };
-
   return (
     <div className="feedSection">
       {chunk(feeds, NUM_COLUMNS).map((feedsChunk, index) => {
-        return <ImageRow key={index} numColumns={NUM_COLUMNS} feeds={feedsChunk} onTileClick={onTileClick} />;
+        return <ImageRow key={index} numColumns={NUM_COLUMNS} feeds={feedsChunk} />;
       })}
       <div className="feedSectionFooter">
         <Button
@@ -64,14 +43,6 @@ const FeedSection = () => {
           children="피드 더 보기"
         />
       </div>
-      {
-        isFeedModalOpen && <FeedModal 
-          isModalOpen={isFeedModalOpen}
-          setIsModalOpen={setIsFeedModalOpen}
-          handleModalToggle={handleFeedModalToggle}
-          feed={selectedFeed}
-        />
-      }
     </div>
   );
 };
