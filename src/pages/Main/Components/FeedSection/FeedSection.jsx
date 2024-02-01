@@ -8,6 +8,9 @@ import Button from '../../../../components/Button/Button';
 
 import './FeedSection.scss';
 
+const NUM_COLUMNS = 3;
+const chunk = (arr, size) => arr.reduce((carry, _, index, orig) => !(index % size) ? carry.concat([orig.slice(index,index+size)]) : carry, []);
+
 const FeedSection = () => {
   const [feeds2DArray, setFeeds2DArray] = useState([[]]);
 
@@ -16,10 +19,11 @@ const FeedSection = () => {
       try {
         const response = await customAxios.get(API.FEEDS);
         const rawData = response.data;
-        const dataAs2DArray = [];
-        for (let i = 3; i < response.data.length; i += 3) {
-          dataAs2DArray.push(rawData.slice(i - 3, i));
-        }
+        const dataAs2DArray = chunk(rawData, NUM_COLUMNS);
+        // const dataAs2DArray = [];
+        // for (let i = 3; i < response.data.length; i += 3) {
+        //   dataAs2DArray.push(rawData.slice(i - 3, i));
+        // }
 
         setFeeds2DArray(dataAs2DArray);
       } catch (error) {
@@ -44,7 +48,7 @@ const FeedSection = () => {
   return (
     <div className="feedSection">
       {feeds2DArray.map((feeds, index) => {
-        return <ImageRow key={index} feeds={feeds} onTileClick={onTileClick} />;
+        return <ImageRow key={index} numColumns={NUM_COLUMNS} feeds={feeds} onTileClick={onTileClick} />;
       })}
       <div className="feedSectionFooter">
         <Button

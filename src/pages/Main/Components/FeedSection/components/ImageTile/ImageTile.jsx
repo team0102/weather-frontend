@@ -10,7 +10,9 @@ import './ImageTile.scss';
 const ImageTile = ({ imageUrl, onClick, id }) => {
   return (
     <div className="imageTile" >
-      <img key={id} id={id} src={imageUrl} onClick={onClick} />
+      {
+        imageUrl && <img key={id} id={id} src={imageUrl} onClick={onClick} />
+      }
     </div>
   );
 };
