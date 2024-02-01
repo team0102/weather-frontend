@@ -18,16 +18,9 @@ const FeedSection = () => {
     const requestFeeds = async () => {
       try {
         const response = await customAxios.get(API.FEEDS);
-        const rawData = response.data;
-        const dataAs2DArray = chunk(rawData, NUM_COLUMNS);
-        // const dataAs2DArray = [];
-        // for (let i = 3; i < response.data.length; i += 3) {
-        //   dataAs2DArray.push(rawData.slice(i - 3, i));
-        // }
-
+        const dataAs2DArray = chunk(response.data, NUM_COLUMNS);
         setFeeds2DArray(dataAs2DArray);
       } catch (error) {
-        console.log(error);
         alert('에러 발생');
       }
     };
