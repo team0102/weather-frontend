@@ -1,14 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import './OutfitSection.scss';
-import ImageRow from '../FeedSection/components/ImageRow/ImageRow';
 import { API } from '../../../../../config';
 import { customAxios } from '../../../../API/API';
 import Button from '../../../../components/Button/Button';
-import Icon from '../WeatherSection/components/Icon/Icon';
 import OutfitIcon from './components/OutfitIcon/OutfitIcon';
-
-const NUM_COLUMNS = 3;
-const chunk = (arr, size) => arr.reduce((carry, _, index, orig) => !(index % size) ? carry.concat([orig.slice(index,index+size)]) : carry, []);
 
 const OutfitSection = () => {
   const [clothes, setClothes] = useState([]);

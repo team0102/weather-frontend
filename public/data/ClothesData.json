@@ -4,27 +4,17 @@
     "clothesTopId": {
       "id": 1,
       "type": "",
-      "imageUrl": "/weather/images/TestImg/dalkong0.jpeg"
+      "imageUrl": "/weather/svg/Cloth.svg"
     },
     "clothesBottomId": {
       "id": 1,
       "type": "",
-      "imageUrl": "/weather/images/TestImg/dalkong1.jpeg"
+      "imageUrl": "/weather/svg/Cloth.svg"
     },
     "clothesCoatId": {
       "id": 1,
       "type": "",
-      "imageUrl": "/weather/images/TestImg/dalkong2.jpeg"
-    },
-    "clothesCoatId1": {
-      "id": 1,
-      "type": "",
-      "imageUrl": "/weather/images/TestImg/dalkong2.jpeg"
-    },
-    "clothesCoatId2": {
-      "id": 1,
-      "type": "",
-      "imageUrl": "/weather/images/TestImg/dalkong2.jpeg"
+      "imageUrl": "/weather/svg/Cloth.svg"
     },
     "clothesAccessoryId": null
   }

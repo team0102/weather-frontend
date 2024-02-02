@@ -7,9 +7,13 @@
   height: 100%;
   aspect-ratio: 1 / 1;
   padding-bottom: 5px;
+
   img {
+    background-color: $tertiaryColor;
     height: 100%;
+    border-radius: 10px;
   }
+
   @media #{$media-mobile} {
     height: 80px;
   }
