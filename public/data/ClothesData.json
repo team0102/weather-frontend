@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "clothesTopId": {
+      "id": 1,
+      "type": "",
+      "imageUrl": "/weather/images/TestImg/dalkong0.jpeg"
+    },
+    "clothesBottomId": {
+      "id": 1,
+      "type": "",
+      "imageUrl": "/weather/images/TestImg/dalkong1.jpeg"
+    },
+    "clothesCoatId": {
+      "id": 1,
+      "type": "",
+      "imageUrl": "/weather/images/TestImg/dalkong2.jpeg"
+    },
+    "clothesAccessoryId": null
+  }
+]

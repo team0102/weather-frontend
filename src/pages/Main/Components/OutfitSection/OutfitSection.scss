@@ -5,7 +5,22 @@
   @include FlexCenter;
   flex-direction: row;
   background-color: $secondaryColor;
-  flex-grow: 1;
+  padding: 20px 5px;
+
+  .imageRowWrapper {
+    flex-direction: column;
+  }
   
+  .personalizeWindChill {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    .button {
+      margin-bottom: 5px;
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
