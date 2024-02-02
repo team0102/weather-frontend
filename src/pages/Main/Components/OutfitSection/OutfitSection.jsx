@@ -5,7 +5,7 @@ import { API } from '../../../../../config';
 import { customAxios } from '../../../../API/API';
 import Button from '../../../../components/Button/Button';
 
-const NUM_COLUMNS = 2;
+const NUM_COLUMNS = 3;
 const chunk = (arr, size) => arr.reduce((carry, _, index, orig) => !(index % size) ? carry.concat([orig.slice(index,index+size)]) : carry, []);
 
 const OutfitSection = () => {
@@ -31,7 +31,7 @@ const OutfitSection = () => {
       <div className="imageRowWrapper">
         {chunk(clothes, NUM_COLUMNS).map((chunk, index) => {
           console.log(chunk)
-          return <ImageRow key={index} numColumns={NUM_COLUMNS} items={chunk} gap={true} rounded={true} />;
+          return <ImageRow key={index} numColumns={NUM_COLUMNS} items={chunk} rounded={true} />;
         })}
       </div>
       <div className="personalizeWindChill">

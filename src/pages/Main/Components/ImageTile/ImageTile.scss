@@ -8,14 +8,13 @@
   aspect-ratio: 1 / 1;
   img {
     object-fit: cover;
-  }
-
-  .gap {
-    margin-right: 20px;
-    :last-child {
-      margin-right: 0;
+    max-height: 100%;
+    .rounded {
+      border-radius: 20px;
     }
   }
+
+  
   
 }
 

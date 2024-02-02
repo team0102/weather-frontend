@@ -5,16 +5,20 @@
   @include FlexCenter;
   flex-direction: row;
   background-color: $secondaryColor;
-  padding: 20px 5px;
+  padding: 20px 10px;
 
   .imageRowWrapper {
     flex-direction: column;
+    flex-grow: 1;
+    div {
+      padding-right: 5px;
+    }
   }
   
   .personalizeWindChill {
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    min-width: 100px;
     .button {
       margin-bottom: 5px;
       :last-child {
@@ -22,5 +26,24 @@
       }
     }
   }
+
+  @media #{$media-mobile} {
+    .imageRowWrapper {
+      height: 120px;
+    }
+  }
+  
+  @media #{$media-tablet} {
+    .imageRowWrapper {
+      height: 140px;
+    }
+  }
+  
+  @media #{$media-web} {
+    .imageRowWrapper {
+      height: 160px;
+    }
+  }
+
 }
 
