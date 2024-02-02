@@ -3,47 +3,41 @@
 
 .outfitSection {
   @include FlexCenter;
-  flex-direction: row;
+  flex-direction: column;
   background-color: $secondaryColor;
   padding: 20px 10px;
 
+  .suggestionMessage {
+    padding-bottom: 20px;
+  }
+
   .imageRowWrapper {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     flex-grow: 1;
+    justify-content: center;
+    margin: 0 auto;
+    height: fit-content;
     div {
-      padding-right: 5px;
+      margin-right: 5px;
     }
+    padding-bottom: 20px;
   }
   
   .personalizeWindChill {
     display: flex;
-    flex-direction: column;
-    min-width: 100px;
+    flex-direction: row;
+    width: 100%;
+    
     .button {
-      margin-bottom: 5px;
+      margin-right: 5px;
       :last-child {
-        margin-bottom: 0;
+        margin-right: 0;
       }
     }
   }
 
-  @media #{$media-mobile} {
-    .imageRowWrapper {
-      height: 120px;
-    }
-  }
-  
-  @media #{$media-tablet} {
-    .imageRowWrapper {
-      height: 140px;
-    }
-  }
-  
-  @media #{$media-web} {
-    .imageRowWrapper {
-      height: 160px;
-    }
-  }
 
 }
 

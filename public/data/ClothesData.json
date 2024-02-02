@@ -16,6 +16,16 @@
       "type": "",
       "imageUrl": "/weather/images/TestImg/dalkong2.jpeg"
     },
+    "clothesCoatId1": {
+      "id": 1,
+      "type": "",
+      "imageUrl": "/weather/images/TestImg/dalkong2.jpeg"
+    },
+    "clothesCoatId2": {
+      "id": 1,
+      "type": "",
+      "imageUrl": "/weather/images/TestImg/dalkong2.jpeg"
+    },
     "clothesAccessoryId": null
   }
 ]

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { customAxios } from '../../../../API/API';
 import { API } from '../../../../../config';
 
-import ImageRow from '../ImageRow/ImageRow';
+import ImageRow from './components/ImageRow/ImageRow';
 import Button from '../../../../components/Button/Button';
 
 import './FeedSection.scss';

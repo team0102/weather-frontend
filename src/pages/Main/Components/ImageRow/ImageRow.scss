@@ -1,8 +1,0 @@
-@charset 'utf-8';
-@import '../../../../styles/partials/mixin.scss', '../../../../styles/partials/variables';
-
-.imageRow {
-  @include FlexCenter;
-  width: 100%;
-  flex-direction: row;
-}

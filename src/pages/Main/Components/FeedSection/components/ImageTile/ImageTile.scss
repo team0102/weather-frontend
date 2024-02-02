@@ -1,5 +1,5 @@
 @charset 'utf-8';
-@import '../../../../styles/partials/mixin.scss', '../../../../styles/partials/variables';
+@import '../../../../../../styles/partials/mixin.scss', '../../../../../../styles/partials/variables';
 
 .imageTile {
   @include FlexCenter;
@@ -9,12 +9,6 @@
   img {
     object-fit: cover;
     max-height: 100%;
-    .rounded {
-      border-radius: 20px;
-    }
-  }
-
-  
-  
+  }  
 }
 

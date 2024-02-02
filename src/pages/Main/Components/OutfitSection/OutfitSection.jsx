@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import './OutfitSection.scss';
-import ImageRow from '../ImageRow/ImageRow';
+import ImageRow from '../FeedSection/components/ImageRow/ImageRow';
 import { API } from '../../../../../config';
 import { customAxios } from '../../../../API/API';
 import Button from '../../../../components/Button/Button';
+import Icon from '../WeatherSection/components/Icon/Icon';
+import OutfitIcon from './components/OutfitIcon/OutfitIcon';
 
 const NUM_COLUMNS = 3;
 const chunk = (arr, size) => arr.reduce((carry, _, index, orig) => !(index % size) ? carry.concat([orig.slice(index,index+size)]) : carry, []);
@@ -25,13 +27,15 @@ const OutfitSection = () => {
     requestClothes();
   }, []);
 
-  console.log(clothes)
   return (
     <div className="outfitSection section">
+      <div className="suggestionMessage">
+        {/* TODO: 날씨에 따른 문구 변경 로직 */}
+        오늘 날씨에는 이렇게 입어보세요~!
+      </div>
       <div className="imageRowWrapper">
-        {chunk(clothes, NUM_COLUMNS).map((chunk, index) => {
-          console.log(chunk)
-          return <ImageRow key={index} numColumns={NUM_COLUMNS} items={chunk} rounded={true} />;
+        {clothes.map((clothes, index) => {
+          return <OutfitIcon key={index} imageUrl={clothes.imageUrl} />
         })}
       </div>
       <div className="personalizeWindChill">
