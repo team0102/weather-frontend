@@ -3,9 +3,40 @@
 
 .outfitSection {
   @include FlexCenter;
-  flex-direction: row;
-  background-color: $secondaryColor;
-  flex-grow: 1;
+  flex-direction: column;
+  padding: 20px 10px;
+
+  .suggestionMessage {
+    padding-bottom: 20px;
+  }
+
+  .imageRowWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: center;
+    margin: 0 auto;
+    height: fit-content;
+    div {
+      margin-right: 5px;
+    }
+    padding-bottom: 20px;
+  }
   
+  .personalizeWindChill {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+    .button {
+      margin-right: 5px;
+      :last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+
 }
 

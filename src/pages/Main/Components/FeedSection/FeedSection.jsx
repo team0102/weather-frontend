@@ -18,7 +18,7 @@ const FeedSection = () => {
     const requestFeeds = async () => {
       try {
         const response = await customAxios.get(API.FEEDS);
-        setFeeds(response.data);
+        setFeeds(response.data.map(feed => ({...feed, id: feed.feedId})));
       } catch (error) {
         alert('에러 발생');
       }
@@ -32,10 +32,12 @@ const FeedSection = () => {
   };
 
   return (
-    <div className="feedSection">
-      {chunk(feeds, NUM_COLUMNS).map((feedsChunk, index) => {
-        return <ImageRow key={index} numColumns={NUM_COLUMNS} feeds={feedsChunk} />;
-      })}
+    <div className="feedSection section">
+      <div className="imageRowWrapper">
+        {chunk(feeds, NUM_COLUMNS).map((feedsChunk, index) => {
+          return <ImageRow key={index} numColumns={NUM_COLUMNS} items={feedsChunk} />;
+        })}
+      </div>
       <div className="feedSectionFooter">
         <Button
           onClick={requestMoreFeeds}

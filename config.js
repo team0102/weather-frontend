@@ -10,4 +10,5 @@ export const API = {
   USER_LOCATIONS: `UserLocationData.json`,
   BOOK_MARK_LIST: `${PUBLIC_DATA_URL}/BookMarkListData.json`,
   FEEDS: `FeedsData.json`,
+  CLOTHES: `ClothesData.json`,
 };

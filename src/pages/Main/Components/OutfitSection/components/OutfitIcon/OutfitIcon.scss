@@ -1,0 +1,31 @@
+@charset 'utf-8';
+@import '../../../../../../styles/partials/mixin.scss', '../../../../../../styles/partials/variables';
+
+
+.outfitIconWrapper {
+  @include FlexCenter;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  padding-bottom: 5px;
+
+  img {
+    background-color: $tertiaryColor;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  @media #{$media-mobile} {
+    height: 80px;
+  }
+  
+  @media #{$media-tablet} {
+    height: 100px;
+  }
+  
+  @media #{$media-web} {
+    height: 120px;
+  }
+}
+
+
+
