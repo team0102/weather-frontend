@@ -21,20 +21,34 @@
   justify-content: center;
 }
 
+// flex 컬럼 가운데 정렬 변수입니다.
 @mixin FlexColumnCenter {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
+// flex 로우 가로 정렬 변수입니다.
 @mixin FlexAlignItemCenter {
   display: flex;
   align-items: center;
 }
 
+// flex 보더라인 기준입니다.
 @mixin FlexEnd {
   display: flex;
   justify-content: end;
+}
+// flex Column 형입니다.
+@mixin FlexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+// flex start 입니다.
+@mixin FlexJustifyStart {
+  display: flex;
+  justify-content: start;
 }
 
 // 바운스 애니메이션 스타일 변수입니다.

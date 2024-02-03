@@ -1,130 +1,130 @@
 [
   {
     "id": 0,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin",
-    "content": "내용입니다.",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong0.jpeg",
+    "nickName": "LeeChengWon",
+    "content": "오늘은 추운 날씨에 어떤 패딩을 입어야 할지 고민 중이에요. 여러분의 추천이 필요해요! ❄️",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 1,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin2",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong3.jpeg",
+    "nickName": "Jisoo Hong",
+    "content": "점심은 어떤 메뉴로 해결하나 고민 중이에요. 여러분의 추천이 필요해요! 🍽️",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 2,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin3",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong9.jpeg",
+    "nickName": "Hyunwoo Jung",
+    "content": "오늘은 영화를 보러 가려고 해요. 어떤 영화가 어울릴까요?",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 3,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin4",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong7.jpeg",
+    "nickName": "Minjae Park",
+    "content": "운동하기 전에 스트레칭 꼭 해야겠어요. 건강은 최고!",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 4,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin5",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong5.jpeg",
+    "nickName": "Minjae Park",
+    "content": "오랜만에 친구들과 만나서 기분이 좋아요. 즐거운 시간 보내고 있어요.",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 5,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin6",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong6.jpeg",
+    "nickName": "Hyunwoo Jung",
+    "content": "오늘은 날씨가 조금 춥네요. 외출 시 따뜻하게 입어야겠어요.",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 6,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin7",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong7.jpeg",
+    "nickName": "WeatherAdmin7",
+    "content": "휴대폰이 고장 났어요. 어떻게 고치면 좋을까요? 😟",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 7,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin8",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong9.jpeg",
+    "nickName": "Jisoo Hong",
+    "content": "책을 읽는 것을 좋아해요. 최근에 어떤 책을 읽고 있는지 궁금하신가요?",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 8,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin8",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong10.jpeg",
+    "nickName": "Jungjin Kim",
+    "content": "요리를 해먹는 걸 좋아해요. 오늘은 어떤 요리를 만들까 고민 중이에요.",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 9,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin9",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong11.jpeg",
+    "nickName": "WeatherAdmin9",
+    "content": "일본 여행을 계획 중이에요. 어디를 가면 좋을까요?",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 10,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin10",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong12.jpeg",
+    "nickName": "WeatherAdmin10",
+    "content": "음악 듣는 걸 좋아해요. 어떤 노래를 추천해 주시겠어요?",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 11,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin11",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong13.jpeg",
+    "nickName": "Jungjin Kim",
+    "content": "휴가 계획 중이에요. 여행지 추천이나 팁 있을까요?",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 12,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin12",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong5.jpeg",
+    "nickName": "Kyungjae Park",
+    "content": "요즘 관심 있는 취미가 없어서 새로운 취미를 찾고 있어요. 어떤 걸 시작해 볼까요?",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 13,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin13",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong9.jpeg",
+    "nickName": "LeeChengWon",
+    "content": "휴가를 내서 여행을 가려고 계획 중이에요. 날씨가 좋은 여행지 추천 있나요?",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 14,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin14",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong3.jpeg",
+    "nickName": "Kyungjae Park",
+    "content": "요즘 날씨가 추워서 따뜻한 차와 함께 독서하는 게 좋아요. 어떤 책을 읽고 있나요?",
+    "likeCount": "20",
+    "commentCount": "30"
   },
   {
     "id": 15,
-    "Img": "../../weather/images/TestImg/profile.png",
-    "userId": "WeatherAdmin15",
-    "content": "내용1",
-    "likes": "20",
-    "comments": "30"
+    "imageUrl": "/weather/images/TestImg/dalkong6.jpeg",
+    "nickName": "LeeChengWon",
+    "content": "오늘은 날씨가 맑고 시원해요. 산책하기 딱 좋은 날이에요. 함께 가실 분 있나요?",
+    "likeCount": "20",
+    "commentCount": "30"
   }
 ]
