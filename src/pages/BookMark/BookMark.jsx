@@ -34,6 +34,7 @@ const BookMark = () => {
   /** 북마크 버튼 클릭시 북마크 아이템에 id를 인자로 받아 실행하는 함수입니다. */
   //추후 북마크 취소시 사용함수
   const handleBookMarkToggle = id => {
+    alert(`${id}번 게시물을 북마크리스트에서 삭제했습니다.`);
     console.log(id);
   };
 
@@ -137,7 +138,7 @@ const BookMark = () => {
                       <IconButton
                         content="BookMarkA"
                         size="xlg"
-                        onClick={() => handleBookMarkToggle(bookmark.id)}
+                        onClick={() => handleBookMarkToggle(id)}
                       />
                     </div>
                   </li>
