@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import IconButton from '../../components/IconButton/IconButton';
-import MyInfoEdit from './components/MyInfoEdit/MyInfoEdit';
-import MyInfoShow from './components/MyInfoShow/MyInfoShow';
+import MyInfoEdit from './components/MyInfoEdit';
+import MyInfoShow from './components/MyInfoShow';
+import MyActivity from './components/MyActivity';
 import './MyInfo.scss';
 
 const MyInfo = () => {
@@ -11,29 +11,12 @@ const MyInfo = () => {
     name: '김날씨',
     nickname: 'WeatherAdmin',
     birthDate: '20240101',
-    email: '01012341234',
+    email: 'leecwee',
+    emailAddress: 'gmail.com',
   });
 
   const handleEditToggle = () => {
     setEditToggle(!editToggle);
-  };
-
-  const saveEditInfo = event => {
-    const { name, value } = event.target;
-    // birthDate 필드에 대한 최대 길이 설정
-    const maxLengths = {
-      birthDate: 8,
-    };
-    // 숫자 필드일 경우 처리
-    if (name in maxLengths) {
-      const onlyNumberValue = value.replace(/[^\d]/g, ''); // 숫자가 아닌 문자 제거
-      if (onlyNumberValue.length <= maxLengths[name]) {
-        setUserInfo({ ...userInfo, [name]: onlyNumberValue });
-      }
-    } else {
-      // 다른 필드 처리
-      setUserInfo({ ...userInfo, [name]: value });
-    }
   };
 
   return (
@@ -41,56 +24,12 @@ const MyInfo = () => {
       <h2>Weather My Page</h2>
 
       {!editToggle ? (
-        <MyInfoShow
-          handleEditToggle={handleEditToggle}
-          editToggle={editToggle}
-          setEditToggle={setEditToggle}
-          userInfo={userInfo}
-          setUserInfo={setUserInfo}
-        />
+        <MyInfoShow handleEditToggle={handleEditToggle} userInfo={userInfo} />
       ) : (
-        <MyInfoEdit
-          handleEditToggle={handleEditToggle}
-          editToggle={editToggle}
-          setEditToggle={setEditToggle}
-          userInfo={userInfo}
-          setUserInfo={setUserInfo}
-          saveEditInfo={saveEditInfo}
-        />
+        <MyInfoEdit handleEditToggle={handleEditToggle} userInfo={userInfo} />
       )}
 
-      <section className="myActivityWrap">
-        <h3>내 활동</h3>
-
-        <ul className="activityWrap">
-          <li className="activityItemInner">
-            <div className="activityItem">
-              <IconButton content="CommentRound" size="lg"></IconButton>
-              <label>댓글수</label>
-            </div>
-
-            <span>30개</span>
-          </li>
-
-          <li className="activityItemInner">
-            <div className="activityItem">
-              <IconButton content="Bookmark" size="lg"></IconButton>
-              <label>게시물수</label>
-            </div>
-
-            <span>18개</span>
-          </li>
-
-          <li className="activityItemInner">
-            <div className="activityItem">
-              <IconButton content="Follower" size="lg"></IconButton>
-              <label>팔로워수</label>
-            </div>
-
-            <span>200명</span>
-          </li>
-        </ul>
-      </section>
+      <MyActivity />
     </main>
   );
 };

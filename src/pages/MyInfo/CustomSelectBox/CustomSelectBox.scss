@@ -1,0 +1,76 @@
+@charset "utf-8";
+@import '../../../styles/partials/mixin.scss',
+  '../../../styles/partials/variables';
+
+.selectBoxContainer {
+  position: relative;
+  width: 100%;
+  padding: 2px 12px 8px 12px;
+  border: 1px solid $grayscaleC; // 여기서 사용하는 변수들은 SCSS 파일에서 정의해야 합니다.
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+
+  .currentValue {
+    font-size: 14px;
+    font-family: $RubikRegular;
+    font-weight: 900;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid $grayscaleC;
+    border-right: 2px solid $grayscaleC;
+    transform: rotate(135deg);
+    transition: all 0.2s ease-in;
+  }
+
+  &.open::before {
+    transform: rotate(315deg);
+  }
+
+  & > span {
+    font-size: 18px;
+    color: $grayscaleH;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &.open > ul {
+    display: flex;
+  }
+
+  & > ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 43px;
+    left: 0;
+    width: 100%;
+    max-height: 180px;
+    padding: 10px 0;
+    border-radius: 4px;
+    background-color: $grayscaleA;
+    z-index: 1;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+
+    & > li {
+      font-size: 18px;
+      padding: 10px 20px;
+      font-family: $RubikRegular;
+      font-weight: 900;
+      user-select: none;
+
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+  }
+}
