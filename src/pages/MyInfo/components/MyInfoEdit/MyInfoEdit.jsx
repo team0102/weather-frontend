@@ -18,7 +18,7 @@ const MyInfoEdit = ({
 
       <form>
         <fieldset>
-          <legend>내정보수정</legend>
+          <legend className="myInfoLegend">내정보수정</legend>
           <Input
             type="text"
             label="이름"

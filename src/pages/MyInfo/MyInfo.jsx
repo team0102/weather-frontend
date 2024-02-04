@@ -18,12 +18,6 @@ const MyInfo = () => {
     setEditToggle(!editToggle);
   };
 
-  const formatBirthDate = birthDate => {
-    const numStr = birthDate;
-    // 정규 표현식을 사용하여 포맷 변경
-    return numStr.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3');
-  };
-
   const saveEditInfo = event => {
     const { name, value } = event.target;
     // birthDate 필드에 대한 최대 길이 설정

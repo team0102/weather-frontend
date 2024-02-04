@@ -28,28 +28,28 @@ const MyInfoShow = ({
         <div className="myInfoWrap">
           <>
             <label>이름</label>
-            <span>이름</span>
+            <span>{userInfo.name}</span>
           </>
         </div>
 
         <div className="myInfoWrap">
           <>
             <label>닉네임</label>
-            <span>닉네임</span>
+            <span>{userInfo.nickname}</span>
           </>
         </div>
 
         <div className="myInfoWrap">
           <>
             <label>생년월일</label>
-            <span>생년월일</span>
+            <span>{userInfo.birthDate}</span>
           </>
         </div>
 
         <div className="myInfoWrap">
           <>
             <label>이메일</label>
-            <span>이메일</span>
+            <span>{userInfo.name}</span>
           </>
         </div>
       </div>
