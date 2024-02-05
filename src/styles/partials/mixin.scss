@@ -34,6 +34,12 @@
   align-items: center;
 }
 
+// flex 로우 가로 정렬 변수입니다.
+@mixin FlexAlignItemEnd {
+  display: flex;
+  align-items: end;
+}
+
 // flex 보더라인 기준입니다.
 @mixin FlexEnd {
   display: flex;

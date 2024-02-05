@@ -14,7 +14,7 @@ const MyInfo = () => {
     email: 'leecwee',
     emailAddress: 'gmail.com',
   });
-
+  console.log(userInfo.profileImg);
   const handleEditToggle = () => {
     setEditToggle(!editToggle);
   };
@@ -26,7 +26,11 @@ const MyInfo = () => {
       {!editToggle ? (
         <MyInfoShow handleEditToggle={handleEditToggle} userInfo={userInfo} />
       ) : (
-        <MyInfoEdit handleEditToggle={handleEditToggle} userInfo={userInfo} />
+        <MyInfoEdit
+          handleEditToggle={handleEditToggle}
+          setUserInfo={setUserInfo}
+          userInfo={userInfo}
+        />
       )}
 
       <MyActivity />

@@ -1,12 +1,19 @@
 import IconButton from '../../../components/IconButton/IconButton';
 
+/**
+ * MyInfoShow props list
+ *@property {function} handleEditToggle                  - 수정페이지를 토글하는 set함수입니다.
+ *@property {object}   userInfo                          - 유저의 정보를 담고있는 useState입니다. 값은 object로 구성되어있습니다.
+ */
+
 const MyInfoShow = ({ handleEditToggle, userInfo }) => {
+  /** 정규 표현식을 사용하여 포맷 하는 함수입니다. */
   const formatBirthDate = birthDate => {
     const numStr = birthDate;
-    // 정규 표현식을 사용하여 포맷 변경
     return numStr.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3');
   };
 
+  /** 구조분해 할당을 정의합니다. */
   const { profileImg, name, nickname, birthDate, email, emailAddress } =
     userInfo;
 
