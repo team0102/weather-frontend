@@ -5,7 +5,10 @@ import MyActivity from './components/MyActivity';
 import './MyInfo.scss';
 
 const MyInfo = () => {
+  /** 페이지를 전환하는 useState를 정의합니다.  */
   const [editToggle, setEditToggle] = useState(false);
+
+  /** 유저의 정보를 담은 useState를 정의합니다. */
   const [userInfo, setUserInfo] = useState({
     profileImg: '../../weather/images/TestImg/profile.png',
     name: '김날씨',
@@ -14,7 +17,8 @@ const MyInfo = () => {
     email: 'leecwee',
     emailAddress: 'gmail.com',
   });
-  console.log(userInfo.profileImg);
+
+  /** 수정페이지,마이페이지를 Toggle 하는 함수를 정의합니다. */
   const handleEditToggle = () => {
     setEditToggle(!editToggle);
   };
@@ -33,7 +37,7 @@ const MyInfo = () => {
         />
       )}
 
-      <MyActivity />
+      {!editToggle ? <MyActivity /> : null}
     </main>
   );
 };
