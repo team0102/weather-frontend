@@ -4,39 +4,73 @@
 .outfitSection {
   @include FlexCenter;
   flex-direction: column;
-  padding: 20px 10px;
+  padding: 40px 10px;
+  font-size: 14px;
 
-  .suggestionMessage {
-    padding-bottom: 20px;
-  }
-
-  .imageRowWrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    justify-content: center;
-    margin: 0 auto;
-    height: fit-content;
-    div {
-      margin-right: 5px;
+  .outfitSuggestion {
+    @include FlexCenter;
+    flex-grow: 4;
+    flex-direction: column;
+    .suggestionMessage {
+      padding-bottom: 20px;
     }
-    padding-bottom: 20px;
+  
+    .imageRowWrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex-grow: 1;
+      justify-content: center;
+      margin: 0 auto;
+      height: fit-content;
+      div {
+        margin: 5px;
+      }
+      padding-bottom: 20px;
+    }
+
   }
   
   .personalizeWindChill {
-    display: flex;
+    @include FlexCenter;    
     flex-direction: row;
+    flex-grow: 1;
     width: 100%;
-    
+
     .button {
-      margin-right: 5px;
-      :last-child {
-        margin-right: 0;
-      }
+      margin: 5px;
+      flex-grow: 1;
+    }
+
+    @media #{$media-mobile} {
+      flex-direction: row;
+      width: 100%;
+    }
+    
+    @media #{$media-tablet} {
+      flex-direction: row;
+      width: 100%;
+    }
+    
+    @media #{$media-web} {
+      flex-direction: column;
+      width: auto;
     }
   }
 
-
+  @media #{$media-mobile} {
+    font-size: 14px;
+    flex-direction: column;
+  }
+  
+  @media #{$media-tablet} {
+    font-size: 16px;
+    flex-direction: column;
+  }
+  
+  @media #{$media-web} {
+    font-size: 18px;
+    flex-direction: row;
+  }
 }
 
