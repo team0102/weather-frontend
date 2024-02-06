@@ -7,15 +7,8 @@ import IconButton from '../../../components/IconButton/IconButton';
  */
 
 const MyInfoShow = ({ handleEditToggle, userInfo }) => {
-  /** 정규 표현식을 사용하여 포맷 하는 함수입니다. */
-  const formatBirthDate = birthDate => {
-    const numStr = birthDate;
-    return numStr.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3');
-  };
-
   /** 구조분해 할당을 정의합니다. */
-  const { profileImg, name, nickname, birthDate, email, emailAddress } =
-    userInfo;
+  const { profileImage, nickname, email, emailAddress } = userInfo;
 
   return (
     <section className="myInfoEditWrap">
@@ -32,27 +25,13 @@ const MyInfoShow = ({ handleEditToggle, userInfo }) => {
 
       <div className="myInfoEditInner">
         <div className="profileImgInner">
-          <img src={profileImg} alt="프로필 이미지" />
-        </div>
-
-        <div className="myInfoWrap">
-          <>
-            <label>이름</label>
-            <span className="myInfoSpan">{name}</span>
-          </>
+          <img src={profileImage} alt="프로필 이미지" />
         </div>
 
         <div className="myInfoWrap">
           <>
             <label>닉네임</label>
             <span className="myInfoSpan">{nickname}</span>
-          </>
-        </div>
-
-        <div className="myInfoWrap">
-          <>
-            <label>생년월일</label>
-            <span className="myInfoSpan">{formatBirthDate(birthDate)}</span>
           </>
         </div>
 

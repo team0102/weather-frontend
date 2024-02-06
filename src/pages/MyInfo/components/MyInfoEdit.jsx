@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import IconButton from '../../../components/IconButton/IconButton';
 import Input from '../../../components/Input/Input';
+import Button from '../../../components/Button/Button';
 import CustomSelectBox from '../../../components/SelectBox/CustomSelectBox/CustomSelectBox';
+import RadioGroup from '../../../components/RadioGroup/RadioGroup';
 import { EMAIL_DATA } from '../../../data/EmailAddressData/EmailAddressData';
+import { RADIO_GROUP_GENDER_DATA } from '../../../data/RadioGenderData/RadioGenderData';
+import { LOCATION_INFORMATION_AGREE_DATA } from '../../../data/LocationInformationAgreeData/LocationInformationAgreeData';
+import { TEMPERATURE_SENSITIVITY_DATA } from '../../../data/TemperatureSensitivityData/TemperatureSensitivityData';
+import { CITY_DATA } from '../../../data/CityData/CityData';
 
 /**
  * MyInfoEdit props list
@@ -13,11 +19,10 @@ import { EMAIL_DATA } from '../../../data/EmailAddressData/EmailAddressData';
 
 const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
   /** 구조분해 할당을 정의합니다. */
-  const { profileImg, name, nickname, birthDate, email, emailAddress } =
-    userInfo;
+  const { profileImage, nickname, email, emailAddress } = userInfo;
 
   /** 미리보기를 사진데이터를 정의하는 useState 입니다. */
-  const [profileImage, setProfileImage] = useState(profileImg);
+  const [profileImg, setProfileImg] = useState(profileImage);
 
   /** 프로필 이미지를 변경하는 함수입니다. */
   const handleImageChange = e => {
@@ -27,44 +32,29 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
       let img = e.target.files[0];
 
       // 미리보기 용도로 업로드된 파일에 대한 임시 URL을 생성합니다.
-      setProfileImage(URL.createObjectURL(img));
+      setProfileImg(URL.createObjectURL(img));
 
       // 다른 userInfo 값을 보존하면서 새 이미지 파일로 userInfo 상태를 업데이트합니다.
-      setUserInfo(userInfo => ({ ...userInfo, profileImg: img }));
+      setUserInfo(userInfo => ({ ...userInfo, profileImage: img }));
     }
   };
 
   /** 유저 정보를 변경하고 업데이트 하는 함수입니다. */
   const saveEditInfo = event => {
     const { name, value } = event.target;
-    // birthDate 필드에 대한 최대 길이를 정의합니다.
-    const maxLengths = {
-      birthDate: 8,
-    };
-
-    // 입력 이름이 maxLengths 객체에 포함되어 있는 경우 특수 처리가 필요함을 의미합니다 (숫자만 허용).
-    if (name in maxLengths) {
-      // 입력 값에서 숫자가 아닌 문자를 제거합니다.
-      // 정제된 입력 값의 길이가 필드에 정의된 최대 길이보다 작거나 같은 경우
-      const onlyNumberValue = value.replace(/[^\d]/g, '');
-
-      // 정제된 입력 값의 길이가 필드에 정의된 최대 길이보다 작거나 같은 경우
-      if (onlyNumberValue.length <= maxLengths[name]) {
-        // 필드의 정제된 값으로 userInfo를 업데이트합니다.
-        setUserInfo({ ...userInfo, [name]: onlyNumberValue });
-      }
-    } else {
-      // 특수 처리가 필요하지 않은 다른 필드의 경우 입력 값으로 userInfo를 직접 업데이트합니다.
-      setUserInfo({ ...userInfo, [name]: value });
-    }
+    setUserInfo({ ...userInfo, [name]: value });
   };
 
   /** 이메일 주소를 선택하는 SelectBox 함수입니다. */
-  const saveSelectEmail = (value, name) => {
+  const saveSelectEmail = (value, name, id) => {
     setUserInfo({
       ...userInfo,
       [name]: value,
     });
+  };
+
+  const nicknameCheck = () => {
+    alert('아이디 중복체크');
   };
 
   return (
@@ -86,7 +76,7 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
           <div className="profileImgWrap">
             <label htmlFor="profileImageUpload" className="profileImageLabel">
               <img
-                src={profileImage}
+                src={profileImg}
                 alt="프로필이미지"
                 className="profileImagePreview"
               />
@@ -102,17 +92,7 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
           </div>
           <span className="profileImgClick">프로필변경 이미지 클릭</span>
 
-          <div className="myInfoWrap">
-            <Input
-              type="text"
-              label="이름"
-              name="name"
-              value={name}
-              onChange={saveEditInfo}
-            />
-          </div>
-
-          <div className="myInfoWrap">
+          <div className="nicknameInner">
             <Input
               type="text"
               label="닉네임"
@@ -120,16 +100,43 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
               value={nickname}
               onChange={saveEditInfo}
             />
+            <div className="checkBtnInner">
+              <Button
+                children="중복체크"
+                type="button"
+                onClick={nicknameCheck}
+              />
+            </div>
           </div>
+
+          <div className="radioTitleInner">
+            <span>성별</span>
+          </div>
+          <RadioGroup RadioData={RADIO_GROUP_GENDER_DATA} />
+
+          <div className="radioTitleInner">
+            <span>위치동의</span>
+          </div>
+          <RadioGroup RadioData={LOCATION_INFORMATION_AGREE_DATA} />
+
+          <div className="radioTitleInner">
+            <span>온도감도</span>
+          </div>
+          <RadioGroup RadioData={TEMPERATURE_SENSITIVITY_DATA} />
 
           <div className="myInfoWrap">
             <Input
               type="text"
-              label="생년월일"
-              name="birthDate"
-              value={birthDate}
-              maxLength={8}
-              onChange={saveEditInfo}
+              name="cityId"
+              label="내지역"
+              placeholder="지역을 선택하세요."
+              disabled={true}
+            />
+            <CustomSelectBox
+              value="내지역을 선택하세요."
+              name="cityId"
+              data={CITY_DATA.map(item => item.value)}
+              onChange={value => saveSelectEmail(value, 'cityId')}
             />
           </div>
 
@@ -141,7 +148,6 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
               value={email}
               onChange={saveEditInfo}
             />
-            <span className="emailAddress">@</span>
           </div>
 
           <div className="myInfoWrap">
@@ -158,7 +164,7 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
               name="emailAddress"
               data={EMAIL_DATA}
               onChange={value => saveSelectEmail(value, 'emailAddress')}
-            ></CustomSelectBox>
+            />
           </div>
         </fieldset>
       </form>

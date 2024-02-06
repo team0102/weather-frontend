@@ -48,6 +48,15 @@
           opacity: 0.9;
         }
       }
+
+      .radioTitleInner {
+        max-width: 400px;
+        width: 100%;
+        font-size: 18px;
+        font-family: $RubikRegular;
+        font-weight: 900;
+        margin: 10px 0px;
+      }
     }
     .profileImgClick {
       font-size: 14px;
@@ -62,6 +71,7 @@
 
     .myInfoWrap {
       @include FlexColumnCenter;
+
       gap: 10px;
       max-width: 400px;
       width: 100%;
@@ -71,6 +81,14 @@
       }
       .myInfoSpan {
         font-size: 24px;
+      }
+    }
+
+    .nicknameInner {
+      @include FlexAlignItemEnd;
+      gap: 5px;
+      .checkBtnInner {
+        width: 120px;
       }
     }
     .myInfoEmailWrap {

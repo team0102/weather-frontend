@@ -32,7 +32,7 @@ const Radio = ({
         defaultChecked={defaultChecked}
         {...props}
       />
-      <span>{context}</span>
+      <span className="radioContext">{context}</span>
     </label>
   );
 };
