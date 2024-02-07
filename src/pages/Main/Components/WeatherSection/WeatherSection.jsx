@@ -1,19 +1,45 @@
 import React, { useState, useEffect } from 'react';
 
 import SelectBox from '../../../../components/SelectBox/SelectBox.jsx';
-import { customAxios } from '../../../../API/API.jsx';
+import Icon from './components/Icon/Icon.jsx';
+
+import { customAxios, weatherAxios } from '../../../../API/API.jsx';
 import { API } from '../../../../../config.js';
+import { convertDfsAndXY } from './functions/dfsToXY.js';
 
 import './WeatherSection.scss';
-import Icon from './components/Icon/Icon.jsx';
+import { LOCATIONS_WITH_XY } from '../../../../data/LocationData/LocationData.js';
+import useGeolocationPermission from './hooks/useGeolocationPermissionGranted.js';
 
 const WeatherSection = () => {
   const [selectedLocation, setSelectedLocation] = useState();
-  const initialUserLocations = { current: '현재 위치' };
+  const initialUserLocations = { '0000000000': '현재 위치' };
   const [userLocations, setUserLocations] = useState(initialUserLocations);
-  
+
   const [weatherInfo, setWeatherInfo] = useState();
-  
+
+  const [xy, setXy] = useState([]);
+
+  const geolocationPermission = useGeolocationPermission();
+
+  useEffect(() => {
+    if (geolocationPermission === 'granted') {
+      navigator.geolocation.getCurrentPosition(position => {
+        console.log(position.coords.latitude, position.coords.longitude);
+        const coord = convertDfsAndXY(
+          'toXY',
+          position.coords.latitude,
+          position.coords.longitude,
+        );
+        setXy([coord.x, coord.y]);
+      });
+    } else {
+      setXy([60, 127]); // default XY: SEOUL
+      const seoul = LOCATIONS_WITH_XY['1100000000'];
+      setSelectedLocation({ 1100000000: seoul.location });
+    }
+  }, [geolocationPermission]);
+
   useEffect(() => {
     const requestUserLocations = async () => {
       try {
@@ -31,12 +57,70 @@ const WeatherSection = () => {
   useEffect(() => {
     // location 변경 시 날씨 새로 요청하여 업데이트
     // setWeatherInfo();
-  }, [selectedLocation])
+    if (selectedLocation && xy != []) {
+      console.log(selectedLocation, xy, import.meta.env.VITE_WEATHER_API_KEY)
+      const requestWeatherForecast = async () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month =
+          today.getMonth() < 9
+            ? `0${today.getMonth() + 1}`
+            : today.getMonth() + 1;
+        const date =
+          today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
+  
+        const currentMinute = today.getMinutes();
+        let baseTime;
+        let baseDate;
+        if (currentMinute > 30) {
+          baseTime =
+            today.getHours() < 10
+              ? `0${today.getHours()}00`
+              : `${today.getHours()}00`;
+          baseDate = `${year}${month}${date}`;
+        } else if (today.getHours() != 0) {
+          baseTime =
+            today.getHours() < 11
+              ? `0${today.getHours() - 1}00`
+              : `${today.getHours() - 1}00`;
+          baseDate = `${year}${month}${date}`;
+        } else {
+          baseTime = '2300';
+          baseDate = `${year}${month}${
+            date < 11 ? `0${today.getDate() - 1}` : today.getDate() - 1
+          }`;
+        }
+  
+        try {
+          const response = await weatherAxios.get(API.WEATHER, {
+            params: {
+              serviceKey: import.meta.env.VITE_WEATHER_API_KEY,
+              numOfRows: 10,
+              pageNo: 1,
+              // dataType: 'JSON',
+              base_date: baseDate,
+              base_time: baseTime,
+              nx: 60,// xy.x,
+              ny: 127,// xy.y,
+            },
+          });
+          console.log(response);
+          // setWeatherInfo(response.json().data);
+          "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=6elYw1g6cmP1jxLv%252B%252Be70AYbRrJIzt61oXbS9kipNwtZSNvfrm3yqWXxALv115qhpT0khPfcBIs9yLmWibg5KA%253D%253D&numOfRows=10&pageNo=1&dataType=JSON&base_date=20240207&base_time=2100&nx=60&ny=127"
+
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      requestWeatherForecast();
+    }
+  }, [selectedLocation, xy]);
 
   // TODO: sticky 및 transition 적용해서 스크롤 내려도 날씨 항상 보이도록? 논의 후 결정
   return (
     <div className="weatherSection section">
       <div className="location">
+        {`${xy[0]}, ${xy[1]}`}
         <SelectBox
           name="location"
           selected={selectedLocation}
@@ -50,7 +134,11 @@ const WeatherSection = () => {
       */}
       <div className="weather">
         <div className="weatherIcon">
-          <Icon content="RainNight" path='../../../../../../svg/Main/WeatherSection' size="xxxlg" />
+          <Icon
+            content="RainNight"
+            path="../../../../../../svg/Main/WeatherSection"
+            size="xxxlg"
+          />
         </div>
         {/*
         날씨 정보를 값으로 보여주는 컴포넌트
