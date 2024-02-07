@@ -70,44 +70,46 @@ const WeatherSection = () => {
           today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
   
         const currentMinute = today.getMinutes();
+        const currentHour = today.getHours();
         let baseTime;
         let baseDate;
-        if (currentMinute > 30) {
-          baseTime =
-            today.getHours() < 10
-              ? `0${today.getHours()}00`
-              : `${today.getHours()}00`;
-          baseDate = `${year}${month}${date}`;
-        } else if (today.getHours() != 0) {
-          baseTime =
-            today.getHours() < 11
-              ? `0${today.getHours() - 1}00`
-              : `${today.getHours() - 1}00`;
-          baseDate = `${year}${month}${date}`;
-        } else {
+        // 
+        if (currentHour < 2 || (currentMinute <= 10 && currentHour === 2)) {
+          // 해당날짜 첫 발표 이전인 경우 (02:10 이전) 전날 마지막 발표시간을 이용
           baseTime = '2300';
           baseDate = `${year}${month}${
             date < 11 ? `0${today.getDate() - 1}` : today.getDate() - 1
           }`;
+        } else if (currentMinute <= 10 && currentHour % 3 === 2) {
+          // basetime 발표시간 직전 10분 이내인 경우 직전 발표시간을 사용
+          baseTime =
+            currentHour < 12
+              ? `0${currentHour - 3}00`
+              : `${currentHour - 3}00`;
+          baseDate = `${year}${month}${date}`;
+        } else {
+          baseTime =
+            currentHour < 12
+              ? `0${currentHour - (currentHour + 1) % 3}00`
+              : `${currentHour - (currentHour + 1) % 3}00`;
+          baseDate = `${year}${month}${date}`;
         }
-  
+
         try {
           const response = await weatherAxios.get(API.WEATHER, {
             params: {
               serviceKey: import.meta.env.VITE_WEATHER_API_KEY,
-              numOfRows: 10,
+              numOfRows: 50,
               pageNo: 1,
-              // dataType: 'JSON',
+              dataType: 'JSON',
               base_date: baseDate,
               base_time: baseTime,
-              nx: 60,// xy.x,
-              ny: 127,// xy.y,
+              nx: xy[0],
+              ny: xy[1],
             },
           });
           console.log(response);
-          // setWeatherInfo(response.json().data);
-          "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=6elYw1g6cmP1jxLv%252B%252Be70AYbRrJIzt61oXbS9kipNwtZSNvfrm3yqWXxALv115qhpT0khPfcBIs9yLmWibg5KA%253D%253D&numOfRows=10&pageNo=1&dataType=JSON&base_date=20240207&base_time=2100&nx=60&ny=127"
-
+          
         } catch (error) {
           console.log(error);
         }
