@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { customAxios } from '../../API/API';
 import { API } from '../../../config';
 import IconButton from '../../components/IconButton/IconButton';
+import CreatePost from './CreatePost/CreatePost';
 import Input from '../../components/Input/Input';
 import './Feed.scss';
 
 const Feed = () => {
   const [feedList, setFeedList] = useState([]);
   const [isShowMore, setIsShowMore] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     requestFeedList();
@@ -31,14 +33,24 @@ const Feed = () => {
     setIsShowMore(true);
   };
 
+  const handleCreatePost = () => {
+    setIsModalOpen(true);
+  };
+
+  // 내용을 25자까지만 띄움
   const truncateContent = content =>
     content.length > 25 ? `${content.substring(0, 25)}...` : content;
 
   return (
     <main className="main">
       <section className="feedWrap">
-        <div className="postCreation">
-          <Input placeholder="글쓰기" />
+        <div className="postCreationBox">
+          <div>
+            {/* <img src={item.profileImage} alt={`${item.authorId}프로필이미지`} /> */}
+          </div>
+          <div>
+            <div onClick={handleCreatePost}>글쓰기</div>
+          </div>
         </div>
         {feedList.map(item => (
           <article key={item.feedId}>
@@ -107,6 +119,7 @@ const Feed = () => {
             </div>
           </article>
         ))}
+        {isModalOpen && <CreatePost setIsModalOpen={setIsModalOpen} />}
       </section>
     </main>
   );

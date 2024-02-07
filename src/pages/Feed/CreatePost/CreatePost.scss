@@ -1,0 +1,72 @@
+@charset "utf-8";
+@import '../../../styles/partials/mixin.scss',
+  '../../../styles/partials/variables';
+
+.postWrap {
+  width: 100%;
+
+  .postDim {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: $grayscaleC;
+    opacity: 0.8;
+  }
+
+  .postCreation {
+    position: fixed;
+    z-index: 10;
+    background-color: $grayscaleA;
+
+    @media #{$media-mobile} {
+      width: 100%;
+      height: 100%;
+      padding: 5px 10px;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    @media #{$media-tablet} {
+      width: 80%;
+      // height: 100%;
+      font-size: 16px;
+      padding: 10px 15px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow: auto;
+    }
+
+    @media #{$media-web} {
+      width: 40%;
+      font-size: 18px;
+      padding: 15px 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .postHeader {
+      @include FlexXCenter;
+      justify-content: space-between;
+      padding: 10px 5px;
+
+      .postCreationButton {
+        padding: 0 6px;
+        font-size: 16px;
+
+        &:disabled {
+          color: $grayscaleC;
+        }
+      }
+    }
+
+    .postWriter {
+      padding: 5px;
+    }
+  }
+}
