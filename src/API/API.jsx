@@ -14,12 +14,12 @@ const BASE_URL = 'weather/data/';
 export const customAxios = axios.create({
   baseURL: `${BASE_URL}`,
   headers: {
-    // Authorization: localStorage.getItem('accessToken'),
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
   },
 });
 
 // try,catch 문 예시 코드 입니다. 참고하세요.(참고용 수정해야할수도있습니다.)
-
 // const Test = async category => {
 //--------------------------------
 // const params = TestData;

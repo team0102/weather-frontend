@@ -75,7 +75,7 @@ const Nav = ({ navToggle, setNavToggle }) => {
             </li>
 
             <li>
-              <Link>BOOKMARK</Link>
+              <Link to="/bookmark">BOOKMARK</Link>
             </li>
           </ul>
         </section>
