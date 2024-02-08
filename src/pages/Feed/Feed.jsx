@@ -29,41 +29,41 @@ const Feed = () => {
     }
   };
 
-  const handleExpand = () => {
-    setIsShowMore(true);
+  const handleExpand = id => {
+    setIsShowMore(prevShowMore => ({
+      ...prevShowMore,
+      [id]: true,
+    }));
   };
 
   const handleCreatePost = () => {
     setIsModalOpen(true);
   };
 
-  // 내용을 25자까지만 띄움
+  // 내용을 28자까지만 띄움
   const truncateContent = content =>
-    content.length > 25 ? `${content.substring(0, 25)}...` : content;
+    content.length > 28 ? `${content.substring(0, 28)} ...` : content;
 
   return (
     <main className="main">
       <section className="feedWrap">
         <div className="postCreationBox">
           <div>
-            {/* <img src={item.profileImage} alt={`${item.authorId}프로필이미지`} /> */}
-          </div>
-          <div>
             <div onClick={handleCreatePost}>글쓰기</div>
           </div>
         </div>
         {feedList.map(item => (
-          <article key={item.feedId}>
+          <article key={item.id}>
             <div className="feedTop">
               <div className="topLeft">
                 <div className="feedProfile">
                   <img
-                    src={item.profileImage}
-                    alt={`${item.authorId}프로필이미지`}
+                    src={item.author.profileImage}
+                    alt={`${item.author.id}프로필이미지`}
                   />
                 </div>
                 <div className="nickBox">
-                  <span className="feedNick">{item.nickName}</span>
+                  <span className="feedNick">{item.author.nickname}</span>
                   <span className="feedDate">
                     {new Date(item.updatedAt).toLocaleDateString()}
                   </span>
@@ -77,7 +77,7 @@ const Feed = () => {
             </div>
 
             <div className="feedMid">
-              <img src={item.imageUrl} alt={`${item.feedId}피드이미지`} />
+              <img src={item.imageUrl} alt={`${item.id}피드이미지`} />
             </div>
 
             <div className="feedBtm">
@@ -96,14 +96,19 @@ const Feed = () => {
 
               <div className="feedContentWrap">
                 <div className="feedUser">
-                  <span>{item.nickName}</span>
+                  <span>{item.author.nickname}</span>
                 </div>
                 <div className="feedContentBox">
                   <span className="feedContent expand">
-                    {isShowMore ? item.content : truncateContent(item.content)}
+                    {isShowMore[item.id]
+                      ? item.content
+                      : truncateContent(item.content)}
                   </span>
-                  {item.content.length > 25 && !isShowMore && (
-                    <span className="more" onClick={handleExpand}>
+                  {item.content.length > 28 && !isShowMore[item.id] && (
+                    <span
+                      className="more"
+                      onClick={() => handleExpand(item.id)}
+                    >
                       더보기
                     </span>
                   )}

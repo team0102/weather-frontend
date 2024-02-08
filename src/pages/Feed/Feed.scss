@@ -72,7 +72,6 @@
 
       .feedContentWrap {
         display: inline;
-
         margin-top: 5px;
 
         .feedUser {
@@ -87,18 +86,9 @@
           margin-right: 5px;
 
           .feedContent {
-            // display: inline !important;
             line-height: 120%;
+            word-break: keep-all;
           }
-
-          // .expand {
-          //   // display: -webkit-box;
-          //   // -webkit-line-clamp: 1;
-          //   // -webkit-box-orient: vertical;
-          //   overflow: hidden;
-          //   text-overflow: ellipsis;
-          //   // white-space: nowrap;
-          // }
 
           .more {
             cursor: pointer;

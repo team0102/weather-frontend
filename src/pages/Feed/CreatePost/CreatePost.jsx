@@ -47,8 +47,18 @@ const CreatePost = ({ setIsModalOpen }) => {
               등록
             </div>
           </div>
-          <div>
-            <div></div>
+          <div className="feedUserInfo">
+            <div className="feedProfile">
+              {/* <img src={author.profileImage} alt={`${author.id}프로필이미지`} /> */}
+              <img
+                src-="../../../weather/images/TestImg/profile.png"
+                alt="프로필이미지"
+              />
+            </div>
+            <div className="nickBox">
+              {/* <span className="feedNick">{author.nickname}</span> */}
+              <span>heywoo</span>
+            </div>
           </div>
           <div className="postWriter">
             <TextArea
@@ -57,6 +67,14 @@ const CreatePost = ({ setIsModalOpen }) => {
               onChange={handleContentChange}
               placeholder="오늘 입은 옷을 자랑해보세요"
             />
+          </div>
+          <div className="postFooter">
+            <div className="uploadImage">
+              <img
+                src-="../../../weather/images/Feed/feedCameraIcon.png"
+                alt="이미지올리기"
+              />
+            </div>
           </div>
         </fieldset>
       </form>
