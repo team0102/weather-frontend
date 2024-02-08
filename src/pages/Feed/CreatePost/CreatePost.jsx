@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
+import IconButton from '../../../components/IconButton/IconButton';
 import TextArea from '../../../components/TextArea/TextArea';
 import './CreatePost.scss';
-import IconButton from '../../../components/IconButton/IconButton';
 
 const CreatePost = ({ setIsModalOpen }) => {
   const [postContent, setPostContent] = useState('');
+  const [userInfo] = useState({
+    profileImg: '../../weather/images/TestImg/profile.png',
+    nickname: 'heywoo',
+  });
 
   useEffect(() => {
     const esc = e => {
@@ -49,15 +53,10 @@ const CreatePost = ({ setIsModalOpen }) => {
           </div>
           <div className="feedUserInfo">
             <div className="feedProfile">
-              {/* <img src={author.profileImage} alt={`${author.id}프로필이미지`} /> */}
-              <img
-                src-="../../../weather/images/TestImg/profile.png"
-                alt="프로필이미지"
-              />
+              <img src-={userInfo.profileImg} alt="프로필이미지" />
             </div>
             <div className="nickBox">
-              {/* <span className="feedNick">{author.nickname}</span> */}
-              <span>heywoo</span>
+              <span>{userInfo.nickname}</span>
             </div>
           </div>
           <div className="postWriter">

@@ -4,8 +4,25 @@
 .feedWrap {
   width: 100%;
 
-  .postCreationBox {
+  .postCreationWrap {
     padding: 5px 16px;
+
+    .postCreationBox {
+      @include FlexXCenter;
+      gap: 8px;
+    }
+
+    .createPostButton {
+      width: 100%;
+      padding: 8px 14px;
+      border: 1px solid $grayscaleH;
+      border-radius: 20px;
+      cursor: pointer;
+
+      span {
+        color: $grayscaleD;
+      }
+    }
   }
 
   article {
@@ -17,7 +34,7 @@
       justify-content: space-between;
       padding: 8px 16px;
 
-      .topLeft {
+      .feedUserInfo {
         @include FlexXCenter;
 
         .feedProfile {

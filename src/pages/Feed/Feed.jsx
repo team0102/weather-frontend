@@ -10,6 +10,9 @@ const Feed = () => {
   const [feedList, setFeedList] = useState([]);
   const [isShowMore, setIsShowMore] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userInfo] = useState({
+    profileImg: '../../weather/images/TestImg/profile.png',
+  });
 
   useEffect(() => {
     requestFeedList();
@@ -47,15 +50,22 @@ const Feed = () => {
   return (
     <main className="main">
       <section className="feedWrap">
-        <div className="postCreationBox">
-          <div>
-            <div onClick={handleCreatePost}>글쓰기</div>
+        <article className="postCreationWrap">
+          <div className="postCreationBox">
+            <div className="feedUserInfo">
+              <div className="feedProfile">
+                <img src-={userInfo.profileImg} alt="프로필이미지" />
+              </div>
+            </div>
+            <div className="createPostButton" onClick={handleCreatePost}>
+              <span>오늘은 무슨 일이 있었나요</span>
+            </div>
           </div>
-        </div>
+        </article>
         {feedList.map(item => (
           <article key={item.id}>
             <div className="feedTop">
-              <div className="topLeft">
+              <div className="feedUserInfo">
                 <div className="feedProfile">
                   <img
                     src={item.author.profileImage}
