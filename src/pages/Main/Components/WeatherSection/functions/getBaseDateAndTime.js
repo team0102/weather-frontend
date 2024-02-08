@@ -20,22 +20,26 @@ export const getBaseDateAndTime = (date) => {
   let baseDate;
   if (currentHour < 2 || (currentMinute <= 10 && currentHour === 2)) {
     // 해당날짜 첫 발표 이전인 경우 (02:10 이전) 전날 마지막 발표시간을 이용
+    console.log(1)
     baseTime = '2300';
     baseDate = `${year}${month}${
       formattedDate < 11 ? `0${dateOfRequest.getDate() - 1}` : dateOfRequest.getDate() - 1
     }`;
   } else if (currentMinute <= 10 && currentHour % 3 === 2) {
+    console.log(2)
     // basetime 발표시간 직전 10분 이내인 경우 직전 발표시간을 사용
     baseTime =
-      currentHour < 12 ? `0${currentHour - 3}00` : `${currentHour - 3}00`;
+    currentHour < 12 ? `0${currentHour - 3}00` : `${currentHour - 3}00`;
     baseDate = `${year}${month}${formattedDate}`;
   } else {
+    console.log(3)
     // 그 외의 경우 가장 최근의 발표시간을 사용
     baseTime =
-      currentHour < 12
+      currentHour < 11
         ? `0${currentHour - ((currentHour + 1) % 3)}00`
         : `${currentHour - ((currentHour + 1) % 3)}00`;
     baseDate = `${year}${month}${formattedDate}`;
   }
+  console.log(baseTime, baseDate)
   return { baseDate, baseTime };
 };

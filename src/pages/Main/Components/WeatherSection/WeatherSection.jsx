@@ -60,12 +60,15 @@ const WeatherSection = () => {
 
   // selectBox에서 선택값이 변경되면 선택된 위치에 맞는 좌표값을 저장
   useEffect(() => {
-    if (selectedLocationKey === '0000000000' && geolocationPermission === 'granted') {
+    if (
+      selectedLocationKey === '0000000000' &&
+      geolocationPermission === 'granted'
+    ) {
       useGeolocation();
     } else if (selectedLocationKey && selectedLocationKey != '0000000000') {
       const location = LOCATIONS_WITH_XY[selectedLocationKey];
       setXy([location.x, location.y]);
-    } 
+    }
   }, [selectedLocationKey]);
 
   useEffect(() => {
@@ -73,12 +76,48 @@ const WeatherSection = () => {
     if (xy != []) {
       const requestWeatherForecast = async () => {
         // 요청에 사용 할 날짜 및 시간 값을 형식에 맞게 구성
-        const {baseDate, baseTime} = getBaseDateAndTime();
+        const { baseDate, baseTime } = getBaseDateAndTime();
 
         try {
           const fcstData = {};
           // 약 2일간의 예보 값을 얻기 위해 요청 반복
           // TODO: 요청 일자의 이전 데이터도 모두 가져오도록 코드 수정 (최저기온을 위해 필요)
+          const fcstTimes = [
+            '0200',
+            '0500',
+            '0800',
+            '1100',
+            '1400',
+            '1700',
+            '2000',
+            '2300',
+          ];
+          for (let i = 0; fcstTimes[i] < baseTime; i++) {
+            const response = await weatherAxios.get(API.WEATHER, {
+              params: {
+                serviceKey: import.meta.env.VITE_WEATHER_API_KEY,
+                numOfRows: 50,
+                pageNo: 1,
+                dataType: 'JSON',
+                base_date: baseDate,
+                base_time: fcstTimes[i],
+                nx: xy[0],
+                ny: xy[1],
+              },
+            });
+            const data = response.data.response.body.items.item;
+
+            // 결과 데이터 매핑하여 객체로 변환
+            data.forEach(item => {
+              if (!Object.keys(fcstData).includes(item.fcstDate))
+                fcstData[item.fcstDate] = {};
+              if (!Object.keys(fcstData[item.fcstDate]).includes(item.fcstTime))
+                fcstData[item.fcstDate][item.fcstTime] = {};
+              fcstData[item.fcstDate][item.fcstTime][item.category] =
+                item.fcstValue;
+            });
+          }
+
           // TODO: 요청 데이터 캐싱 할 방법 찾아보기
           for (let i = 1; i < 7; i++) {
             const response = await weatherAxios.get(API.WEATHER, {
@@ -94,6 +133,7 @@ const WeatherSection = () => {
               },
             });
             const data = response.data.response.body.items.item;
+
             // 결과 데이터 매핑하여 객체로 변환
             data.forEach(item => {
               if (!Object.keys(fcstData).includes(item.fcstDate))
@@ -148,7 +188,8 @@ const WeatherSection = () => {
             현재기온 {weatherInfo?.temperature}℃
           </span>
           <span className="temperature">
-            최저최고 {weatherInfo?.minTemperature}℃ / {weatherInfo?.maxTemperature}℃
+            최저최고 {weatherInfo?.minTemperature}℃ /{' '}
+            {weatherInfo?.maxTemperature}℃
           </span>
           <span className="weatherState">{weatherInfo?.weather}</span>
           {weatherInfo?.rain ? (
@@ -158,9 +199,7 @@ const WeatherSection = () => {
             <span className="snow">{weatherInfo?.snow} cm</span>
           ) : null}
           <span className="wind">풍속 {weatherInfo?.wind} m/s</span>
-          <span className="feelsLike">
-            체감온도 {weatherInfo?.feelsLike}℃
-          </span>
+          <span className="feelsLike">체감온도 {weatherInfo?.feelsLike}℃</span>
         </div>
       </div>
     </div>
