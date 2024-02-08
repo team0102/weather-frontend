@@ -11,6 +11,7 @@ import './WeatherSection.scss';
 import { LOCATIONS_WITH_XY } from '../../../../data/LocationData/LocationData.js';
 import useGeolocationPermission from './hooks/useGeolocationPermissionGranted.js';
 import { fcstDataToServiceData } from './functions/fcstDataToServiceData.js';
+import { getBaseDateAndTime } from './functions/getBaseDateAndTime.js';
 
 const WeatherSection = () => {
   // selectBox에서 선택한 위치 값
@@ -72,42 +73,12 @@ const WeatherSection = () => {
     if (xy != []) {
       const requestWeatherForecast = async () => {
         // 요청에 사용 할 날짜 및 시간 값을 형식에 맞게 구성
-        const today = new Date();
-        const year = today.getFullYear();
-        const month =
-          today.getMonth() < 9
-            ? `0${today.getMonth() + 1}`
-            : today.getMonth() + 1;
-        const date =
-          today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
-
-        const currentMinute = today.getMinutes();
-        const currentHour = today.getHours();
-        let baseTime;
-        let baseDate;
-        if (currentHour < 2 || (currentMinute <= 10 && currentHour === 2)) {
-          // 해당날짜 첫 발표 이전인 경우 (02:10 이전) 전날 마지막 발표시간을 이용
-          baseTime = '2300';
-          baseDate = `${year}${month}${
-            date < 11 ? `0${today.getDate() - 1}` : today.getDate() - 1
-          }`;
-        } else if (currentMinute <= 10 && currentHour % 3 === 2) {
-          // basetime 발표시간 직전 10분 이내인 경우 직전 발표시간을 사용
-          baseTime =
-            currentHour < 12 ? `0${currentHour - 3}00` : `${currentHour - 3}00`;
-          baseDate = `${year}${month}${date}`;
-        } else {
-          // 그 외의 경우 가장 최근의 발표시간을 사용
-          baseTime =
-            currentHour < 12
-              ? `0${currentHour - ((currentHour + 1) % 3)}00`
-              : `${currentHour - ((currentHour + 1) % 3)}00`;
-          baseDate = `${year}${month}${date}`;
-        }
+        const {baseDate, baseTime} = getBaseDateAndTime();
 
         try {
           const fcstData = {};
           // 약 2일간의 예보 값을 얻기 위해 요청 반복
+          // TODO: 요청 일자의 이전 데이터도 모두 가져오도록 코드 수정 (최저기온을 위해 필요)
           // TODO: 요청 데이터 캐싱 할 방법 찾아보기
           for (let i = 1; i < 7; i++) {
             const response = await weatherAxios.get(API.WEATHER, {
@@ -175,6 +146,9 @@ const WeatherSection = () => {
         <div className="weatherInfo">
           <span className="temperature">
             현재기온 {weatherInfo?.temperature}℃
+          </span>
+          <span className="temperature">
+            최저최고 {weatherInfo?.minTemperature}℃ / {weatherInfo?.maxTemperature}℃
           </span>
           <span className="weatherState">{weatherInfo?.weather}</span>
           {weatherInfo?.rain ? (

@@ -9,12 +9,14 @@ const YO = 136; // 기1준점 Y좌표(GRID)
 //
 // LCC DFS 좌표변환 ( code : "toXY"(위경도->좌표, v1:위도, v2:경도), "toLL"(좌표->위경도,v1:x, v2:y) )
 //
+// 출처: https://gist.github.com/fronteer-kr/14d7f779d52a21ac2f16
+// var -> let/const로 변경
 
 /**
  * convertDfsAndXY 함수 papams
  * 위도-경도로 이루어진 좌표 값과, X-Y로 이루어진 좌표값을 서로 변환하기 위한 함수
  * code에 설정된 값을 통해 변환 방향을 결정
- * @param {string} code: "toXY", "toLL"                -
+ * @param {string} code: "toXY", "toLL"                - 위도-경도를 XY 좌표로 변경 할 것인지, XY 좌표를 위도-경도로 변경 할 것인지 결정
  * @param {number} v1                                  - 위도 또는 X
  * @param {number} v2                                  - 경도 또는 Y
  * @returns 

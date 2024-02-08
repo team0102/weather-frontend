@@ -1,5 +1,48 @@
 import { WEATHER_CODE } from '../../../../../data/OpenApiWeatherData/WeatherCodeData';
 
+/**
+ *
+ * @param {Object} fcstData                         - 예보 정보가 담긴 object
+ * @param {Date} date
+ * @returns
+ * -------------------------------------------------------------------------
+ * fcstData 예시
+ * 1계층 : 예보 일자를 key로 하는 object
+ * 2계층 : 예보 시각을 key로 하는 object
+ * 3계층 : 예보 항목별 데이터를 담은 object
+ *  {
+ *    "20240208":                                   - 예보 일자
+ *      {
+ *        "0200":                                   - 예보 시각
+ *          {
+ *            TMP: "-2",                            - 해당 예보에 포함된 날씨 데이터
+ *            POP: "60",
+ *            ...
+ *          },
+ *        "0500":
+ *          {...},
+ *      },
+ *    "20240209":
+ *      {...}
+ *  }
+ * -------------------------------------------------------------------------
+ * 예보 데이터 key 분류: https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15084084
+ * 항목값       항목명                 단위
+ * POP        강수확률                 %
+ * PTY        강수형태               코드값
+ * PCP        1시간 강수량          범주 (1 mm)
+ * REH        습도                    %
+ * SNO        1시간 신적설          범주(1 cm)
+ * SKY        하늘상태               코드값
+ * TMP        1시간 기온              ℃
+ * TMN        일 최저기온              ℃
+ * TMX        일 최고기온              ℃
+ * UUU        풍속(동서성분)           m/s
+ * VVV        풍속(남북성분)           m/s
+ * WAV        파고                    M
+ * VEC        풍향                   deg
+ * WSD        풍속                   m/s
+ */
 export const fcstDataToServiceData = (fcstData, date) => {
   const dateToFormat = date ? date : new Date();
   const formattedDate = `${dateToFormat.getFullYear()}${
@@ -7,9 +50,9 @@ export const fcstDataToServiceData = (fcstData, date) => {
   }${dateToFormat.getMonth() + 1}${
     dateToFormat.getDate() < 10 ? '0' : ''
   }${dateToFormat.getDate()}`;
-  const time = `${
-    dateToFormat.getHours() < 10 ? '0' : ''
-  }${dateToFormat.getHours() + 1}00`;
+  const time = `${dateToFormat.getHours() < 10 ? '0' : ''}${
+    dateToFormat.getHours() + 1
+  }00`;
 
   const dailyFcst = fcstData[formattedDate];
   const hourlyFcst = dailyFcst[time];
@@ -22,6 +65,16 @@ export const fcstDataToServiceData = (fcstData, date) => {
   const rainPosibility = parseInt(hourlyFcst.POP);
   const snow = parseInt(hourlyFcst.SNO);
   const relativeHumidity = parseInt(hourlyFcst.REH);
+
+  // const dailyTemperatures = Object.entries(dailyFcst).map(item => parseInt(item.TMP)).filter((a,b) => a > b);
+  // const maxTemperature = dailyTemperatures[0];
+  // const minTemperature = dailyTemperatures.pop();
+  let maxTemperature;
+  let minTemperature;
+  Object.values(dailyFcst).forEach(item => {
+    if (Object.keys(item).includes('TMN')) minTemperature = parseInt(item.TMN);
+    if (Object.keys(item).includes('TMX')) maxTemperature = parseInt(item.TMX);
+  });
 
   let feelsLike;
   // 체감온도 계산은 기상청 공개 자료 활용
@@ -51,6 +104,8 @@ export const fcstDataToServiceData = (fcstData, date) => {
 
   return {
     temperature,
+    maxTemperature,
+    minTemperature,
     wind,
     weather,
     weatherKey,
