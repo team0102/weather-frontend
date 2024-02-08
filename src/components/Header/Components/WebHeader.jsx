@@ -60,7 +60,9 @@ const WebHeader = ({
                 <li>FORECAST</li>
                 <li>STYLE</li>
                 <li>CHAT</li>
-                <li>BOOKMARK</li>
+                <li>
+                  <Link to="/bookmark">BOOKMARK</Link>
+                </li>
               </ul>
             </div>
 

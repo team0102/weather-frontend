@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import SelectBox from '../../../../components/SelectBox/SelectBox';
+import SelectBox from '../../../../components/SelectBox/SelectBox.jsx';
 import { customAxios } from '../../../../API/API.jsx';
 import { API } from '../../../../../config.js';
 
 import './WeatherSection.scss';
-import Icon from '../Icon/Icon.jsx';
+import Icon from './components/Icon/Icon.jsx';
 
 const WeatherSection = () => {
   const [selectedLocation, setSelectedLocation] = useState();
@@ -50,7 +50,7 @@ const WeatherSection = () => {
       */}
       <div className="weather">
         <div className="weatherIcon">
-          <Icon content="RainNight" path='../../../../svg/Main/WeatherSection' size="xxxlg"></Icon>
+          <Icon content="RainNight" path='../../../../../../svg/Main/WeatherSection' size="xxxlg" />
         </div>
         {/*
         날씨 정보를 값으로 보여주는 컴포넌트

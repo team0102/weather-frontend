@@ -1,8 +1,8 @@
 import './Main.scss';
 
-import WeatherSection from './Components/WeatherSection/WeatherSection';
-import OutfitSection from './Components/OutfitSection/OutfitSection';
-import FeedSection from './Components/FeedSection/FeedSection';
+import WeatherSection from './components/WeatherSection/WeatherSection';
+import OutfitSection from './components/OutfitSection/OutfitSection';
+import FeedSection from './components/FeedSection/FeedSection';
 
 
 const Main = () => {

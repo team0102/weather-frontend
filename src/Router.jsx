@@ -7,6 +7,7 @@ import Search from './pages/Search/Search';
 import Footer from './components/Footer/Footer';
 import MyInfo from './pages/MyInfo/MyInfo';
 import Feed from './pages/Feed/Feed';
+import BookMark from './pages/BookMark/BookMark';
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="/myinfo" element={<MyInfo />} />
         <Route path="/search" element={<Search />} />
         <Route path="/feed" element={<Feed />} />
+        <Route path="/bookmark" element={<BookMark />} />
       </Routes>
       <Footer />
     </BrowserRouter>

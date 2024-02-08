@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FOOTER_ICON_DATA } from '../../data/FooterData/FooterIconData';
 import { FOOTER_ITEM_DATA } from '../../data/FooterData/FooterItemData';
 import IconButton from '../IconButton/IconButton';
@@ -7,12 +7,12 @@ import './Footer.scss';
 
 const Footer = () => {
   const [clickedIcon, setClickedIcon] = useState(null);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleIconClick = (content, path) => {
     setClickedIcon(content);
     console.log(path);
-    // navigate(path);
+    navigate(path);
   };
   return (
     <footer className="footer">

@@ -3,9 +3,74 @@
 
 .outfitSection {
   @include FlexCenter;
-  flex-direction: row;
-  background-color: $secondaryColor;
-  flex-grow: 1;
+  flex-direction: column;
+  padding: 40px 10px;
+  font-size: 14px;
+
+  .outfitSuggestion {
+    @include FlexCenter;
+    flex-grow: 4;
+    flex-direction: column;
+    .suggestionMessage {
+      padding-bottom: 20px;
+    }
   
+    .imageRowWrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex-grow: 1;
+      justify-content: center;
+      margin: 0 auto;
+      height: fit-content;
+      div {
+        margin: 5px;
+      }
+      padding-bottom: 20px;
+    }
+
+  }
+  
+  .personalizeWindChill {
+    @include FlexCenter;    
+    flex-direction: row;
+    flex-grow: 1;
+    width: 100%;
+
+    .button {
+      margin: 5px;
+      flex-grow: 1;
+    }
+
+    @media #{$media-mobile} {
+      flex-direction: row;
+      width: 100%;
+    }
+    
+    @media #{$media-tablet} {
+      flex-direction: row;
+      width: 100%;
+    }
+    
+    @media #{$media-web} {
+      flex-direction: column;
+      width: auto;
+    }
+  }
+
+  @media #{$media-mobile} {
+    font-size: 14px;
+    flex-direction: column;
+  }
+  
+  @media #{$media-tablet} {
+    font-size: 16px;
+    flex-direction: column;
+  }
+  
+  @media #{$media-web} {
+    font-size: 18px;
+    flex-direction: row;
+  }
 }
 
