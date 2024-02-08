@@ -19,6 +19,14 @@ export const customAxios = axios.create({
   },
 });
 
+export const weatherAxios = axios.create({
+  baseURL: 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
+});
+
 // try,catch 문 예시 코드 입니다. 참고하세요.(참고용 수정해야할수도있습니다.)
 // const Test = async category => {
 //--------------------------------
