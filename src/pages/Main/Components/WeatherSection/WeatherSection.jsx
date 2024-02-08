@@ -5,15 +5,16 @@ import Icon from './components/Icon/Icon.jsx';
 
 import { customAxios, weatherAxios } from '../../../../API/API.jsx';
 import { API } from '../../../../../config.js';
-import { convertDfsAndXY } from './functions/dfsToXY.js';
-
-import './WeatherSection.scss';
-import { LOCATIONS_WITH_XY } from '../../../../data/LocationData/LocationData.js';
 import useGeolocationPermission from './hooks/useGeolocationPermissionGranted.js';
+import { convertDfsAndXY } from './functions/dfsToXY.js';
+import { LOCATIONS_WITH_XY } from '../../../../data/LocationData/LocationData.js';
 import { fcstDataToServiceData } from './functions/fcstDataToServiceData.js';
 import { getBaseDateAndTime } from './functions/getBaseDateAndTime.js';
 
+import './WeatherSection.scss';
+
 const WeatherSection = () => {
+  // TODO: 날씨 및 위치 redux로 이동
   // selectBox에서 선택한 위치 값
   const [selectedLocationKey, setSelectedLocationKey] = useState();
   const currentUserLocation = { '0000000000': '현재 위치' };
@@ -46,7 +47,7 @@ const WeatherSection = () => {
 
   // 사용자가 저장한 지역들 정보 불러오기
   useEffect(() => {
-    // 추후 로컬스토리지로 변경
+    // TODO: 추후 로컬스토리지로 변경
     const requestUserLocations = async () => {
       try {
         const response = await customAxios.get(API.USER_LOCATIONS);
@@ -71,17 +72,17 @@ const WeatherSection = () => {
     }
   }, [selectedLocationKey]);
 
+  // location 변경 시 날씨 새로 요청하여 업데이트
   useEffect(() => {
-    // location 변경 시 날씨 새로 요청하여 업데이트
     if (xy != []) {
       const requestWeatherForecast = async () => {
         // 요청에 사용 할 날짜 및 시간 값을 형식에 맞게 구성
         const { baseDate, baseTime } = getBaseDateAndTime();
 
         try {
+          // TODO: 요청 데이터 캐싱 할 방법 찾아보기
           const fcstData = {};
-          // 약 2일간의 예보 값을 얻기 위해 요청 반복
-          // TODO: 요청 일자의 이전 데이터도 모두 가져오도록 코드 수정 (최저기온을 위해 필요)
+          const requests = [];
           const fcstTimes = [
             '0200',
             '0500',
@@ -92,49 +93,48 @@ const WeatherSection = () => {
             '2000',
             '2300',
           ];
+          
+          // 요청시각 이전의 예보 데이터 요청하기
           for (let i = 0; fcstTimes[i] < baseTime; i++) {
-            const response = await weatherAxios.get(API.WEATHER, {
-              params: {
-                serviceKey: import.meta.env.VITE_WEATHER_API_KEY,
-                numOfRows: 50,
-                pageNo: 1,
-                dataType: 'JSON',
-                base_date: baseDate,
-                base_time: fcstTimes[i],
-                nx: xy[0],
-                ny: xy[1],
-              },
-            });
-            const data = response.data.response.body.items.item;
-
-            // 결과 데이터 매핑하여 객체로 변환
-            data.forEach(item => {
-              if (!Object.keys(fcstData).includes(item.fcstDate))
-                fcstData[item.fcstDate] = {};
-              if (!Object.keys(fcstData[item.fcstDate]).includes(item.fcstTime))
-                fcstData[item.fcstDate][item.fcstTime] = {};
-              fcstData[item.fcstDate][item.fcstTime][item.category] =
-                item.fcstValue;
-            });
+            requests.push(
+              weatherAxios.get(API.WEATHER, {
+                params: {
+                  serviceKey: import.meta.env.VITE_WEATHER_API_KEY,
+                  numOfRows: 50,
+                  pageNo: 1,
+                  dataType: 'JSON',
+                  base_date: baseDate,
+                  base_time: fcstTimes[i],
+                  nx: xy[0],
+                  ny: xy[1],
+                },
+              }),
+            );
           }
 
-          // TODO: 요청 데이터 캐싱 할 방법 찾아보기
+          // 요청시각 이후의 약 1일 간의 예보 데이터 요청하기
           for (let i = 1; i < 7; i++) {
-            const response = await weatherAxios.get(API.WEATHER, {
-              params: {
-                serviceKey: import.meta.env.VITE_WEATHER_API_KEY,
-                numOfRows: 50,
-                pageNo: i,
-                dataType: 'JSON',
-                base_date: baseDate,
-                base_time: baseTime,
-                nx: xy[0],
-                ny: xy[1],
-              },
-            });
-            const data = response.data.response.body.items.item;
+            requests.push(
+              weatherAxios.get(API.WEATHER, {
+                params: {
+                  serviceKey: import.meta.env.VITE_WEATHER_API_KEY,
+                  numOfRows: 50,
+                  pageNo: i,
+                  dataType: 'JSON',
+                  base_date: baseDate,
+                  base_time: baseTime,
+                  nx: xy[0],
+                  ny: xy[1],
+                },
+              }),
+            );
+          }
 
-            // 결과 데이터 매핑하여 객체로 변환
+          // 여러 요청을 한번에 처리
+          const responses = await Promise.all(requests);
+          // 응답 데이터를 순환하며 원하는 형태의 객체로 매핑
+          responses.forEach(response => {
+            const data = response.data.response.body.items.item;
             data.forEach(item => {
               if (!Object.keys(fcstData).includes(item.fcstDate))
                 fcstData[item.fcstDate] = {};
@@ -143,7 +143,7 @@ const WeatherSection = () => {
               fcstData[item.fcstDate][item.fcstTime][item.category] =
                 item.fcstValue;
             });
-          }
+          });
           // 서비스에 필요한 값을 추출하여 state에 저장
           const weatherInfo = fcstDataToServiceData(fcstData);
           setWeatherInfo(weatherInfo);

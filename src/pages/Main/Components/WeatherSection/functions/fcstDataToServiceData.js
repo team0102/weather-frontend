@@ -11,9 +11,9 @@ import { WEATHER_CODE } from '../../../../../data/OpenApiWeatherData/WeatherCode
  * 2계층 : 예보 시각을 key로 하는 object
  * 3계층 : 예보 항목별 데이터를 담은 object
  *  {
- *    "20240208":                                   - 예보 일자
+ *    "20240208":                                   - 단기 예보 일자 : yyyymmdd
  *      {
- *        "0200":                                   - 예보 시각
+ *        "0200":                                   - 단기 예보 시각 : hhmm, '0200','0500','0800','1100','1400','1700','2000','2300'으로 1일 8회
  *          {
  *            TMP: "-2",                            - 해당 예보에 포함된 날씨 데이터
  *            POP: "60",
@@ -26,7 +26,7 @@ import { WEATHER_CODE } from '../../../../../data/OpenApiWeatherData/WeatherCode
  *      {...}
  *  }
  * -------------------------------------------------------------------------
- * 예보 데이터 key 분류: https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15084084
+ * 단기예보 데이터 key 분류: https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15084084
  * 항목값       항목명                 단위
  * POP        강수확률                 %
  * PTY        강수형태               코드값
@@ -44,6 +44,8 @@ import { WEATHER_CODE } from '../../../../../data/OpenApiWeatherData/WeatherCode
  * WSD        풍속                   m/s
  */
 export const fcstDataToServiceData = (fcstData, date) => {
+  // 렌더링할 데이터에 해당하는 날짜, 시간을 알맞은 형태로 구성
+  // ex) 20240208, 0800
   const dateToFormat = date ? date : new Date();
   const formattedDate = `${dateToFormat.getFullYear()}${
     dateToFormat.getMonth() < 9 ? '0' : ''
@@ -66,9 +68,8 @@ export const fcstDataToServiceData = (fcstData, date) => {
   const snow = parseInt(hourlyFcst.SNO);
   const relativeHumidity = parseInt(hourlyFcst.REH);
 
-  // const dailyTemperatures = Object.entries(dailyFcst).map(item => parseInt(item.TMP)).filter((a,b) => a > b);
-  // const maxTemperature = dailyTemperatures[0];
-  // const minTemperature = dailyTemperatures.pop();
+  // TMX(일최고온도)와 TMN(일최저온도)는 해당하는 시간에만 데이터가 들어있음
+  // 하루 이내의 데이터를 순환하며 최저/최고 온도를 찾음
   let maxTemperature;
   let minTemperature;
   Object.values(dailyFcst).forEach(item => {
@@ -76,10 +77,11 @@ export const fcstDataToServiceData = (fcstData, date) => {
     if (Object.keys(item).includes('TMX')) maxTemperature = parseInt(item.TMX);
   });
 
-  let feelsLike;
   // 체감온도 계산은 기상청 공개 자료 활용
   // https://data.kma.go.kr/climate/windChill/selectWindChillChart.do?pgmNo=111
+  let feelsLike;
   if (dateToFormat.getMonth() >= 4 && dateToFormat.getMonth() <= 8) {
+    // 하절기 체감온도 계산
     const tw =
       temperature *
         Math.atan(0.151977 * Math.pow(relativeHumidity + 8.313659, 0.5)) +
@@ -93,6 +95,7 @@ export const fcstDataToServiceData = (fcstData, date) => {
       (-0.2442 + 0.55399 * tw + 0.45535 * temperature - 0.0022 * tw) ^
       (2 + 0.00278 * tw * temperature + 3.0);
   } else {
+    // 동절기 체감온도 계산
     feelsLike =
       wind > 1.3
         ? 13.12 +
@@ -112,7 +115,7 @@ export const fcstDataToServiceData = (fcstData, date) => {
     rain,
     rainPosibility,
     snow,
-    feelsLike: Math.round(feelsLike),
-    time: dateToFormat.getHours(),
+    feelsLike: Math.round(feelsLike), // 체감온도 반올림
+    time: dateToFormat.getHours(), // 날씨 아이콘의 주야 구분을 위한 시간 값
   };
 };
