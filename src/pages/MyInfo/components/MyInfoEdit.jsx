@@ -6,8 +6,6 @@ import CustomSelectBox from '../../../components/SelectBox/CustomSelectBox/Custo
 import RadioGroup from '../../../components/RadioGroup/RadioGroup';
 import { EMAIL_DATA } from '../../../data/EmailAddressData/EmailAddressData';
 import { RADIO_GROUP_GENDER_DATA } from '../../../data/RadioGenderData/RadioGenderData';
-import { LOCATION_INFORMATION_AGREE_DATA } from '../../../data/LocationInformationAgreeData/LocationInformationAgreeData';
-import { TEMPERATURE_SENSITIVITY_DATA } from '../../../data/TemperatureSensitivityData/TemperatureSensitivityData';
 import { CITY_DATA } from '../../../data/CityData/CityData';
 
 /**
@@ -113,16 +111,6 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
             <span>성별</span>
           </div>
           <RadioGroup RadioData={RADIO_GROUP_GENDER_DATA} />
-
-          <div className="radioTitleInner">
-            <span>위치동의</span>
-          </div>
-          <RadioGroup RadioData={LOCATION_INFORMATION_AGREE_DATA} />
-
-          <div className="radioTitleInner">
-            <span>온도감도</span>
-          </div>
-          <RadioGroup RadioData={TEMPERATURE_SENSITIVITY_DATA} />
 
           <div className="myInfoWrap">
             <Input
