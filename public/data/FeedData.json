@@ -1,0 +1,105 @@
+{
+  "statusCode": 200,
+  "message": "Successed to get feedList",
+  "data": [
+    {
+      "id": 47,
+      "imageUrl": "./images/TestImg/profile.png",
+      "content": "1번 유저 피드 작성 토큰 테스트으으으으 #태그태그",
+      "weatherConditionId": 3,
+      "lowTemperature": -5,
+      "highTemperature": 3,
+      "createdAt": "2024-02-01T07:43:17.668Z",
+      "updatedAt": "2024-02-01T07:43:17.668Z",
+      "author": {
+        "id": 1,
+        "nickname": "heywoo",
+        "profileImage": "./images/TestImg/profile.png"
+      },
+      "isAuthor": true,
+      "likeCount": 10,
+      "commentCount": 1,
+      "isLiked": false,
+      "isBookmarked": false
+    },
+    {
+      "id": 48,
+      "imageUrl": "./images/TestImg/profile.png",
+      "content": "짙은 어둠 속을 항해하는 너의 바다에 내가 잠시나마 등대가 돼 널 비춰준다면 그 순간만큼은 너도 다시 고개를 들고 너의 머리 위에 꽃 핀 별들을 바라볼 수 있지 않을까 고단했던 하루의 빛을 쏟아내듯 너의 눈물은 어둠 속에서 더 빛나고 움츠러진 어깨에 드리우는 그림자 그건 누군가 너의 날개를 감추기 위해 어제 지나온 길 위엔 너의 눈물이 남았고 채 마르기도 전에 너는 다시 걷고 있지만 언젠간 마주할 그날에 넌 오늘을 꼭 기억할 거야",
+      "weatherConditionId": 3,
+      "lowTemperature": -5,
+      "highTemperature": 3,
+      "createdAt": "2024-02-01T07:43:17.668Z",
+      "updatedAt": "2024-02-01T07:43:17.668Z",
+      "author": {
+        "id": 2,
+        "nickname": "kingjj",
+        "profileImage": "./images/TestImg/profile.png"
+      },
+      "isAuthor": true,
+      "likeCount": 20,
+      "commentCount": 1,
+      "isLiked": false,
+      "isBookmarked": false
+    },
+    {
+      "id": 49,
+      "imageUrl": "./images/TestImg/profile.png",
+      "content": "짙은 어둠 속을 항해하는 너의 바다에 내가 잠시나마 등대가 돼 널 비춰준다면 그 순간만큼은 너도 다시 고개를 들고 너의 머리 위에 꽃 핀 별들을 바라볼 수 있지 않을까 고단했던 하루의 빛을 쏟아내듯 너의 눈물은 어둠 속에서 더 빛나고 움츠러진 어깨에 드리우는 그림자 그건 누군가 너의 날개를 감추기 위해 어제 지나온 길 위엔 너의 눈물이 남았고 채 마르기도 전에 너는 다시 걷고 있지만 언젠간 마주할 그날에 넌 오늘을 꼭 기억할 거야",
+      "weatherConditionId": 3,
+      "lowTemperature": -5,
+      "highTemperature": 3,
+      "createdAt": "2024-02-01T07:43:17.668Z",
+      "updatedAt": "2024-02-01T07:43:17.668Z",
+      "author": {
+        "id": 3,
+        "nickname": "economy",
+        "profileImage": "./images/TestImg/profile.png"
+      },
+      "isAuthor": true,
+      "likeCount": 50,
+      "commentCount": 1,
+      "isLiked": false,
+      "isBookmarked": false
+    },
+    {
+      "id": 50,
+      "imageUrl": "./images/TestImg/profile.png",
+      "content": "달콩이",
+      "weatherConditionId": 3,
+      "lowTemperature": -5,
+      "highTemperature": 3,
+      "createdAt": "2024-02-01T07:43:17.668Z",
+      "updatedAt": "2024-02-01T07:43:17.668Z",
+      "author": {
+        "id": 4,
+        "nickname": "godjisu",
+        "profileImage": "./images/TestImg/profile.png"
+      },
+      "isAuthor": true,
+      "likeCount": 5163,
+      "commentCount": 15,
+      "isLiked": false,
+      "isBookmarked": false
+    },
+    {
+      "id": 51,
+      "imageUrl": "./images/TestImg/profile.png",
+      "content": "아형그거아니자나",
+      "lowTemperature": -5,
+      "highTemperature": 3,
+      "createdAt": "2024-02-01T07:43:17.668Z",
+      "updatedAt": "2024-02-01T07:43:17.668Z",
+      "author": {
+        "id": 5,
+        "nickname": "leecw",
+        "profileImage": "./images/TestImg/profile.png"
+      },
+      "isAuthor": true,
+      "likeCount": 10,
+      "commentCount": 251,
+      "isLiked": false,
+      "isBookmarked": false
+    }
+  ]
+}

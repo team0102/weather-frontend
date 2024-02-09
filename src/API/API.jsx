@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Custom axios를 만들기 위해 함수 생성
-const BASE_URL = 'weather/data/';
+const BASE_URL = '/weather/data/';
 
 /**
  * Data를 받아오기 위한 Custom Axios
@@ -13,6 +13,14 @@ const BASE_URL = 'weather/data/';
 
 export const customAxios = axios.create({
   baseURL: `${BASE_URL}`,
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
+});
+
+export const weatherAxios = axios.create({
+  baseURL: 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

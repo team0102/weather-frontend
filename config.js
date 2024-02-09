@@ -9,9 +9,11 @@ export const API = {
   KEYWORDS: `${PUBLIC_DATA_URL}/SearchPageData.json`,
   USER_LOCATIONS: `UserLocationData.json`,
   LOGIN: `auth/kakao/callback`,
+  FEED_DATA: `/FeedData.json`,
   BOOK_MARK_LIST: `${PUBLIC_DATA_URL}/BookMarkListData.json`,
   FEEDS: `FeedsData.json`,
   CLOTHES: `ClothesData.json`,
+  WEATHER: `getVilageFcst`,
 };
 
 /**
