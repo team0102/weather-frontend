@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Search from './pages/Search/Search';
 import Footer from './components/Footer/Footer';
 import MyInfo from './pages/MyInfo/MyInfo';
+import Login from './pages/Login/Login';
 import Feed from './pages/Feed/Feed';
 import BookMark from './pages/BookMark/BookMark';
 
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="/myinfo" element={<MyInfo />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/bookmark" element={<BookMark />} />
       </Routes>

@@ -1,0 +1,64 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin', '../../styles/partials/variables';
+
+.loginWrap {
+  width: 100%;
+  margin: 0 auto;
+
+  .loginTitleBox {
+    padding-bottom: 50px;
+    font-size: 25px;
+    line-height: 150%;
+    text-align: center;
+  }
+
+  .loginButtonWrap {
+    @include FlexColumnCenter;
+    width: 100%;
+    margin: 50px 0;
+    gap: 10px;
+
+    .loginButton {
+      @include FlexXCenter;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+      font-family: RubikRegular;
+      letter-spacing: -1px;
+      padding: 12px 14px;
+      cursor: pointer;
+
+      @media #{$media-mobile}, #{$media-tablet} {
+        font-size: 14px;
+        padding: 14px 16px;
+
+        span {
+          padding-left: 70px;
+          padding-right: 70px;
+        }
+      }
+
+      @media #{$media-web} {
+        font-size: 16px;
+        padding: 16px 20px;
+
+        span {
+          padding-left: 93px;
+          padding-right: 93px;
+        }
+      }
+    }
+
+    .kakao {
+      background-color: #fee500;
+      color: #191919;
+    }
+
+    .naver {
+      background-color: #03c75a;
+      color: $grayscaleA;
+    }
+  }
+}

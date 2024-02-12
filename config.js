@@ -8,6 +8,7 @@ export const API = {
   POPULAR_SEARCHES: `${PUBLIC_DATA_URL}/PopularSearchesData.json`,
   KEYWORDS: `${PUBLIC_DATA_URL}/SearchPageData.json`,
   USER_LOCATIONS: `UserLocationData.json`,
+  LOGIN: `auth/kakao/callback`,
   FEED_DATA: `/FeedData.json`,
   BOOK_MARK_LIST: `${PUBLIC_DATA_URL}/BookMarkListData.json`,
   FEEDS: `FeedsData.json`,
