@@ -16,6 +16,7 @@ const MyInfo = () => {
     email: 'leecwee@gmail.com',
     cityId: 1,
   });
+  console.log(userInfo);
 
   /** 수정페이지,마이페이지를 Toggle 하는 함수를 정의합니다. */
   const handleEditToggle = () => {

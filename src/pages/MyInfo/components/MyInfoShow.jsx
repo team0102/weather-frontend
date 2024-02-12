@@ -10,8 +10,7 @@ import { CITY_DATA } from '../../../data/CityData/CityData';
 
 const MyInfoShow = ({ handleEditToggle, userInfo }) => {
   /** 구조분해 할당을 정의합니다. */
-  const { profileImage, nickname, email, emailAddress, gender, cityId } =
-    userInfo;
+  const { profileImage, nickname, email, gender, cityId } = userInfo;
 
   /** id를 찾아 성별을 보여줍니다. */
   const genderText =
