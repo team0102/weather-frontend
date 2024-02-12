@@ -19,6 +19,9 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
   /** 구조분해 할당을 정의합니다. */
   const { profileImage, nickname, email, gender } = userInfo;
 
+  const [isDirectEntry, setIsDirectEntry] = useState(false);
+  console.log(isDirectEntry);
+
   const emailParts = userInfo.email.includes('@')
     ? userInfo.email.split('@')
     : ['', ''];
@@ -65,10 +68,27 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
     updateEmailField(emailId, domainPart);
   };
 
-  /** 이메일 도메인을 선택하는 SelectBox 함수입니다. */
-  const saveEmailDomain = domain => {
-    const emailId = userInfo.email.split('@')[0];
-    updateEmailField(emailId, domain);
+  // /** 이메일 도메인을 선택하는 SelectBox 함수입니다. */
+  // const saveEmailDomain = domain => {
+  //   const emailId = userInfo.email.split('@')[0];
+  //   updateEmailField(emailId, domain);
+  // };
+
+  const handleSelectDomain = selectedDomain => {
+    const emailId = emailParts[0];
+    if (selectedDomain === '직접입력') {
+      setIsDirectEntry(true); // '직접입력'을 선택하면 입력 필드 활성화
+    } else {
+      setIsDirectEntry(false); // 다른 도메인을 선택하면 입력 필드 비활성화
+      updateEmailField(emailId, selectedDomain); // 선택된 도메인으로 이메일 필드 업데이트
+    }
+  };
+
+  const handleInputDomain = event => {
+    const inputDomain = event.target.value;
+    const emailId = emailParts[0];
+    setIsDirectEntry(true); // 사용자가 도메인을 직접 입력 중임을 표시
+    updateEmailField(emailId, inputDomain); // 사용자가 입력한 도메인으로 이메일 필드 업데이트
   };
 
   const saveCityId = cityName => {
@@ -179,16 +199,16 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
             <Input
               type="email"
               name="emailDomain"
-              onChange={saveEmailDomain}
               placeholder="직접입력"
-              value={emailParts[1] === '직접입력' ? '' : emailParts[1]}
-              disabled={EMAIL_DATA.indexOf(emailParts[1]) > 0}
+              value={emailParts[1]} // '직접입력' 선택 시에도 사용자 입력을 반영하기 위해 변경
+              onChange={handleInputDomain}
+              disabled={!isDirectEntry} // '직접입력' 선택 시에만 입력 가능
             />
             <CustomSelectBox
-              value={emailParts[1]} // 현재 이메일 도메인 부분만 선택되도록 처리
-              name="emailDomain"
               data={EMAIL_DATA}
-              onChange={saveEmailDomain}
+              value={emailParts[1]}
+              name="emailDomain"
+              onChange={handleSelectDomain} // This now correctly expects a string
             />
           </div>
         </fieldset>
