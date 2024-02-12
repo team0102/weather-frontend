@@ -19,6 +19,7 @@ const Input = ({
   value,
   maxLength,
   onChange,
+  disabled,
 }) => {
   return (
     <div className="InputWrap">
@@ -32,6 +33,7 @@ const Input = ({
         value={value}
         onChange={onChange}
         maxLength={maxLength}
+        disabled={disabled}
         onWheel={e => e.target.blur()} // 마우스 휠 스크롤 발생시 input focus 제거
       />
     </div>
