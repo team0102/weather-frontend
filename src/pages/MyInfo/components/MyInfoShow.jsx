@@ -1,4 +1,6 @@
 import IconButton from '../../../components/IconButton/IconButton';
+import { RADIO_GROUP_GENDER_DATA } from '../../../data/RadioGenderData/RadioGenderData';
+import { CITY_DATA } from '../../../data/CityData/CityData';
 
 /**
  * MyInfoShow props list
@@ -8,7 +10,17 @@ import IconButton from '../../../components/IconButton/IconButton';
 
 const MyInfoShow = ({ handleEditToggle, userInfo }) => {
   /** 구조분해 할당을 정의합니다. */
-  const { profileImage, nickname, email, emailAddress } = userInfo;
+  const { profileImage, nickname, email, emailAddress, gender, cityId } =
+    userInfo;
+
+  /** id를 찾아 성별을 보여줍니다. */
+  const genderText =
+    RADIO_GROUP_GENDER_DATA.find(item => item.id === gender)?.context ||
+    '선택 안함';
+
+  /** id를 찾아 도시를 보여줍니다. */
+  const cityText =
+    CITY_DATA.find(item => item.id === cityId)?.value || '선택 안함';
 
   return (
     <section className="myInfoEditWrap">
@@ -37,10 +49,22 @@ const MyInfoShow = ({ handleEditToggle, userInfo }) => {
 
         <div className="myInfoWrap">
           <>
+            <label>성별</label>
+            <span className="myInfoSpan">{genderText}</span>
+          </>
+        </div>
+
+        <div className="myInfoWrap">
+          <>
+            <label>도시</label>
+            <span className="myInfoSpan">{cityText}</span>
+          </>
+        </div>
+
+        <div className="myInfoWrap">
+          <>
             <label>이메일</label>
-            <span className="myInfoSpan">
-              {email}@{emailAddress}
-            </span>
+            <span className="myInfoSpan">{email}</span>
           </>
         </div>
       </div>

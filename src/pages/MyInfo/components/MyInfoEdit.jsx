@@ -17,10 +17,18 @@ import { CITY_DATA } from '../../../data/CityData/CityData';
 
 const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
   /** 구조분해 할당을 정의합니다. */
-  const { profileImage, nickname, email, emailAddress } = userInfo;
+  const { profileImage, nickname, email, gender } = userInfo;
+
+  const emailParts = userInfo.email.includes('@')
+    ? userInfo.email.split('@')
+    : ['', ''];
 
   /** 미리보기를 사진데이터를 정의하는 useState 입니다. */
   const [profileImg, setProfileImg] = useState(profileImage);
+
+  // 선택된 도시 이름을 저장하기 위한 상태를 추가합니다.
+  const [selectedCityName, setSelectedCityName] =
+    useState('나의 도시를 선택해 주세요');
 
   /** 프로필 이미지를 변경하는 함수입니다. */
   const handleImageChange = e => {
@@ -43,12 +51,36 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  /** 이메일 주소를 선택하는 SelectBox 함수입니다. */
-  const saveSelectEmail = (value, name, id) => {
-    setUserInfo({
+  const updateEmailField = (idPart, domainPart) => {
+    setUserInfo(userInfo => ({
       ...userInfo,
-      [name]: value,
-    });
+      email: `${idPart}@${domainPart}`,
+    }));
+  };
+
+  /** 이메일 아이디를 변경하는 함수입니다. */
+  const saveEmailId = event => {
+    const emailId = event.target.value;
+    const domainPart = email.split('@')[1];
+    updateEmailField(emailId, domainPart);
+  };
+
+  /** 이메일 도메인을 선택하는 SelectBox 함수입니다. */
+  const saveEmailDomain = domain => {
+    const emailId = userInfo.email.split('@')[0];
+    updateEmailField(emailId, domain);
+  };
+
+  const saveCityId = cityName => {
+    const city = CITY_DATA.find(item => item.value === cityName);
+    if (city) {
+      setUserInfo({
+        ...userInfo,
+        cityId: city.id,
+      });
+      // 선택된 도시 이름을 상태에 저장합니다.
+      setSelectedCityName(cityName);
+    }
   };
 
   const nicknameCheck = () => {
@@ -110,7 +142,11 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
           <div className="radioTitleInner">
             <span>성별</span>
           </div>
-          <RadioGroup RadioData={RADIO_GROUP_GENDER_DATA} />
+          <RadioGroup
+            RadioData={RADIO_GROUP_GENDER_DATA}
+            onChange={id => setUserInfo({ ...userInfo, gender: id })} // 형변환 제거
+            selected={gender} // 이미 숫자이므로 그대로 사용
+          />
 
           <div className="myInfoWrap">
             <Input
@@ -118,13 +154,14 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
               name="cityId"
               label="내지역"
               placeholder="지역을 선택하세요."
-              disabled={true}
+              value={selectedCityName} // 선택된 도시 이름을 표시
+              disabled={true} // 사용자 입력을 방지하기 위해 비활성화
             />
             <CustomSelectBox
-              value="내지역을 선택하세요."
+              value={selectedCityName} // CustomSelectBox에서 현재 선택된 값을 표시
               name="cityId"
               data={CITY_DATA.map(item => item.value)}
-              onChange={value => saveSelectEmail(value, 'cityId')}
+              onChange={saveCityId}
             />
           </div>
 
@@ -132,26 +169,26 @@ const MyInfoEdit = ({ handleEditToggle, userInfo, setUserInfo }) => {
             <Input
               type="text"
               label="이메일"
-              name="email"
-              value={email}
-              onChange={saveEditInfo}
+              name="emailId"
+              value={emailParts[0]} // 이메일 아이디 부분만 표시
+              onChange={saveEmailId}
             />
           </div>
 
           <div className="myInfoWrap">
             <Input
               type="email"
-              name="emailAddress"
-              onChange={saveEditInfo}
+              name="emailDomain"
+              onChange={saveEmailDomain}
               placeholder="직접입력"
-              value={emailAddress === '직접입력' ? '' : emailAddress}
-              disabled={EMAIL_DATA.indexOf(emailAddress) > 0 ? true : false}
+              value={emailParts[1] === '직접입력' ? '' : emailParts[1]}
+              disabled={EMAIL_DATA.indexOf(emailParts[1]) > 0}
             />
             <CustomSelectBox
-              value="이메일 주소 선택"
-              name="emailAddress"
+              value={emailParts[1]} // 현재 이메일 도메인 부분만 선택되도록 처리
+              name="emailDomain"
               data={EMAIL_DATA}
-              onChange={value => saveSelectEmail(value, 'emailAddress')}
+              onChange={saveEmailDomain}
             />
           </div>
         </fieldset>

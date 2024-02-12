@@ -12,11 +12,10 @@ const MyInfo = () => {
   const [userInfo, setUserInfo] = useState({
     profileImage: '../../weather/images/TestImg/profile.png',
     nickname: 'WeatherAdmin',
-    email: 'leecwee',
-    emailAddress: 'gmail.com',
-    cityId: '',
+    gender: 1,
+    email: 'leecwee@gmail.com',
+    cityId: 1,
   });
-  console.log(userInfo.cityId);
 
   /** 수정페이지,마이페이지를 Toggle 하는 함수를 정의합니다. */
   const handleEditToggle = () => {

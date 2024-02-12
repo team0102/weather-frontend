@@ -90,6 +90,9 @@
       .checkBtnInner {
         width: 120px;
       }
+      label {
+        font-size: 18px;
+      }
     }
     .myInfoEmailWrap {
       @include FlexAlignItemEnd;

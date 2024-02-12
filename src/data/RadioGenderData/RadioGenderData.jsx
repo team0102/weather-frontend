@@ -2,15 +2,11 @@ export const RADIO_GROUP_GENDER_DATA = [
   {
     id: 1,
     name: 'gender',
-    value: 'male',
-    context: '남자',
-    defaultChecked: true,
+    context: '남성',
   },
   {
     id: 2,
     name: 'gender',
-    value: 'female',
-    context: '여자',
-    defaultChecked: false,
+    context: '여성',
   },
 ];

@@ -1,5 +1,9 @@
 export const CITY_DATA = [
   {
+    id: 0,
+    value: '선택안함',
+  },
+  {
     id: 1,
     value: '서울',
   },
