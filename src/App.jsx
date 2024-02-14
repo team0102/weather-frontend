@@ -1,12 +1,20 @@
+import { configureStore } from '@reduxjs/toolkit';
 import Router from './Router';
-// import { Provider } from 'react-redux';
-// 추후 리덕스사용시 임포트하세요. Provider
+import { Provider } from 'react-redux';
+import weatherReducer from './reducers/WeatherSlice'
+
+
+const store = configureStore({
+  reducer: {
+    weather: weatherReducer
+  }
+});
 
 const App = () => {
   return (
-    // <Provider>
-    <Router />
-    // </Provider>
+    <Provider store={store}>
+      <Router />
+    </Provider>
   );
 };
 

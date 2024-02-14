@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 
 import SelectBox from '../../../../components/SelectBox/SelectBox.jsx';
 import Icon from './components/Icon/Icon.jsx';
@@ -10,6 +11,7 @@ import { convertDfsAndXY } from './functions/dfsToXY.js';
 import { LOCATIONS_WITH_XY } from '../../../../data/LocationData/LocationData.js';
 import { fcstDataToServiceData } from './functions/fcstDataToServiceData.js';
 import { getBaseDateAndTime } from './functions/getBaseDateAndTime.js';
+import { update } from '../../../../reducers/WeatherSlice.js';
 
 import './WeatherSection.scss';
 
@@ -23,7 +25,8 @@ const WeatherSection = () => {
   // 날씨 데이터 요청에 사용 할 좌표
   const [xy, setXy] = useState([]);
   // 서비스에 사용할 정제된 날씨 정보
-  const [weatherInfo, setWeatherInfo] = useState();
+  const weatherInfo = useSelector(state => state.weather);
+  const dispatch = useDispatch();
 
   // 위치정보 권한 상태 변경되면 상태에 따라 위치를 얻거나 기본위치로 변경
   const geolocationPermission = useGeolocationPermission();
@@ -74,7 +77,7 @@ const WeatherSection = () => {
 
   // location 변경 시 날씨 새로 요청하여 업데이트
   useEffect(() => {
-    if (xy != []) {
+    if (xy.length != 0) {
       const requestWeatherForecast = async () => {
         // 요청에 사용 할 날짜 및 시간 값을 형식에 맞게 구성
         const { baseDate, baseTime } = getBaseDateAndTime();
@@ -146,7 +149,7 @@ const WeatherSection = () => {
           });
           // 서비스에 필요한 값을 추출하여 state에 저장
           const weatherInfo = fcstDataToServiceData(fcstData);
-          setWeatherInfo(weatherInfo);
+          dispatch(update(weatherInfo));
         } catch (error) {
           console.log(error);
           // TODO: 에러 발생 시 재시도 하는 로직 필요
@@ -155,6 +158,10 @@ const WeatherSection = () => {
       requestWeatherForecast();
     }
   }, [xy]);
+
+  useEffect(() => {
+    console.log(weatherInfo);
+  }, [weatherInfo]);
 
   // TODO: sticky 및 transition 적용해서 스크롤 내려도 날씨 항상 보이도록? 논의 후 결정
   return (
