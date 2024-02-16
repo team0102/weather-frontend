@@ -100,8 +100,8 @@ export const fcstDataToServiceData = (fcstData, date) => {
       wind > 1.3
         ? 13.12 +
           0.6215 * temperature -
-          11.37 * Math.pow(wind / 3.6, 0.16) +
-          0.3965 * Math.pow(wind / 3.6, 0.16) * temperature
+          11.37 * Math.pow(wind * 3.6, 0.16) +
+          0.3965 * Math.pow(wind * 3.6, 0.16) * temperature
         : temperature;
   }
 

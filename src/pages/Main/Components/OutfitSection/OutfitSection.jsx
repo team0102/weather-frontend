@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import './OutfitSection.scss';
-import { API } from '../../../../../config';
-import { customAxios } from '../../../../API/API';
+import { useSelector } from 'react-redux';
+
 import Button from '../../../../components/Button/Button';
 import OutfitIcon from './components/OutfitIcon/OutfitIcon';
-import RadioGroup from '../../../../components/RadioGroup/RadioGroup';
+import { API } from '../../../../../config';
+import { customAxios } from '../../../../API/API';
+
+import './OutfitSection.scss';
 
 const OutfitSection = () => {
   const [clothes, setClothes] = useState([]);
   const [selectedTemperatureSensitivity, setSelectedTemperatureSensitivity] =
     useState(0);
 
+  const weatherInfo = useSelector(state => state.weather);
+
   useEffect(() => {
     const requestClothes = async () => {
       try {
-        const response = await customAxios.get(API.CLOTHES);
+        const response = await customAxios.get(API.CLOTHES, {
+          params: {
+            temperature:
+              weatherInfo.feelsLike + selectedTemperatureSensitivity * 3,
+          },
+        });
         const { id, ...data } = response.data[0];
         setClothes(Object.values(data).filter(item => item));
       } catch (error) {
@@ -24,6 +33,20 @@ const OutfitSection = () => {
     };
     requestClothes();
   }, []);
+
+  useEffect(() => {
+    const savedTemperatureSensitivity = JSON.parse(localStorage.getItem('temperatureSensitivity'));
+    if (savedTemperatureSensitivity) {
+     setSelectedTemperatureSensitivity(savedTemperatureSensitivity);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'temperatureSensitivity',
+      String(selectedTemperatureSensitivity),
+    );
+  }, [selectedTemperatureSensitivity]);
 
   return (
     <div className="outfitSection section">
@@ -40,7 +63,7 @@ const OutfitSection = () => {
       </div>
       <div className="personalizeWindChill">
         <Button
-          children="더위를 타요"
+          children="추위를 타요"
           onClick={() => setSelectedTemperatureSensitivity(-1)}
           color={selectedTemperatureSensitivity === -1 ? 'primary' : 'light'}
         />
@@ -50,7 +73,7 @@ const OutfitSection = () => {
           color={selectedTemperatureSensitivity === 0 ? 'primary' : 'light'}
         />
         <Button
-          children="추위를 타요"
+          children="더위를 타요"
           onClick={() => setSelectedTemperatureSensitivity(1)}
           color={selectedTemperatureSensitivity === 1 ? 'primary' : 'light'}
         />
