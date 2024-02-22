@@ -1,6 +1,15 @@
 @charset 'utf-8';
 @import '../../../../styles/partials/mixin.scss', '../../../../styles/partials/variables';
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .feedSection {
   @include FlexCenter;
   width: 100%;
@@ -8,8 +17,13 @@
   flex-grow: 3;
 
   .feedSectionFooter {
+    @include FlexCenter;
     width: 100%;
     padding: 1px;
+    path {
+      animation: rotate 4s linear infinite;
+      transform-origin: 50% 50%;
+    }
   }
 }
 
