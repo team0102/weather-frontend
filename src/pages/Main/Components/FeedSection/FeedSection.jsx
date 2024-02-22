@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { customAxios } from '../../../../API/API';
@@ -11,6 +11,7 @@ import './FeedSection.scss';
 import IconButton from '../../../../components/IconButton/IconButton';
 
 const NUM_COLUMNS = 3;
+const FEED_REQUEST_COUNTS = 0;
 const chunk = (arr, size) =>
   arr.reduce(
     (carry, _, index, orig) =>
@@ -20,54 +21,46 @@ const chunk = (arr, size) =>
 
 const FeedSection = () => {
   const [feeds, setFeeds] = useState([]);
-  const feedRequestCounts = useRef(1);
+  const feedRequestCounts = useRef(FEED_REQUEST_COUNTS);
   const navigate = useNavigate();
-  const [isLoding, setIsLoding] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const requestFeeds = async () => {
-      setIsLoding(true);
-      try {
-        const response = await customAxios.get(API.FEEDS, {
-          params: { take: 15 },
-        });
-        setFeeds(response.data.map(feed => ({ ...feed, id: feed.feedId })));
-      } catch (error) {
-        alert('에러 발생');
-      } finally {
-        setIsLoding(false);
-      }
-    };
-    requestFeeds();
+    if (feedRequestCounts.current === FEED_REQUEST_COUNTS) requestFeeds();
+  }, []);
+  
+  const requestFeeds = useCallback(async (lastId = 0) => {
+    feedRequestCounts.current++;
+    try {
+      setIsLoading(prev => true);
+      const response = await customAxios.get(API.FEEDS, {
+        params: {
+          take: 15,
+          where__id__more_than: lastId,
+          order__createdAt: 'DESC',
+        },
+      });
+      setFeeds(prev => [
+        ...prev,
+        ...response.data.map(feed => ({ ...feed, id: feed.feedId })),
+      ]);
+      setIsLoading(prev => false);
+    } catch (error) {
+      alert('에러 발생');
+      setIsLoading(prev => false);
+      feedRequestCounts.current --;
+    }
   }, []);
 
-  const requestMoreFeeds = async () => {
-    console.log('피드 더 보기');
+  const requestMoreFeeds = useCallback(async () => {
     // TODO: 무한스크롤 적용 여부 확인, 피드 얼마나 보여줄 것인지 확인
     if (feedRequestCounts.current < 3) {
-      setIsLoding(true);
-      try {
-        const response = await customAxios.get(API.FEEDS, {
-          params: {
-            take: 15,
-            where__id__more_than: feeds.pop().id + 1,
-            order__createdAt: 'DESC',
-          },
-        });
-        setFeeds(prev => [
-          ...prev,
-          ...response.data.map(feed => ({ ...feed, id: feed.feedId })),
-        ]);
-        feedRequestCounts.current ++;
-      } catch (error) {
-        alert('에러 발생');
-      } finally {
-        setIsLoding(false);
-      }
+      const lastId = feeds.pop().id;
+      requestFeeds(lastId);
     } else {
       navigate('/feed');
     }
-  };
+  }, [feeds]);
 
   return (
     <div className="feedSection section">
@@ -79,16 +72,15 @@ const FeedSection = () => {
         })}
       </div>
       <div className="feedSectionFooter">
-        {
-          isLoding ? 
+        {isLoading ? (
           <IconButton content={'Loader'} color={'gray'}></IconButton>
-          :
+        ) : (
           <Button
             onClick={requestMoreFeeds}
             color="light"
             children="피드 더 보기"
           />
-        }
+        )}
       </div>
     </div>
   );

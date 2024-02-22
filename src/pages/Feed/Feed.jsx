@@ -15,6 +15,7 @@ const Feed = () => {
   });
 
   useEffect(() => {
+    console.log('effect feed')
     requestFeedList();
   }, []);
 
