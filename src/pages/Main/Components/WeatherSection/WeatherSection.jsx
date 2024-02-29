@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 
 import SelectBox from '../../../../components/SelectBox/SelectBox.jsx';
 import Icon from './components/Icon/Icon.jsx';
@@ -47,34 +47,17 @@ const WeatherSection = () => {
       useGeolocation();
     }
   }, [geolocationPermission]);
-
-  // 사용자가 저장한 지역들 정보 불러오기
-  // useEffect(() => {
-  //   // TODO: 추후 로컬스토리지로 변경
-  //   const requestUserLocations = async () => {
-  //     try {
-  //       const response = await customAxios.get(API.USER_LOCATIONS);
-  //       setUserLocations(prev => ({ ...prev, ...response.data }));
-  //     } catch (error) {
-  //       alert('에러 발생');
-  //     }
-  //   };
-  //   requestUserLocations();
-  // }, []);
-
+  
   useEffect(() => {
-    const savedUserLocations = JSON.parse(localStorage.getItem('userLocations'));
+    const savedUserLocations = JSON.parse(
+      localStorage.getItem('userLocations'),
+    );
     if (savedUserLocations) {
-     setUserLocations(savedUserLocations);
+      setUserLocations(prev => {
+        return { ...prev, ...savedUserLocations };
+      });
     }
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem(
-      'userLocations',
-      JSON.stringify(userLocations),
-    );
-  }, [userLocations])
 
   // selectBox에서 선택값이 변경되면 선택된 위치에 맞는 좌표값을 저장
   useEffect(() => {
@@ -110,7 +93,7 @@ const WeatherSection = () => {
             '2000',
             '2300',
           ];
-          
+
           // 요청시각 이전의 예보 데이터 요청하기
           for (let i = 0; fcstTimes[i] < baseTime; i++) {
             requests.push(
