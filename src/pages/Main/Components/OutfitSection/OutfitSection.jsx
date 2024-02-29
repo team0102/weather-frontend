@@ -29,7 +29,6 @@ const OutfitSection = () => {
           setClothes(Object.values(data).filter(item => item));
         } catch (error) {
           console.log(error);
-          // alert('에러 발생');
         }
       };
       requestClothes();

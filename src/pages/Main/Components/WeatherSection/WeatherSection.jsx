@@ -57,7 +57,6 @@ const WeatherSection = () => {
 
   // selectBox에서 선택값이 변경되면 선택된 위치에 맞는 좌표값을 저장
   useEffect(() => {
-    console.log("selected location", selectedLocationKey);
     if (
       selectedLocationKey === '0000000000'
     ) {
@@ -151,10 +150,6 @@ const WeatherSection = () => {
       requestWeatherForecast();
     }
   }, [xy]);
-
-  useEffect(() => {
-    console.log(weatherInfo);
-  }, [weatherInfo]);
 
   // TODO: sticky 및 transition 적용해서 스크롤 내려도 날씨 항상 보이도록? 논의 후 결정
   return (

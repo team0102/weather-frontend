@@ -66,7 +66,6 @@ const FeedSection = () => {
     <div className="feedSection section">
       <div className="imageRowWrapper">
         {chunk(feeds, NUM_COLUMNS).map((feedsChunk, index) => {
-          console.log(feedsChunk);
           return (
             <ImageRow key={index} numColumns={NUM_COLUMNS} items={feedsChunk} />
           );
