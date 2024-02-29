@@ -25,7 +25,7 @@ const OutfitSection = () => {
                 weatherInfo.feelsLike + selectedTemperatureSensitivity * 3,
             },
           });
-          const { id, ...data } = response.data[0];
+          const { id, ...data } = response.data.data[0];
           setClothes(Object.values(data).filter(item => item));
         } catch (error) {
           console.log(error);
