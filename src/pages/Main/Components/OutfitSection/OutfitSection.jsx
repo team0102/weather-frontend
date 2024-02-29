@@ -16,23 +16,25 @@ const OutfitSection = () => {
   const weatherInfo = useSelector(state => state.weather);
 
   useEffect(() => {
-    const requestClothes = async () => {
-      try {
-        const response = await customAxios.get(API.CLOTHES, {
-          params: {
-            temperature:
-              weatherInfo.feelsLike + selectedTemperatureSensitivity * 3,
-          },
-        });
-        const { id, ...data } = response.data[0];
-        setClothes(Object.values(data).filter(item => item));
-      } catch (error) {
-        console.log(error);
-        alert('에러 발생');
-      }
-    };
-    requestClothes();
-  }, []);
+    if (weatherInfo.feelsLike && selectedTemperatureSensitivity) {
+      const requestClothes = async () => {
+        try {
+          const response = await customAxios.get(API.CLOTHES, {
+            params: {
+              temperature:
+                weatherInfo.feelsLike + selectedTemperatureSensitivity * 3,
+            },
+          });
+          const { id, ...data } = response.data[0];
+          setClothes(Object.values(data).filter(item => item));
+        } catch (error) {
+          console.log(error);
+          // alert('에러 발생');
+        }
+      };
+      requestClothes();
+    }
+  }, [selectedTemperatureSensitivity, weatherInfo]);
 
   useEffect(() => {
     const savedTemperatureSensitivity = JSON.parse(localStorage.getItem('temperatureSensitivity'));

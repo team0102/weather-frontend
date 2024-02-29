@@ -49,18 +49,32 @@ const WeatherSection = () => {
   }, [geolocationPermission]);
 
   // 사용자가 저장한 지역들 정보 불러오기
+  // useEffect(() => {
+  //   // TODO: 추후 로컬스토리지로 변경
+  //   const requestUserLocations = async () => {
+  //     try {
+  //       const response = await customAxios.get(API.USER_LOCATIONS);
+  //       setUserLocations(prev => ({ ...prev, ...response.data }));
+  //     } catch (error) {
+  //       alert('에러 발생');
+  //     }
+  //   };
+  //   requestUserLocations();
+  // }, []);
+
   useEffect(() => {
-    // TODO: 추후 로컬스토리지로 변경
-    const requestUserLocations = async () => {
-      try {
-        const response = await customAxios.get(API.USER_LOCATIONS);
-        setUserLocations(prev => ({ ...prev, ...response.data }));
-      } catch (error) {
-        alert('에러 발생');
-      }
-    };
-    requestUserLocations();
+    const savedUserLocations = JSON.parse(localStorage.getItem('userLocations'));
+    if (savedUserLocations) {
+     setUserLocations(savedUserLocations);
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'userLocations',
+      JSON.stringify(userLocations),
+    );
+  }, [userLocations])
 
   // selectBox에서 선택값이 변경되면 선택된 위치에 맞는 좌표값을 저장
   useEffect(() => {

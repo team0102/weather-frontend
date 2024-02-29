@@ -42,11 +42,11 @@ const FeedSection = () => {
       });
       setFeeds(prev => [
         ...prev,
-        ...response.data.map(feed => ({ ...feed, id: feed.feedId })),
+        ...response.data.data.map(feed => ({ ...feed, id: feed.feedId })),
       ]);
       setIsLoading(prev => false);
     } catch (error) {
-      alert('에러 발생');
+      console.log(error);
       setIsLoading(prev => false);
       feedRequestCounts.current --;
     }
@@ -66,6 +66,7 @@ const FeedSection = () => {
     <div className="feedSection section">
       <div className="imageRowWrapper">
         {chunk(feeds, NUM_COLUMNS).map((feedsChunk, index) => {
+          console.log(feedsChunk);
           return (
             <ImageRow key={index} numColumns={NUM_COLUMNS} items={feedsChunk} />
           );
