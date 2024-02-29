@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import SelectBox from '../../../../components/SelectBox/SelectBox.jsx';
 import Icon from './components/Icon/Icon.jsx';
 
-import { customAxios, weatherAxios } from '../../../../API/API.jsx';
+import { weatherAxios } from '../../../../API/API.jsx';
 import { API } from '../../../../../config.js';
 import useGeolocationPermission from './hooks/useGeolocationPermissionGranted.js';
 import { convertDfsAndXY } from './functions/dfsToXY.js';
@@ -30,6 +30,7 @@ const WeatherSection = () => {
 
   // 위치정보 권한 상태 변경되면 상태에 따라 위치를 얻거나 기본위치로 변경
   const geolocationPermission = useGeolocationPermission();
+
   const useGeolocation = () => {
     navigator.geolocation.getCurrentPosition(position => {
       const coord = convertDfsAndXY(
@@ -42,12 +43,7 @@ const WeatherSection = () => {
       }
     });
   };
-  useEffect(() => {
-    if (geolocationPermission === 'granted') {
-      useGeolocation();
-    }
-  }, [geolocationPermission]);
-  
+
   useEffect(() => {
     const savedUserLocations = JSON.parse(
       localStorage.getItem('userLocations'),
@@ -61,16 +57,16 @@ const WeatherSection = () => {
 
   // selectBox에서 선택값이 변경되면 선택된 위치에 맞는 좌표값을 저장
   useEffect(() => {
+    console.log("selected location", selectedLocationKey);
     if (
-      selectedLocationKey === '0000000000' &&
-      geolocationPermission === 'granted'
+      selectedLocationKey === '0000000000'
     ) {
       useGeolocation();
     } else if (selectedLocationKey && selectedLocationKey != '0000000000') {
       const location = LOCATIONS_WITH_XY[selectedLocationKey];
       setXy([location.x, location.y]);
     }
-  }, [selectedLocationKey]);
+  }, [selectedLocationKey, geolocationPermission]);
 
   // location 변경 시 날씨 새로 요청하여 업데이트
   useEffect(() => {
