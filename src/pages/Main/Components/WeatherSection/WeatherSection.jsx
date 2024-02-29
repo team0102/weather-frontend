@@ -16,7 +16,7 @@ import { update } from '../../../../reducers/WeatherSlice.js';
 import './WeatherSection.scss';
 
 const WeatherSection = () => {
-  // TODO: 날씨 및 위치 redux로 이동
+  // TODO: 위치 redux로 이동
   // selectBox에서 선택한 위치 값
   const [selectedLocationKey, setSelectedLocationKey] = useState();
   const currentUserLocation = { '0000000000': '현재 위치' };
