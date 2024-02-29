@@ -58,7 +58,7 @@ const OutfitSection = () => {
         </div>
         <div className="imageRowWrapper">
           {clothes.map((clothes, index) => {
-            return <OutfitIcon key={index} imageUrl={clothes.imageUrl} />;
+            return <OutfitIcon key={index} imageUrl={clothes.image} />; //TODO: imageUrl로 통일
           })}
         </div>
       </div>

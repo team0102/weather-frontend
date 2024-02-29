@@ -42,7 +42,7 @@ const FeedSection = () => {
       });
       setFeeds(prev => [
         ...prev,
-        ...response.data.data.map(feed => ({ ...feed, id: feed.feedId })),
+        ...response.data.data.feeds.map(feed => ({ ...feed, id: feed.feedId })),
       ]);
       setIsLoading(prev => false);
     } catch (error) {

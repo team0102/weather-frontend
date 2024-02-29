@@ -31,12 +31,12 @@ body {
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  max-height: 100vh;
   overflow-x: hidden;
 }
 
 /**
-  1.Footer를 최하단에 고정시키기 위한 속성 최대 최소 가로 사이즈를 정의합니다.
+  1.Footer를 최하단에 고정시키기 위한 속성
   2.최대 최소 width 를 정의합니다.
   3.width 100%를 적용합니다.
   */
@@ -46,6 +46,7 @@ main {
   max-width: 1000px;
   min-width: 320px;
   width: 100%;
+  overflow-y: auto;
 }
 
 /** li 기호 또는 점을 없애기 위한 속성 */

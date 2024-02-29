@@ -2,10 +2,10 @@
 @import '../../styles/partials/mixin', '../../styles/partials/variables'; //변수스타일 , 믹스인 스타일을  꼭 import 해야 사용가능합니다.
 
 .main {
-  @include FlexCenter;
-  width: 100%;
-  height: 100vh;
-  flex-direction: column;
+  // @include FlexCenter;
+  // width: 100%;
+  // overflow-y: auto;
+  // flex-direction: column;
 }
 
 .section {
