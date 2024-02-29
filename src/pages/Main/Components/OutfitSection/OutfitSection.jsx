@@ -16,7 +16,7 @@ const OutfitSection = () => {
   const weatherInfo = useSelector(state => state.weather);
 
   useEffect(() => {
-    if (weatherInfo.feelsLike && selectedTemperatureSensitivity) {
+    if (weatherInfo.feelsLike) {
       const requestClothes = async () => {
         try {
           const response = await customAxios.get(API.CLOTHES, {
