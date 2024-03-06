@@ -35,14 +35,14 @@ const FeedSection = () => {
       setIsLoading(prev => true);
       const response = await customAxios.get(API.FEEDS, {
         params: {
-          take: 15,
-          where__id__more_than: lastId,
+          take: 9,
+          where__id__less_than: lastId,
           order__createdAt: 'DESC',
         },
       });
       setFeeds(prev => [
         ...prev,
-        ...response.data.data.feeds.map(feed => ({ ...feed, id: feed.feedId })),
+        ...response.data.data.feeds.map(feed => feed),
       ]);
       setIsLoading(prev => false);
     } catch (error) {
@@ -55,7 +55,7 @@ const FeedSection = () => {
   const requestMoreFeeds = useCallback(async () => {
     // TODO: 무한스크롤 적용 여부 확인, 피드 얼마나 보여줄 것인지 확인
     if (feedRequestCounts.current < 3) {
-      const lastId = feeds.pop().id;
+      const lastId = feeds[feeds.length - 1].id;
       requestFeeds(lastId);
     } else {
       navigate('/feed');
