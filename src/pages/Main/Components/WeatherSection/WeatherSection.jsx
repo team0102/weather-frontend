@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 
 import SelectBox from '../../../../components/SelectBox/SelectBox.jsx';
 import Icon from './components/Icon/Icon.jsx';
 
-import { customAxios, weatherAxios } from '../../../../API/API.jsx';
+import { weatherAxios } from '../../../../API/API.jsx';
 import { API } from '../../../../../config.js';
 import useGeolocationPermission from './hooks/useGeolocationPermissionGranted.js';
 import { convertDfsAndXY } from './functions/dfsToXY.js';
@@ -16,7 +16,7 @@ import { update } from '../../../../reducers/WeatherSlice.js';
 import './WeatherSection.scss';
 
 const WeatherSection = () => {
-  // TODO: 날씨 및 위치 redux로 이동
+  // TODO: 위치 redux로 이동
   // selectBox에서 선택한 위치 값
   const [selectedLocationKey, setSelectedLocationKey] = useState();
   const currentUserLocation = { '0000000000': '현재 위치' };
@@ -30,6 +30,7 @@ const WeatherSection = () => {
 
   // 위치정보 권한 상태 변경되면 상태에 따라 위치를 얻거나 기본위치로 변경
   const geolocationPermission = useGeolocationPermission();
+
   const useGeolocation = () => {
     navigator.geolocation.getCurrentPosition(position => {
       const coord = convertDfsAndXY(
@@ -42,38 +43,29 @@ const WeatherSection = () => {
       }
     });
   };
-  useEffect(() => {
-    if (geolocationPermission === 'granted') {
-      useGeolocation();
-    }
-  }, [geolocationPermission]);
 
-  // 사용자가 저장한 지역들 정보 불러오기
   useEffect(() => {
-    // TODO: 추후 로컬스토리지로 변경
-    const requestUserLocations = async () => {
-      try {
-        const response = await customAxios.get(API.USER_LOCATIONS);
-        setUserLocations(prev => ({ ...prev, ...response.data }));
-      } catch (error) {
-        alert('에러 발생');
-      }
-    };
-    requestUserLocations();
+    const savedUserLocations = JSON.parse(
+      localStorage.getItem('userLocations'),
+    );
+    if (savedUserLocations) {
+      setUserLocations(prev => {
+        return { ...prev, ...savedUserLocations };
+      });
+    }
   }, []);
 
   // selectBox에서 선택값이 변경되면 선택된 위치에 맞는 좌표값을 저장
   useEffect(() => {
     if (
-      selectedLocationKey === '0000000000' &&
-      geolocationPermission === 'granted'
+      selectedLocationKey === '0000000000'
     ) {
       useGeolocation();
     } else if (selectedLocationKey && selectedLocationKey != '0000000000') {
       const location = LOCATIONS_WITH_XY[selectedLocationKey];
       setXy([location.x, location.y]);
     }
-  }, [selectedLocationKey]);
+  }, [selectedLocationKey, geolocationPermission]);
 
   // location 변경 시 날씨 새로 요청하여 업데이트
   useEffect(() => {
@@ -96,7 +88,7 @@ const WeatherSection = () => {
             '2000',
             '2300',
           ];
-          
+
           // 요청시각 이전의 예보 데이터 요청하기
           for (let i = 0; fcstTimes[i] < baseTime; i++) {
             requests.push(
@@ -158,10 +150,6 @@ const WeatherSection = () => {
       requestWeatherForecast();
     }
   }, [xy]);
-
-  useEffect(() => {
-    console.log(weatherInfo);
-  }, [weatherInfo]);
 
   // TODO: sticky 및 transition 적용해서 스크롤 내려도 날씨 항상 보이도록? 논의 후 결정
   return (

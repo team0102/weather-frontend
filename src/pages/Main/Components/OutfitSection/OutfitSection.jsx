@@ -16,23 +16,24 @@ const OutfitSection = () => {
   const weatherInfo = useSelector(state => state.weather);
 
   useEffect(() => {
-    const requestClothes = async () => {
-      try {
-        const response = await customAxios.get(API.CLOTHES, {
-          params: {
-            temperature:
-              weatherInfo.feelsLike + selectedTemperatureSensitivity * 3,
-          },
-        });
-        const { id, ...data } = response.data[0];
-        setClothes(Object.values(data).filter(item => item));
-      } catch (error) {
-        console.log(error);
-        alert('에러 발생');
-      }
-    };
-    requestClothes();
-  }, []);
+    if (weatherInfo.feelsLike) {
+      const requestClothes = async () => {
+        try {
+          const response = await customAxios.get(API.CLOTHES, {
+            params: {
+              temperature:
+                weatherInfo.feelsLike + selectedTemperatureSensitivity * 3,
+            },
+          });
+          const { id, ...data } = response.data.data[0];
+          setClothes(Object.values(data).filter(item => item));
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      requestClothes();
+    }
+  }, [selectedTemperatureSensitivity, weatherInfo]);
 
   useEffect(() => {
     const savedTemperatureSensitivity = JSON.parse(localStorage.getItem('temperatureSensitivity'));
@@ -57,7 +58,7 @@ const OutfitSection = () => {
         </div>
         <div className="imageRowWrapper">
           {clothes.map((clothes, index) => {
-            return <OutfitIcon key={index} imageUrl={clothes.imageUrl} />;
+            return <OutfitIcon key={index} imageUrl={clothes.image} />; //TODO: imageUrl로 통일
           })}
         </div>
       </div>
