@@ -1,5 +1,5 @@
 import './Chat.scss';
-import ChatAreaSection from './components/ChatAreaSection/ChatAreaSection';
+import ChatAreaSection from './components/ChatCitySection/ChatCitySection';
 
 import ChatInputSection from './components/ChatInputSection/ChatInputSection';
 import ChatLogSection from './components/ChatLogSection/ChatLogSection';

@@ -1,0 +1,11 @@
+@charset 'utf-8';
+@import '../../../../styles/partials/mixin.scss', '../../../../styles/partials/variables';
+
+.chatCitySection {
+  @include FlexYCenter;
+  width: 100%;
+  flex-direction: row;
+  padding: 10px 10px;
+  overflow-x: auto;
+}
+
