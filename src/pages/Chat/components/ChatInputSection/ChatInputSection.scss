@@ -1,0 +1,29 @@
+@charset 'utf-8';
+@import '../../../../styles/partials/mixin.scss', '../../../../styles/partials/variables';
+
+.chatInputSection {
+  flex-direction: row;
+  padding: 5px 10px;
+}
+
+.chatButtonWrap {
+  @include FlexCenter;
+  background-color: $primaryColor;
+  border-radius: 4px;
+  margin-left: 5px;
+  @media #{$media-mobile} {
+    height: 30.5px;
+    width: 30.5px;
+  }
+
+  @media #{$media-tablet} {
+    height: 37px;
+    width: 37px;
+  }
+
+  @media #{$media-web} {
+    height: 43.5px;
+    width: 43.5px;
+  }
+}
+
