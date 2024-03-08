@@ -14,6 +14,7 @@ export const API = {
   FEEDS: `feeds`,
   CLOTHES: `clothes`,
   WEATHER: `getVilageFcst`,
+  CHAT: `ChatData.json`,
 };
 
 /**
