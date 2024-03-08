@@ -1,11 +1,20 @@
 @charset 'utf-8';
 @import '../../../../styles/partials/mixin.scss', '../../../../styles/partials/variables';
 
-.chatCitySection {
-  @include FlexYCenter;
-  width: 100%;
+.buttonsWrap {
+  @include FlexCenter;
   flex-direction: row;
-  padding: 10px 10px;
-  overflow-x: auto;
 }
 
+.instruction {
+  padding-bottom: 10px;
+}
+
+.buttonWrap {
+  @include FlexCenter;
+  width: fit-content;
+  padding: 0 10px;
+  button {
+    padding: 10px;
+  }
+}
