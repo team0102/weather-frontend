@@ -1,0 +1,21 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin', '../../styles/partials/variables'; //변수스타일 , 믹스인 스타일을  꼭 import 해야 사용가능합니다.
+
+.main {
+  @include FlexCenter;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.section {
+  @include FlexXCenter;
+  width: 100%;
+  flex-direction: column;
+  padding: 20px;
+  border-bottom: 1px solid $grayscaleB;
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}

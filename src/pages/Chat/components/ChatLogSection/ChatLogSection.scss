@@ -1,0 +1,12 @@
+@charset 'utf-8';
+@import '../../../../styles/partials/mixin.scss', '../../../../styles/partials/variables';
+
+.chatLogSection {
+  @include FlexXCenter;
+  width: 100%;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 10px 10px;
+  overflow-y: auto;
+}
+

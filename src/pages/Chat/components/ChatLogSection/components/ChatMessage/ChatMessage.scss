@@ -1,0 +1,54 @@
+@charset "utf-8";
+@import '../../../../../../styles/partials/mixin',
+  '../../../../../../styles/partials/variables';
+
+.chatMessage {
+  @include FlexYCenter;
+  width: 100%;
+  justify-content: left;
+  &.myMessage {
+    justify-content: right;
+    text-align: end;
+  }
+}
+
+.chatTextArea {
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+  font-size: 14px;
+  padding-bottom: 20px;
+
+  @media #{$media-mobile} {
+    max-width: 60%;
+    font-size: 14px;
+    padding-bottom: 20px;
+  }
+
+  @media #{$media-tablet} {
+    max-width: 50%;
+    font-size: 16px;
+    padding-bottom: 25px;
+  }
+
+  @media #{$media-web} {
+    max-width: 50%;
+    font-size: 18px;
+    padding-bottom: 30px;
+  }
+}
+.chatUserName {
+  padding-bottom: 3px;
+}
+
+.chatMessageContent {
+  font-weight: 400;
+  font-family: $RubikRegular;
+  padding-bottom: 3px;
+}
+
+.chatMessageTime {
+  font-weight: 100;
+  font-family: $RubikRegular;
+  color: $grayscaleD;
+}

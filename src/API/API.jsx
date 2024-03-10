@@ -19,6 +19,16 @@ export const customAxios = axios.create({
   },
 });
 
+export const testAxios = axios.create({
+  baseURL: `/weather/data/`,
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
+});
+
+
+
 export const weatherAxios = axios.create({
   baseURL: 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/',
   headers: {

@@ -9,6 +9,7 @@ import MyInfo from './pages/MyInfo/MyInfo';
 import Login from './pages/Login/Login';
 import Feed from './pages/Feed/Feed';
 import BookMark from './pages/BookMark/BookMark';
+import Chat from './pages/Chat/Chat';
 
 const Router = () => {
   return (
@@ -23,6 +24,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/bookmark" element={<BookMark />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
       <Footer />
     </BrowserRouter>
